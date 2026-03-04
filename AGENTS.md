@@ -1,15 +1,5 @@
 # CRM 产品管理仓库 - Copilot 上下文
 
-## 产品定位
-
-CRM (Customer Relationship Management) 是面向企业销售团队的客户关系管理平台，核心能力包括：
-
-- 客户与联系人管理
-- 线索与商机跟进
-- 销售漏斗与业绩分析
-- 合同与订单管理
-- 销售自动化与工作流
-
 ## 仓库结构
 
 > 本仓库遵循 [product-template](https://github.com/it188-networkx/product-template) 标准目录结构。
@@ -34,8 +24,6 @@ crm-product/
 ## 强制规则
 
 - 每次变更仓库目录结构后必须同步更新 README.md 的目录树和快速导航两处。
-- 需求文档按 Theme → Epic → Feature 三级层次存放于 `requirements/` 目录。
-- 架构决策记录统一存放于 `architecture/adrs/` 目录，文件名格式 `adrNNN-<topic>.md`。
 - Issue 必须使用 `.github/ISSUE_TEMPLATE/` 下对应阶段的模板创建。
 - 冲刺任务清单存放于 `sprints/<YYYYMMDD>/<user>-tasks.md`，冲刺目录以周一日期命名。
 
