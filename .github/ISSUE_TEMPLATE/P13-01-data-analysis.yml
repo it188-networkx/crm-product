@@ -1,0 +1,115 @@
+name: "[增长] 数据分析 (Data Analysis)"
+description: 基于产品运营数据进行定期或专项分析，挖掘用户行为模式、验证功能假设、诊断增长卡点
+title: "[数据分析] <分析周期> - <分析主题>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 数据分析
+
+        基于产品运营数据进行定期或专项分析，挖掘用户行为模式、验证功能假设、
+        诊断增长卡点，输出数据驱动的决策建议。
+
+  - type: input
+    id: analysis_topic
+    attributes:
+      label: 分析主题
+      placeholder: 例如：v2.0 新功能渗透率分析
+    validations:
+      required: true
+
+  - type: input
+    id: analysis_period
+    attributes:
+      label: 分析周期
+      placeholder: 例如：2026-Q1, 2026-01
+    validations:
+      required: true
+
+  - type: textarea
+    id: core_hypothesis
+    attributes:
+      label: 核心假设
+      description: 本次分析需要验证的核心假设
+      placeholder: |
+        例如：
+        - 假设 1：工单自动分配功能上线后，平均分配耗时降低 30%
+        - 假设 2：移动端使用率在 v2.0 后提升至 60%
+    validations:
+      required: true
+
+  - type: textarea
+    id: focus_metrics
+    attributes:
+      label: 关注指标
+      description: 本次分析聚焦的核心指标
+      placeholder: |
+        例如：
+        - DAU/MAU 比率
+        - 功能渗透率
+        - 关键路径转化率
+    validations:
+      required: true
+
+  - type: textarea
+    id: tracking_data
+    attributes:
+      label: 埋点数据导出 (D25)
+      description: 埋点数据平台导出的原始数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: dashboard_screenshots
+    attributes:
+      label: 业务指标仪表盘截图
+      description: 核心业务指标仪表盘截图
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: ab_test_report
+    attributes:
+      label: A/B 实验报告 (D26)
+      description: 相关 A/B 实验的结果报告
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: user_persona
+    attributes:
+      label: 用户画像 (A03)
+      description: S03 输出（行为分析假设基线）
+      placeholder: 请提供 discovery/users/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: release_notes
+    attributes:
+      label: 发布说明 (A19)
+      description: S18 输出（版本变更范围基准）
+      placeholder: 请提供 commerce/release-notes/<version>.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: retro_report
+    attributes:
+      label: 迭代复盘报告 (A15)
+      description: S14 输出中的待验证假设
+      placeholder: 请提供 planning/milestones/retro-<version>.md 的 URL
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **数据分析报告 (A23)**：包含执行摘要、分析框架、核心指标分析、用户行为分析（漏斗/路径/分群）、功能使用分析、实验分析、行动计划

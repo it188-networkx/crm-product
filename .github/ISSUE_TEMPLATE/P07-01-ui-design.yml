@@ -1,0 +1,81 @@
+name: "[前端] 界面视觉规范 (UI Visual Standards)"
+description: 制定平台级视觉风格与组件规范，定义色彩、字体、间距 Token 及通用组件视觉标准
+title: "[视觉规范] <产品名称> / <平台>"
+labels: ["domain:design", "activity:design"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 界面视觉规范
+
+        基于设计系统约束与需求特性定义，制定平台级视觉风格（色彩体系、字体排版、间距规则）
+        与通用组件规范，产出界面视觉规范文档，供交互框架设计与组件设计阶段复用。
+
+  # 2. 上游输入
+  - type: input
+    id: feature_definition
+    attributes:
+      label: 需求特性定义 (A0304)
+      description: 提供页面与交互的产品需求上下文
+      placeholder: 请提供 requirements/<theme>/<epic>/<feature>/README.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: prototype_design
+    attributes:
+      label: 原型设计 (A0307)
+      description: UX 交互原型中的任务流与界面元素定义（P03-07 输出）
+      placeholder: 请提供原型设计文档或 Figma URL
+    validations:
+      required: false
+
+  # 3. 外部输入
+  - type: input
+    id: design_system
+    attributes:
+      label: 设计系统 (D18)
+      description: 适用的设计规范与设计语言标准（Token 定义、品牌规范等）
+      placeholder: 请提供设计系统的文档 URL
+    validations:
+      required: false
+
+  # 4. 视觉规范范围
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 目标平台
+      options:
+        - Web Browser（PC）
+        - Mobile Browser（H5）
+        - Mobile App（React Native）
+        - Electron 桌面
+        - 小程序
+    validations:
+      required: true
+
+  - type: textarea
+    id: visual_scope
+    attributes:
+      label: 视觉规范范围说明
+      description: 描述本次需覆盖的视觉规范模块
+      placeholder: |
+        色彩体系：主色/辅色/语义色 Token
+        字体排版：字号/行高/字重规则
+        间距规则：8px 栅格系统
+        通用组件：按钮、输入框、表格、弹窗视觉标准
+    validations:
+      required: true
+
+  # 5. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **界面视觉规范 (A0702)**：存入 `ui/<platform>/ui-specs.md`
+        - [ ] **色彩与字体规范**：Token 命名与取值说明
+        - [ ] **间距与栅格规则**：页面与组件内的间距标准
+        - [ ] **通用组件视觉标准**：各状态（正常/悬停/禁用/错误）样式定义

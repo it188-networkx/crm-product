@@ -1,0 +1,92 @@
+name: "[架构] 架构决策记录 (Architecture Decision Record)"
+description: 汇总输入材料，形成正式架构决策记录（ADR），锁定关键技术选择与设计约束
+title: "[架构决策] ADR-<NNN> - <决策主题>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 架构决策记录
+
+        针对系统架构中的关键技术选择或设计约束，汇总输入材料与讨论背景，
+        形成正式架构决策记录（ADR），明确决策上下文、候选方案、权衡分析与最终结论。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: tech_selection
+    attributes:
+      label: 技术选型文档 (A0603)
+      description: 与本决策相关的技术选型依据
+      placeholder: 请提供 technology/selections/ 下对应文件的 URL
+    validations:
+      required: false
+
+  - type: textarea
+    id: discussion_notes
+    attributes:
+      label: 技术研讨纪要 (D105)
+      description: 触发本 ADR 的会议纪要或讨论记录
+      placeholder: 请粘贴纪要摘要或提供 URL
+    validations:
+      required: false
+
+  # 3. 决策内容
+  - type: textarea
+    id: decision_context
+    attributes:
+      label: 决策背景与问题陈述
+      description: 描述当前面临的架构问题与约束条件
+      placeholder: |
+        现状描述：
+        核心问题：
+        约束条件：
+    validations:
+      required: true
+
+  - type: textarea
+    id: candidate_options
+    attributes:
+      label: 候选方案
+      description: 列举所有候选方案及其优缺点
+      placeholder: |
+        方案 A：
+          优点：
+          缺点：
+        方案 B：
+          优点：
+          缺点：
+    validations:
+      required: true
+
+  - type: dropdown
+    id: decision_status
+    attributes:
+      label: 决策状态
+      options:
+        - 草稿（Draft）
+        - 提案（Proposed）
+        - 已接受（Accepted）
+        - 已否决（Rejected）
+        - 已废弃（Deprecated）
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **ADR 文档**：包含背景、问题、候选方案、决策结论与后果说明
+        - [ ] **归档路径**：存入 `architecture/adrs/adrNNN-<topic>.md`
+        - [ ] **架构文档更新**：在 architecture.md 中引用该 ADR 编号

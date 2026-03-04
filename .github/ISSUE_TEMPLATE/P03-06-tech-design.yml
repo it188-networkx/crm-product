@@ -1,0 +1,56 @@
+name: "[设计] 技术方案设计 (Feature Tech Design)"
+description: 基于 需求特性定义 与系统架构约束，编制草案级技术纲要，定义数据模型、API 设计方向与后端逻辑策略
+title: "[技术设计] <Feature名称>"
+labels: ["domain:product", "activity:design"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 技术方案设计
+
+        基于 需求特性定义 与系统架构约束，编制草案级技术纲要，定义数据模型概念、
+        API 设计方向与后端逻辑策略，为 UX/UI 设计提供数据形状理解、
+        为 Coding Agent 提供快速实现方向。
+
+  - type: input
+    id: feature_name
+    attributes:
+      label: Feature 名称
+      placeholder: 例如：工单自动分配引擎
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature_prd
+    attributes:
+      label: 需求特性定义 (A11)
+      description: S11 输出中的业务规则与数据定义
+      placeholder: 请提供 需求特性定义 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: system_architecture
+    attributes:
+      label: 系统架构文档 (E01)
+      description: 产品设计仓库中的技术约束与模块边界
+      placeholder: 请提供系统架构文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: design_context
+    attributes:
+      label: 设计背景文档 (E02)
+      description: 非功能性需求指标（性能/安全/可扩展性等）
+      placeholder: 请提供设计背景文档的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **技术方案 (A16)**：包含概述与迭代规划、数据模型草案（概念 ER）、API 设计纲要（关键端点与请求响应概念）、后端逻辑方向（CRON/Event/一致性策略选择）

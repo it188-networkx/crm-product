@@ -1,0 +1,89 @@
+name: "[规划] 里程碑设计 (Milestone Design)"
+description: 围绕路线图中的具体版本，设计里程碑计划，定义版本目标、交付范围、关键时间点与准入准出标准
+title: "[里程设计] <版本号> - <交付目标>"
+labels: ["domain:product", "activity:planning"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 里程碑设计
+
+        围绕路线图中定义的具体版本，设计里程碑计划，定义版本目标、
+        交付范围、关键时间点与准入准出标准。
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本号
+      placeholder: 例如：v1.0.0, v2.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: delivery_target
+    attributes:
+      label: 交付目标
+      description: 本版本的核心交付目标与预期成果
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: 风险项
+      description: 已识别的技术/资源/市场风险
+    validations:
+      required: false
+
+  - type: textarea
+    id: feature_checklist
+    attributes:
+      label: Feature 完成度清单
+      description: 各 Feature 当前完成状态
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependency_matrix
+    attributes:
+      label: 依赖矩阵
+      description: Feature 间及外部依赖关系
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: roadmap
+    attributes:
+      label: 路线图总览 (A13)
+      description: S12 输出中的版本定义
+      placeholder: 请提供路线图的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: prd_docs
+    attributes:
+      label: PRD Feature/产品史诗定义 (A10/A11)
+      description: S10/S11 输出中的交付状态
+      placeholder: 请提供相关 PRD 文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: delivery_status
+    attributes:
+      label: 交付状态 (D16)
+      description: 当前交付进度与状态
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **里程碑计划 (A14)**：包含里程碑概览（API Freeze/Code Freeze/QA Sign-off/UAT/Go Live）、交付范围、上线标准、资源需求、风险与缓解、回滚方案

@@ -1,0 +1,103 @@
+name: "[商业] 案例编制 (Customer Case Study)"
+description: 系统性记录客户成功案例，包含客户背景、业务挑战、解决方案与量化成果
+title: "[案例编制] <客户名称>"
+labels: ["domain:product", "activity:docs"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 案例编制
+
+        系统性记录客户成功案例，包含客户背景、业务挑战、解决方案、量化成果与客户评价，
+        用于对外宣传、销售演示与内部分享。
+
+  - type: input
+    id: customer_name
+    attributes:
+      label: 客户名称
+      placeholder: 例如：XX 集团
+    validations:
+      required: true
+
+  - type: input
+    id: industry
+    attributes:
+      label: 行业
+      placeholder: 例如：制造业、能源、金融
+    validations:
+      required: true
+
+  - type: dropdown
+    id: project_stage
+    attributes:
+      label: 项目阶段
+      options:
+        - 实施中
+        - 已上线
+        - 稳定运行中
+    validations:
+      required: true
+
+  - type: dropdown
+    id: authorization
+    attributes:
+      label: 授权状态
+      options:
+        - 已获客户授权
+        - 未获授权（仅内部使用）
+        - 授权协商中
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation_materials
+    attributes:
+      label: 客户实施材料 (D23)
+      description: 项目实施过程中的相关材料
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: business_results
+    attributes:
+      label: 业务成果数据表
+      description: 可量化的业务成果指标（ROI、效率提升等）
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: customer_interview
+    attributes:
+      label: 客户访谈纪要
+      description: 客户对项目的评价与反馈
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: user_persona
+    attributes:
+      label: 用户画像 (A03)
+      description: S03 输出（行业共性背景）
+      placeholder: 请提供 discovery/users/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: market_report
+    attributes:
+      label: 市场调研报告 (A01)
+      description: S01 输出（行业定位参考）
+      placeholder: 请提供 discovery/market/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **客户案例 (A21)**：包含案例信息、客户背景、解决方案、实施成果（量化指标/ROI）、客户评价、经验总结

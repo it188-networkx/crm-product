@@ -1,0 +1,98 @@
+name: "[探索] 竞品分析 (Competitive Analysis)"
+description: 围绕指定竞品，系统性对标核心业务流、功能完整性、交互体验、技术架构与定价策略
+title: "[竞品分析] <竞品名称> - <分析主题>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 竞品分析
+
+        围绕指定竞品，系统性对标核心业务流、功能完整性、交互体验、技术架构与定价策略，
+        产出差异化策略与行动项。
+
+  - type: input
+    id: competitor_name
+    attributes:
+      label: 竞品名称
+      placeholder: 例如：ServiceNow, Datadog
+    validations:
+      required: true
+
+  - type: textarea
+    id: benchmark_scope
+    attributes:
+      label: 对标范围
+      description: 本次竞品分析覆盖的业务领域与功能模块
+    validations:
+      required: true
+
+  - type: textarea
+    id: analysis_goal
+    attributes:
+      label: 分析目标
+      description: 本次竞品分析要回答的核心问题
+    validations:
+      required: true
+
+  - type: textarea
+    id: competitor_materials
+    attributes:
+      label: 竞品资料 (D04)
+      description: 竞品白皮书、竞品官方文档链接等外部资料
+      placeholder: |
+        请提供资料的 URL 或将文件拖拽至此处上传：
+        1. 竞品官方文档/官网链接
+        2. 行业分析报告 (PDF/Link)
+        3. 竞品白皮书/试用报告
+    validations:
+      required: true
+
+  - type: textarea
+    id: product_concept
+    attributes:
+      label: 产品概念文件 (A05)
+      description: S05 输出的产品概念书，用于定位对标基准
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: analysis_dimensions
+    attributes:
+      label: 分析维度
+      options:
+        - label: 核心功能点 (Core Features)
+        - label: 设计思路 (Design)
+        - label: 交互体验 (UX)
+        - label: 差异化竞争策略 (Differentiation)
+        - label: 商业模式 (Business Model)
+        - label: 技术架构 (Architecture)
+    validations:
+      required: true
+
+  - type: textarea
+    id: customer_feedback
+    attributes:
+      label: 客户反馈汇总 (D08)
+      description: 客户对竞品的评价与反馈
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: bid_loss_records
+    attributes:
+      label: 竞标失分记录 (D09)
+      description: 历史竞标中的失分记录
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **竞品分析报告 (A02)**：包含分析概览、执行摘要、业务流对比、功能矩阵对标、交互体验评估、技术架构分析、定价与商业模式、综合评估（SWOT/雷达图）、战略建议与行动项

@@ -1,0 +1,85 @@
+name: "[前端] 前端架构设计 (Frontend Architecture Design)"
+description: 确定前端技术栈与工程化策略，明确路由、状态管理方案并对齐设计系统约束
+title: "[前端架构] <产品名称> / <平台>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 前端架构设计
+
+        基于系统架构文档与设计系统约束，确定前端技术栈、工程化策略、
+        路由设计、状态管理方案与构建配置，产出前端架构方案文档。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: design_system
+    attributes:
+      label: 设计系统 (D18)
+      description: 适用的 UI 组件库与设计规范
+      placeholder: 例如：Ant Design 5.x，请提供文档 URL
+    validations:
+      required: false
+
+  # 3. 架构约束
+  - type: dropdown
+    id: platform
+    attributes:
+      label: 目标平台
+      options:
+        - Web Browser（PC）
+        - Mobile Browser（H5）
+        - Mobile App（React Native）
+        - Electron 桌面
+        - 小程序
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 前端框架
+      options:
+        - React + TypeScript
+        - Vue 3 + TypeScript
+        - Angular
+        - Next.js（SSR）
+        - Nuxt.js（SSR）
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: architecture_decisions
+    attributes:
+      label: 关键架构决策点
+      description: 描述路由策略、状态管理、微前端、构建工具等关键选择
+      placeholder: |
+        路由：React Router v6，文件系统路由
+        状态管理：Zustand（全局） + React Query（服务端状态）
+        构建工具：Vite 5.x
+        代码分割：按路由懒加载
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **前端架构方案 (A0701)**：存入 `ui/<platform>/architecture.md`
+        - [ ] **技术栈清单**：框架、组件库、构建工具与关键依赖版本锁定
+        - [ ] **工程结构说明**：目录规范、命名约定与模块边界
+        - [ ] **路由设计**：路由树结构与权限控制策略
+        - [ ] **状态管理策略**：全局状态与服务端状态的分层设计

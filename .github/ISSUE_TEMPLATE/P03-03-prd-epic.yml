@@ -1,0 +1,102 @@
+name: "[规划] 功能史诗规划 (Functional Epic)"
+description: 围绕 Theme 下定义的 Epic，规划 Epic 文档，定义业务能力闭环与 Feature 拆分
+title: "[史诗规划] <Theme>/<Epic名称>"
+labels: ["domain:product", "activity:requirement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 功能史诗规划
+
+        围绕 Theme 下定义的 Epic，规划 Epic 文档，定义业务能力闭环
+        （As-Is/To-Be）、用户场景与 Feature 拆分。
+
+  - type: input
+    id: epic_name
+    attributes:
+      label: Epic 名称
+      placeholder: 例如：工单创建与分配
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_target
+    attributes:
+      label: 业务目标
+      description: 该 Epic 要实现的核心业务目标
+    validations:
+      required: true
+
+  - type: textarea
+    id: kpi
+    attributes:
+      label: KPI
+      description: 衡量 Epic 成功的关键指标
+      placeholder: |
+        例如：
+        - 工单创建耗时降低 50%
+        - 自动分配准确率 ≥ 90%
+    validations:
+      required: true
+
+  - type: textarea
+    id: flowchart
+    attributes:
+      label: 流程图
+      description: 业务流程图或系统交互图
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: feature_list
+    attributes:
+      label: 功能清单
+      description: 已识别的功能列表
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: competitive_data
+    attributes:
+      label: 竞品对标数据
+      description: 与该 Epic 相关的竞品功能对比
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: theme_doc
+    attributes:
+      label: 产品主题定义 (A09)
+      description: S09 输出的产品主题定义
+      placeholder: 请提供 Theme 文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_report
+    attributes:
+      label: 需求报告 (A04)
+      description: S04 输出中与该 Epic 相关的分析
+      placeholder: 请提供需求报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: change_records
+    attributes:
+      label: 需求变更记录 (A27)
+      description: S26 输出中影响本 Epic 的变更结论
+      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品史诗定义 (A10)**：包含概述（As-Is/To-Be/KPI）、用户场景、功能列表、Feature 拆分索引与优先级、依赖与风险矩阵、技术约束

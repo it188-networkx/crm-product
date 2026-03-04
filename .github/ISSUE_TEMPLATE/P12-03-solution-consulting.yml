@@ -1,0 +1,56 @@
+name: "[商业] 方案咨询 (Solution Consulting)"
+description: 基于场景约束输出可执行的方案建议与可行性判断
+title: "[方案咨询] <客户名称> - <咨询主题>"
+labels: ["domain:product", "activity:docs"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 方案咨询
+
+        基于销售发起的场景说明与方案咨询请求，结合产品能力边界，
+        输出可执行的方案建议与可行性判断。
+
+  - type: textarea
+    id: consulting_request
+    attributes:
+      label: 方案咨询要求 (D33)
+      description: 销售发起的场景说明与方案咨询请求，包含客户背景与具体需求
+      placeholder: |
+        - 客户名称：
+        - 行业：
+        - 客户场景描述：
+        - 核心诉求：
+        - 预算/时间约束：
+        - 附件（客户需求文档/招标书）：请将文件拖拽至此处上传
+    validations:
+      required: true
+
+  - type: textarea
+    id: pdd
+    attributes:
+      label: 产品定义文档 (A07)
+      description: S07 输出中的产品能力边界，用于判断方案可行性
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 紧急程度
+      description: 方案交付的时间要求
+      options:
+        - 紧急（3 天内）
+        - 常规（1 周内）
+        - 低优（2 周内）
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **售前方案 (A30)**：包含客户场景分析、产品能力匹配、方案建议、可行性判断、实施建议与约束

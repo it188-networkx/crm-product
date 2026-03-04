@@ -1,0 +1,89 @@
+name: "[规划] 功能主题规划 (Functional Theme)"
+description: 围绕 产品需求大纲 中定义的 Theme，规划功能主题文档，定义端到端用户旅程与 Epic 拆分索引
+title: "[主题规划] <Theme名称> - <价值主张>"
+labels: ["domain:product", "activity:requirement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 功能主题规划
+
+        围绕 产品需求大纲 中定义的 Theme，规划功能主题文档，
+        定义端到端用户旅程与 Epic 拆分索引。
+
+  - type: input
+    id: theme_name
+    attributes:
+      label: Theme 名称
+      placeholder: 例如：工单管理、客户门户
+    validations:
+      required: true
+
+  - type: textarea
+    id: value_proposition
+    attributes:
+      label: 价值主张
+      description: 该 Theme 为目标用户带来的核心价值
+    validations:
+      required: true
+
+  - type: textarea
+    id: target_user_group
+    attributes:
+      label: 目标用户群
+      description: 该 Theme 服务的主要用户角色
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_journey
+    attributes:
+      label: 用户旅程图
+      description: 端到端用户旅程描述或图示
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: business_flow
+    attributes:
+      label: 业务流分析
+      description: 核心业务流程分析文档
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: prd_master
+    attributes:
+      label: 产品需求大纲 (A08)
+      description: S08 输出中的 Theme 定义
+      placeholder: 请提供 产品需求大纲 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_report
+    attributes:
+      label: 需求报告 (A04)
+      description: S04 输出中与该 Theme 相关的分析
+      placeholder: 请提供需求报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: change_records
+    attributes:
+      label: 需求变更记录 (A27)
+      description: S26 输出中影响本 Theme 的变更结论
+      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品主题定义 (A09)**：包含业务定义与价值主张、目标用户与关键角色、核心用户旅程（As-Is/To-Be）、Epic 拆分索引与优先级、跨 Epic 依赖关系、成功指标（Theme 级 KPI）

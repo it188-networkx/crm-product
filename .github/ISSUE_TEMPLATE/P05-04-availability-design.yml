@@ -1,0 +1,81 @@
+name: "[架构] 系统可用性设计 (Availability Design)"
+description: 制定 SLA/RTO/RPO 目标，设计熔断降级与 Saga 补偿机制，保障系统高可用
+title: "[可用性设计] <产品名称> - <版本/阶段>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 系统可用性设计
+
+        基于系统架构与特性设计，制定 SLA/RTO/RPO 目标，
+        设计熔断降级、Saga 事务补偿与多活容灾机制，产出高可用容错方案。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: feature_design
+    attributes:
+      label: 功能特性设计文档 (A0306)
+      description: 涉及高可用设计的关键特性
+      placeholder: 请提供相关特性 design.md 的 URL
+    validations:
+      required: false
+
+  # 3. 可用性目标
+  - type: textarea
+    id: sla_targets
+    attributes:
+      label: SLA / RTO / RPO 目标
+      description: 定义服务级别协议与恢复目标
+      placeholder: |
+        SLA：99.9%（月允许宕机 43.8 分钟）
+        RTO（恢复时间目标）：< 30 分钟
+        RPO（恢复点目标）：< 5 分钟
+    validations:
+      required: true
+
+  - type: textarea
+    id: failure_scenarios
+    attributes:
+      label: 故障场景清单
+      description: 列举需要重点应对的故障模式
+      placeholder: |
+        - 单节点宕机
+        - 数据库主节点故障
+        - 跨可用区网络分区
+        - 依赖服务不可用
+    validations:
+      required: true
+
+  - type: dropdown
+    id: redundancy_model
+    attributes:
+      label: 冗余部署模式
+      options:
+        - 单可用区（Single AZ）
+        - 多可用区（Multi-AZ）
+        - 多区域（Multi-Region）
+        - 主动-主动（Active-Active）
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **高可用容错方案**：存入 `architecture/high-availability.md`
+        - [ ] **熔断降级策略**：各服务的 Circuit Breaker 配置与降级预案
+        - [ ] **Saga 补偿设计**：跨服务分布式事务的补偿机制
+        - [ ] **容灾演练计划**：定期演练场景与验证指标

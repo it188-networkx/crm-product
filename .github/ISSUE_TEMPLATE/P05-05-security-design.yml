@@ -1,0 +1,82 @@
+name: "[架构] 系统安全设计 (Security Design)"
+description: 基于 STRIDE 识别威胁面，输出认证鉴权与加密防护方案，保障系统安全
+title: "[安全设计] <产品名称> - <版本/阶段>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 系统安全设计
+
+        基于 STRIDE 威胁建模方法，识别系统攻击面，输出认证鉴权、数据加密与安全合规方案，
+        产出安全防护方案文档。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: feature_design
+    attributes:
+      label: 功能特性设计文档 (A0306)
+      description: 涉及敏感数据或权限控制的关键特性
+      placeholder: 请提供相关特性 design.md 的 URL
+    validations:
+      required: false
+
+  # 3. 安全范围
+  - type: dropdown
+    id: compliance_requirement
+    attributes:
+      label: 合规要求
+      options:
+        - 无特定合规要求
+        - 等保二级
+        - 等保三级
+        - GDPR
+        - ISO 27001
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: threat_scope
+    attributes:
+      label: 威胁建模范围
+      description: 描述 STRIDE 分析覆盖的系统边界与信任域
+      placeholder: |
+        信任域：内网用户、外网访客、机器账号
+        攻击面：API 网关、Admin 后台、数据导出接口
+    validations:
+      required: true
+
+  - type: textarea
+    id: sensitive_data
+    attributes:
+      label: 敏感数据清单
+      description: 列举需要加密或脱敏处理的数据类型
+      placeholder: |
+        - 用户密码（bcrypt 存储）
+        - 手机号/邮箱（AES 加密）
+        - API Key（单向 Hash）
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **安全防护方案**：存入 `architecture/security.md`
+        - [ ] **STRIDE 威胁矩阵**：各威胁类型识别与缓解措施
+        - [ ] **认证鉴权方案**：身份验证、授权模型（RBAC/ABAC）
+        - [ ] **加密方案**：传输加密（TLS）与存储加密策略
+        - [ ] **安全测试要求**：渗透测试要点与安全扫描集成方案

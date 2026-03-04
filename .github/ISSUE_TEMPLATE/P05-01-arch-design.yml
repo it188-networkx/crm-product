@@ -1,0 +1,90 @@
+name: "[架构] 系统架构设计 (System Architecture Design)"
+description: 产出 C4 架构视图，确定模块边界与部署拓扑，建立系统架构基线
+title: "[架构设计] <产品名称> - <版本/阶段>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 系统架构设计
+
+        结合产品定义与需求规格，产出覆盖 Context、Container、Component 三层的 C4 架构视图，
+        确定模块边界、接口协议与部署拓扑，建立研发与运维的架构基线。
+
+  # 2. 上游输入
+  - type: input
+    id: product_definition
+    attributes:
+      label: 产品定义文档 (A0203)
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: requirements_outline
+    attributes:
+      label: 产品需求大纲 (A0301)
+      placeholder: 请提供 requirements/requirements.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: tech_selection
+    attributes:
+      label: 技术选型文档 (A0603)
+      description: 已完成技术选型时提供，新产品可留空
+      placeholder: 请提供 technology/selections/ 下对应文件的 URL
+    validations:
+      required: false
+
+  # 3. 关键约束
+  - type: textarea
+    id: nfr_constraints
+    attributes:
+      label: 非功能约束
+      description: 性能、可用性、安全等关键非功能指标要求
+      placeholder: |
+        例如：
+        - 可用性：99.9% SLA
+        - 响应时间：P99 < 500ms
+        - 并发用户：峰值 5000
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deployment_target
+    attributes:
+      label: 部署目标环境
+      options:
+        - 公有云（托管 K8s）
+        - 私有化部署（On-Premise）
+        - 混合云
+        - SaaS 多租户
+    validations:
+      required: true
+
+  - type: textarea
+    id: architecture_scope
+    attributes:
+      label: 架构范围说明
+      description: 本次架构设计覆盖的模块范围与边界约定
+      placeholder: |
+        本次覆盖：
+        - 模块 A、B、C
+        本次不覆盖：
+        - 第三方集成（待后续迭代）
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **C4 架构视图**：Context / Container / Component 三层视图
+        - [ ] **模块清单**：各模块职责边界与对外接口协议
+        - [ ] **部署拓扑图**：基础设施、中间件与网络拓扑
+        - [ ] **关键技术决策**：主要架构选择依据（可引用 ADR）

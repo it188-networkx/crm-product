@@ -1,0 +1,85 @@
+name: "[架构] 可观测性设计 (Observability Design)"
+description: 规划三支柱可观测性采集方案，输出告警规则与仪表盘设计
+title: "[可观测性设计] <产品名称> - <版本/阶段>"
+labels: ["domain:design", "activity:architecture"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 可观测性设计
+
+        基于系统架构，规划 Metrics / Logs / Traces 三支柱可观测性数据采集方案，
+        定义告警规则、SLO 看板与仪表盘布局，产出可观测性方案文档。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: feature_design
+    attributes:
+      label: 功能特性设计文档 (A0306)
+      description: 涉及关键业务指标采集的特性设计
+      placeholder: 请提供相关特性 design.md 的 URL
+    validations:
+      required: false
+
+  # 3. 可观测性范围
+  - type: dropdown
+    id: observability_stack
+    attributes:
+      label: 可观测性技术栈
+      options:
+        - Prometheus + Grafana + Loki + Tempo
+        - OpenTelemetry + Jaeger + ELK
+        - Datadog
+        - Alibaba Cloud ARMS
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: key_metrics
+    attributes:
+      label: 关键业务与系统指标
+      description: 列举需要采集的核心 Metrics
+      placeholder: |
+        业务指标：
+        - 工单创建成功率
+        - 平均响应时间
+        系统指标：
+        - CPU 使用率
+        - 数据库连接池利用率
+    validations:
+      required: true
+
+  - type: textarea
+    id: alert_rules
+    attributes:
+      label: 告警规则草稿
+      description: 描述初步的告警触发条件与通知渠道
+      placeholder: |
+        - P0：服务不可用（错误率 > 5%，持续 1 分钟）→ 飞书 + 电话
+        - P1：响应延迟劣化（P99 > 2s，持续 5 分钟）→ 飞书群
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **可观测性方案**：存入 `architecture/observability.md`
+        - [ ] **指标采集方案**：Metrics SDK 接入规范与埋点清单
+        - [ ] **日志规范**：日志格式、级别与采集链路
+        - [ ] **链路追踪方案**：Trace 传播规范与采样策略
+        - [ ] **告警规则清单**：各级告警触发条件与响应预案
+        - [ ] **仪表盘设计**：核心 SLO 看板布局规划

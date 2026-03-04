@@ -1,0 +1,116 @@
+name: "[探索] 需求分析 (Requirement Analysis)"
+description: 围绕产品概念中的核心假设，从客户反馈与调研素材中提炼结构化需求报告，区分用户"想要"与"需要"，明确 MVP 边界与商业价值量化
+title: "[需求分析] <需求主题>"
+labels: ["domain:product", "activity:requirement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 需求分析
+
+        围绕产品概念中的核心假设，从客户反馈与调研素材中提炼结构化需求报告，
+        区分用户"想要"与"需要"，明确 MVP 边界与商业价值量化。
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 需求背景
+      description: 需求来源背景或关联的产品概念
+    validations:
+      required: true
+
+  - type: textarea
+    id: priority_judgment
+    attributes:
+      label: 优先级判断
+      description: 初步的优先级判断与依据
+    validations:
+      required: true
+
+  - type: textarea
+    id: mvp_scope
+    attributes:
+      label: MVP 范围
+      description: MVP 范围界定与边界说明
+    validations:
+      required: true
+
+  - type: textarea
+    id: interview_records_d03
+    attributes:
+      label: 访谈记录 (D03)
+      description: 客户访谈原始记录
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: service_tickets_d06
+    attributes:
+      label: 客服工单 (D06)
+      description: 客服工单数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: customer_feedback_d08
+    attributes:
+      label: 客户反馈汇总 (D08)
+      description: 客户反馈汇总数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: field_observation_d10
+    attributes:
+      label: 现场观察笔记 (D10)
+      description: 现场观察笔记
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: product_concept_a05
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出中的核心假设与目标用户
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_review_a25
+    attributes:
+      label: 需求评审记录 (A25)
+      description: S24 输出中已接受的需求结论
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: interview_record_a26
+    attributes:
+      label: 客户访谈纪要 (A26)
+      description: S25 输出中的需求证据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: poc_requirements_a38
+    attributes:
+      label: PoC 需求 (A38)
+      description: S36 输出中的 PoC 功能需求
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **需求报告 (A04)**：包含需求背景与价值、调研证据综合、需求拆解（功能/非功能/排除项）、方案探索、优先级与范围决策（MoSCoW/影响力矩阵）

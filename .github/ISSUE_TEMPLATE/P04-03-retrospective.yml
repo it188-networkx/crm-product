@@ -1,0 +1,69 @@
+name: "[规划] 迭代复盘 (Retrospective)"
+description: 基于数据与反馈进行系统性复盘，总结交付成果、分析偏差原因、沉淀改进项
+title: "[迭代复盘] <版本号>"
+labels: ["domain:product", "activity:review"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 迭代复盘
+
+        在版本/迭代发布后，基于数据与反馈进行系统性复盘，总结交付成果、
+        分析偏差原因、沉淀改进项，形成闭环反馈驱动后续规划优化。
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本号
+      placeholder: 例如：v1.0.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: milestone_plan
+    attributes:
+      label: 里程碑计划 (A14)
+      description: S13 输出中的计划与实际对比
+      placeholder: 请提供里程碑计划的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: release_notes
+    attributes:
+      label: 发布说明 (A19)
+      description: S18 输出的版本发布说明
+      placeholder: 请提供发布说明的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix_verification
+    attributes:
+      label: 缺陷验证报告 (A37)
+      description: S35 输出的修复验证结论
+      placeholder: 请提供 commerce/defects/verify-<id>.md 的 URL
+    validations:
+      required: false
+
+  - type: textarea
+    id: team_feedback
+    attributes:
+      label: 团队反馈 (D17)
+      description: 团队成员对本次迭代的反馈与建议
+      placeholder: |
+        请从以下方面提供反馈：
+        - 做得好的（Keep）
+        - 需要改进的（Improve）
+        - 需要停止的（Stop）
+        - 需要尝试的（Try）
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **迭代复盘报告 (A15)**：包含迭代概览、交付成果分析（完成率/质量指标）、过程分析（效率/协作/技术债）、用户反馈与数据、根因分析（5-Why）、改进项清单（含负责人/截止日期）

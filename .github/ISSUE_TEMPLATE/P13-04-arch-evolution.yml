@@ -1,0 +1,92 @@
+name: "[演进] 架构演进规划 (Architecture Evolution Planning)"
+description: 基于当前架构基线与容量增长预估，规划分阶段演进路径与技术债务治理策略
+title: "[架构演进] <产品名称> - <规划周期>"
+labels: ["domain:design", "activity:evolution"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 架构演进规划
+
+        基于当前架构基线、容量增长预估与技术债务现状，规划分阶段架构演进路径，
+        制定技术债务治理优先级策略，产出架构演进方案文档。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: adrs
+    attributes:
+      label: 架构决策记录 (A0502)
+      description: 当前已生效的 ADR 汇总
+      placeholder: 请提供 architecture/adrs/ 目录 URL
+    validations:
+      required: false
+
+  - type: input
+    id: capacity_plan
+    attributes:
+      label: 容量规划方案 (A0503)
+      placeholder: 请提供 architecture/capacity.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: tech_selection
+    attributes:
+      label: 技术选型文档 (A0603)
+      placeholder: 请提供 technology/selections/ 下相关文件的 URL
+    validations:
+      required: false
+
+  # 3. 演进范围
+  - type: input
+    id: planning_period
+    attributes:
+      label: 规划周期
+      placeholder: 例如：2026 年度 / 2025 H2
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_pain_points
+    attributes:
+      label: 当前架构痛点与技术债务
+      description: 列举已知的架构瓶颈、技术债务与改进诉求
+      placeholder: |
+        - 单体应用扩展边界已到达，需拆分高频服务
+        - 数据库读写混用，读 QPS 已达瓶颈
+        - 前端代码缺乏模块边界，跨业务耦合严重
+    validations:
+      required: true
+
+  - type: textarea
+    id: evolution_goals
+    attributes:
+      label: 演进目标
+      description: 描述本轮演进期望达成的架构状态
+      placeholder: |
+        阶段一（Q1）：拆分工单核心服务为独立微服务
+        阶段二（Q2）：引入 CQRS + 读库分离
+        阶段三（Q3-Q4）：完成前端微前端化改造
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **架构演进方案**：存入 `evolution/evolution.md`
+        - [ ] **分阶段演进路径**：各阶段目标、范围与完成标准
+        - [ ] **技术债务优先级清单**：按影响度与治理成本排序
+        - [ ] **迁移策略**：各阶段的渐进式迁移方案与回滚预案

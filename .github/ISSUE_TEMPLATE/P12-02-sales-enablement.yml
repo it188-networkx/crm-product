@@ -1,0 +1,64 @@
+name: "[商业] 销售赋能 (Sales Enablement)"
+description: 编制销售团队所需的全套支持材料，降低销售人员上手门槛
+title: "[销售赋能] <版本号/主题>"
+labels: ["domain:product", "activity:docs"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 销售赋能
+
+        编制销售团队所需的全套支持材料，包含产品介绍 PPT 大纲、演示脚本、
+        销售话术、竞品对比一页纸与 ROI 计算器，降低销售人员上手门槛。
+
+  - type: input
+    id: version_or_topic
+    attributes:
+      label: 版本号/主题
+      placeholder: 例如：v2.0 新功能赋能、行业解决方案赋能
+    validations:
+      required: true
+
+  - type: textarea
+    id: pdd
+    attributes:
+      label: 产品定义文档 (A07)
+      description: S07 输出中的产品定位与价值主张
+      placeholder: 请提供 产品定义文档 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: competitive_analysis
+    attributes:
+      label: 竞品分析报告 (A02)
+      description: S02 输出中的差异化策略
+      placeholder: 请提供竞品分析报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: customer_cases
+    attributes:
+      label: 客户案例 (A21)
+      description: S20 输出的客户成功案例
+      placeholder: 请提供客户案例的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: pricing
+    attributes:
+      label: 定价方案 (D24)
+      description: 产品定价相关材料
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **销售支持材料 (A22)**：包含产品介绍 PPT 大纲、产品演示脚本、销售话术库、价值主张卡片、竞品对比一页纸、ROI 计算器、异议处理手册

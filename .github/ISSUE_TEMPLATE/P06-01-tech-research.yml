@@ -1,0 +1,86 @@
+name: "[技术] 技术原型调研 (Technology Research)"
+description: 调研候选技术原型，沉淀调研证据与 PoC 验证记录
+title: "[技术调研] <技术主题>"
+labels: ["domain:design", "activity:research"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 技术原型调研
+
+        针对特定技术主题，收集官方文档、社区实践与 PoC 验证结果，
+        沉淀结构化调研证据，为技术方案比选提供事实基础。
+
+  # 2. 上游输入
+  - type: input
+    id: product_definition
+    attributes:
+      label: 产品定义文档 (A0203)
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0502)
+      description: 触发本次调研的架构设计背景
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: false
+
+  # 3. 调研主题
+  - type: input
+    id: research_topic
+    attributes:
+      label: 调研主题
+      placeholder: 例如：时序数据库选型调研（TDengine vs InfluxDB vs TimescaleDB）
+    validations:
+      required: true
+
+  - type: textarea
+    id: research_questions
+    attributes:
+      label: 核心调研问题
+      description: 本次调研需要回答的关键技术问题
+      placeholder: |
+        1. 单节点写入 TPS 上限是多少？
+        2. 是否支持 Kubernetes 原生部署？
+        3. 社区活跃度与长期维护状态如何？
+    validations:
+      required: true
+
+  - type: textarea
+    id: candidate_technologies
+    attributes:
+      label: 候选技术清单
+      description: 列举本次调研覆盖的技术选项
+      placeholder: |
+        - 技术 A（版本 x.y）
+        - 技术 B（版本 x.y）
+        - 技术 C（版本 x.y）
+    validations:
+      required: true
+
+  - type: textarea
+    id: poc_plan
+    attributes:
+      label: PoC 验证计划
+      description: 描述验证场景与成功标准
+      placeholder: |
+        场景：模拟 10,000 并发写入，持续 30 分钟
+        成功标准：写入成功率 > 99.9%，P99 延迟 < 100ms
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **调研报告**：存入 `technology/research/<topic>/` 目录
+        - [ ] **PoC 验证结果**：含测试数据、配置脚本与结论摘要
+        - [ ] **关键维度评分表**：性能、成熟度、运维复杂度、社区活跃度等

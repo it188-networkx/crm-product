@@ -1,0 +1,98 @@
+name: "[探索] 用户研究 (User Research)"
+description: 围绕指定用户角色或体验主题，还原目标用户的真实工作流与痛点，构建用户画像与体验地图
+title: "[用户研究] <用户角色> - <研究主题>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 用户研究
+
+        围绕指定用户角色或体验主题，还原目标用户的真实工作流与痛点，
+        构建用户画像与体验地图，为产品设计提供同理心基础。
+
+  - type: input
+    id: target_role
+    attributes:
+      label: 目标用户角色
+      placeholder: 例如：现场工程师、调度员、客户管理员
+    validations:
+      required: true
+
+  - type: textarea
+    id: research_question
+    attributes:
+      label: 研究问题
+      description: 本次用户研究需要回答的核心问题
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario_scope
+    attributes:
+      label: 场景范围
+      description: 研究涵盖的业务场景与操作范围
+    validations:
+      required: true
+
+  - type: textarea
+    id: interview_records
+    attributes:
+      label: 访谈记录 (D03)
+      description: 用户访谈录音、记录或纪要
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: survey_results
+    attributes:
+      label: 问卷结果 (D05)
+      description: 用户问卷调查的结果数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: support_tickets
+    attributes:
+      label: 客服工单 (D06)
+      description: 与目标用户相关的客服工单数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: nps_data
+    attributes:
+      label: NPS 数据 (D07)
+      description: 净推荐值调查数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: product_concept
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出中的目标用户定义
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: customer_interview_records
+    attributes:
+      label: 客户访谈纪要 (A26)
+      description: S25 输出中的定性数据
+      placeholder: 请提供 discovery/interviews/ 目录下相关文档的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **用户画像 (A03)**：包含核心洞察、研究背景与设计、用户画像（Persona）、用户旅程地图、痛点与机会矩阵、设计建议

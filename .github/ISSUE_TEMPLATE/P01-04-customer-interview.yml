@@ -1,0 +1,60 @@
+name: "[探索] 客户访谈 (Customer Interview)"
+description: 按照访谈提纲执行客户深度访谈，沉淀调研纪要与需求证据
+title: "[客户访谈] <访谈对象> - <访谈主题>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 客户访谈
+
+        按照访谈提纲执行客户深度访谈，沉淀调研纪要与需求证据，
+        为用户研究与需求分析提供一手定性数据。
+
+  - type: input
+    id: interviewee
+    attributes:
+      label: 访谈对象
+      description: 被访谈客户的公司名称与联系人角色
+      placeholder: 例如：某某公司 - IT运维经理 张三
+    validations:
+      required: true
+
+  - type: input
+    id: interview_topic
+    attributes:
+      label: 访谈主题
+      description: 本次访谈聚焦的核心议题
+      placeholder: 例如：工单派发效率与痛点
+    validations:
+      required: true
+
+  - type: textarea
+    id: interview_outline
+    attributes:
+      label: 访谈提纲
+      description: 预设的访谈问题清单，按优先级排列
+      placeholder: |
+        1. 开场（5min）：请介绍您的日常工作流程？
+        2. 痛点探索（15min）：目前最耗时的操作是什么？
+        3. 需求验证（10min）：如果有 XX 功能，您会如何使用？
+        4. 总结（5min）：还有什么我们没问到的？
+    validations:
+      required: true
+
+  - type: textarea
+    id: product_concept
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出中的目标用户与核心假设，为访谈提供方向参考
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **客户访谈纪要 (A26)**：包含访谈背景、参与者、关键发现、需求证据、结论摘要

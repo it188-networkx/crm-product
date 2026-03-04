@@ -1,0 +1,81 @@
+name: "[规划] 路线图规划 (Roadmap Planning)"
+description: 将产品需求大纲中的 Theme/Epic 编排到时间轴上，制定战略路线图与版本切分策略
+title: "[路线规划] <产品名称> - <规划周期>"
+labels: ["domain:product", "activity:planning"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 路线图规划
+
+        将产品需求大纲中的 Theme/Epic 编排到时间轴上，
+        制定战略路线图与版本切分策略。
+
+  - type: textarea
+    id: version_goal
+    attributes:
+      label: 版本目标
+      description: 本次路线图规划的核心版本目标
+    validations:
+      required: true
+
+  - type: textarea
+    id: schedule_constraints
+    attributes:
+      label: 排期约束
+      description: 市场窗口期、客户承诺等排期约束条件
+    validations:
+      required: true
+
+  - type: textarea
+    id: theme_list_a08
+    attributes:
+      label: 产品需求大纲 Theme 清单 (A08)
+      description: S08 输出的 Theme 清单与优先级矩阵
+      placeholder: 请提供 planning/requirements.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: pdd_milestones_a07
+    attributes:
+      label: 产品定义文档 里程碑定义 (A07)
+      description: S07 输出中的里程碑与关键节点
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: resource_capacity_d14
+    attributes:
+      label: 资源容量表 (D14)
+      description: 团队资源容量信息
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: customer_commitments_d15
+    attributes:
+      label: 客户承诺 (D15)
+      description: 已作出的客户交付承诺
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: market_window_analysis
+    attributes:
+      label: 市场窗口分析
+      description: 市场窗口期与竞争态势分析
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **路线图总览 (A13)**：包含战略摘要、宏观路线图（甘特图/季度视图）、详细规划表、版本切分策略、外部依赖与控制点

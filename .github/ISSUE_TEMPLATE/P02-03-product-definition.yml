@@ -1,0 +1,64 @@
+name: "[构思] 产品定义编制 (Product Definition)"
+description: 将构思与商业论证转化为产品的单一事实来源，定义产品愿景、功能范围、用户场景与里程碑
+title: "[产品定义] <产品名称>"
+labels: ["domain:product", "activity:design"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品定义编制
+
+        将构思与商业论证转化为产品的单一事实来源，
+        定义产品愿景、功能范围、用户场景与里程碑。
+
+  - type: input
+    id: product_name
+    attributes:
+      label: 产品名称
+      placeholder: 例如：ITOM, FSM
+    validations:
+      required: true
+
+  - type: textarea
+    id: product_concept_a05
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出的产品概念书
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: brd_a06
+    attributes:
+      label: 商业需求文档 (A06)
+      description: S06 输出的商业可行性论证
+      placeholder: 请提供 concept/business-requirement.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_persona_a03
+    attributes:
+      label: 用户画像 (A03)
+      description: S03 用户研究输出
+      placeholder: 请提供 discovery/users/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_report_a04
+    attributes:
+      label: 需求报告 (A04)
+      description: S04 需求分析输出（功能场景来源）
+      placeholder: 请提供 discovery/requirements/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品定义文档 (A07)**：包含愿景与目标、目标用户与画像、信息架构、关键功能列表、核心用户场景、成功指标、非功能性需求、约束与依赖

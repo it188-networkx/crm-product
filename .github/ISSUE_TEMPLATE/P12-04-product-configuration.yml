@@ -1,0 +1,61 @@
+name: "[商业] 产品配置 (Product Configuration)"
+description: 基于客户需求执行产品配置并输出配置方案
+title: "[产品配置] <客户名称> - <配置主题>"
+labels: ["domain:product", "activity:deploy"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品配置
+
+        基于交付团队发起的配置参数与故障排查请求，执行产品配置并输出配置方案。
+
+  - type: textarea
+    id: config_request
+    attributes:
+      label: 产品配置要求 (D35)
+      description: 交付团队发起的配置参数需求或故障排查请求
+      placeholder: |
+        - 客户名称：
+        - 产品版本：
+        - 配置类型：（初始化配置/参数调优/故障排查）
+        - 具体需求描述：
+        - 当前环境信息：
+        - 附件（配置文件/日志/截图）：请将文件拖拽至此处上传
+    validations:
+      required: true
+
+  - type: dropdown
+    id: config_type
+    attributes:
+      label: 配置类型
+      description: 本次配置请求的类型
+      options:
+        - 初始化配置
+        - 参数调优
+        - 故障排查
+        - 版本升级配置
+        - 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 紧急程度
+      description: 配置请求的时间要求
+      options:
+        - 紧急（生产故障）
+        - 高（影响交付）
+        - 中（计划内配置）
+        - 低（优化性配置）
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品配置方案 (A32)**：包含配置需求分析、可执行的配置步骤/参数建议、问题解决方案、验证确认

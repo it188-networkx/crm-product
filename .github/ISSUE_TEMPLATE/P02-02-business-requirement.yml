@@ -1,0 +1,64 @@
+name: "[构思] 商业论证编制 (Business Requirement)"
+description: 将产品构思深化为商业可行性论证，涵盖市场规模、商业模式、财务预测与风险评估，验证"值不值得做"
+title: "[商业论证] <产品名称>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 商业论证编制
+
+        将产品构思深化为商业可行性论证，涵盖市场规模、商业模式、财务预测与风险评估，
+        验证"值不值得做"，作为立项 Go/No-Go 的决策依据。
+
+  - type: input
+    id: product_name
+    attributes:
+      label: 产品名称
+      placeholder: 例如：ITOM, FSM
+    validations:
+      required: true
+
+  - type: textarea
+    id: product_concept
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出的产品概念书
+      placeholder: 请提供产品概念书的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: market_research
+    attributes:
+      label: 市场调研报告 (A01)
+      description: S01 输出的市场规模与趋势分析
+      placeholder: 请提供市场调研报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: competitive_analysis
+    attributes:
+      label: 竞品分析报告 (A02)
+      description: S02 输出的竞争格局分析
+      placeholder: 请提供竞品分析报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: financial_data
+    attributes:
+      label: 财务基准数据 (D13)
+      description: 与商业论证相关的财务数据
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **商业需求文档 (A06)**：包含商业背景与机会（TAM/SAM/SOM）、商业目标与 KPI、商业模式与收入结构、财务预测与 ROI、风险评估矩阵、资源需求与预算

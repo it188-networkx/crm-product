@@ -1,0 +1,63 @@
+name: "[商业] 产品培训 (Product Training)"
+description: 基于既有材料执行培训并沉淀产品培训记录与反馈
+title: "[产品培训] <培训主题>"
+labels: ["domain:product", "activity:docs"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品培训
+
+        基于既有产品材料（发布说明、用户手册、销售材料）执行产品培训，
+        沉淀培训记录与反馈。
+
+  - type: textarea
+    id: training_request
+    attributes:
+      label: 培训实施请求 (D38)
+      description: 市场/销售/交付发起的培训执行请求，包含培训背景与目标
+      placeholder: |
+        - 请求方：（市场/销售/交付）
+        - 请求人：
+        - 培训主题：
+        - 培训对象：（内部团队/客户/合作伙伴）
+        - 参与人数：
+        - 期望时间：
+        - 培训形式：（线上/线下/混合）
+    validations:
+      required: true
+
+  - type: textarea
+    id: release_notes
+    attributes:
+      label: 发布说明 (A19)
+      description: S18 输出的版本发布说明，提供培训内容基础
+      placeholder: 请提供 commerce/release-notes/<version>.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_manual
+    attributes:
+      label: 用户手册 (A20)
+      description: S19 输出的用户手册，提供操作指导素材
+      placeholder: 请提供 commerce/user-manual/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: sales_material
+    attributes:
+      label: 销售材料 (A22)
+      description: S21 输出的销售支持材料（仅销售培训时需要）
+      placeholder: 请提供 commerce/sales/enablement-<version>.md 的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品培训记录 (A35)**：包含培训背景、参与者、培训内容、Q&A 汇总、待跟进问题清单、培训反馈

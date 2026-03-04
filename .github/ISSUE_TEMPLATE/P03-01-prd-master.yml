@@ -1,0 +1,63 @@
+name: "[规划] 功能架构规划 (Functional Architecture)"
+description: 规划产品功能架构与需求主题目录，定义北极星指标、总体架构与 Theme 目录索引，作为需求树的顶层入口
+title: "[功能架构] <产品名称> - <版本目标>"
+labels: ["domain:product", "activity:requirement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 功能架构规划
+
+        从 产品定义文档 与 Discovery 报告中提取战略要素，规划产品功能架构与需求主题目录，
+        定义北极星指标、总体架构与 Theme 目录索引，作为需求树的顶层入口。
+
+  - type: input
+    id: version_target
+    attributes:
+      label: 版本目标
+      placeholder: 例如：v1.0 MVP 核心功能闭环
+    validations:
+      required: true
+
+  - type: textarea
+    id: strategic_adjustment
+    attributes:
+      label: 战略调整背景
+      description: 如有战略方向或市场环境变化，请说明
+    validations:
+      required: false
+
+  - type: textarea
+    id: pdd_summary
+    attributes:
+      label: 产品定义文档 更新摘要 (A07)
+      description: S07 输出的产品定义文档
+      placeholder: 请提供 产品定义文档 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement_report
+    attributes:
+      label: 需求报告 (A04)
+      description: S04 需求分析输出
+      placeholder: 请提供需求报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: change_records
+    attributes:
+      label: 需求变更记录 (A27)
+      description: S26 输出中的变更结论与排期调整
+      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品需求大纲 (A08)**：包含产品综述（愿景/北极星指标/核心假设）、总体架构（Mermaid 系统上下文图）、Theme 清单与优先级矩阵、跨 Theme 依赖关系图

@@ -1,0 +1,71 @@
+name: "[探索] 需求评审 (Requirement Review)"
+description: 对外部需求进行分类、优先级评估与处理路径分流，形成接受/拒绝/延期结论与下游指令
+title: "[需求评审] <需求主题>"
+labels: ["domain:product", "activity:review"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 需求评审
+
+        对外部需求（销售/市场/客户/领导提交）进行分类、优先级评估与处理路径分流，
+        形成接受/拒绝/延期结论与下游指令。
+
+  - type: textarea
+    id: external_requirement
+    attributes:
+      label: 外部需求 (D30)
+      description: 销售/市场/客户/领导提交的原始需求，包含需求来源、需求方、具体内容
+      placeholder: |
+        - 需求来源：（销售/市场/客户/领导）
+        - 需求方：
+        - 需求描述：
+        - 期望交付时间：
+        - 附件（邮件/聊天记录/需求单截图）：请将文件拖拽至此处上传
+    validations:
+      required: true
+
+  - type: textarea
+    id: product_concept
+    attributes:
+      label: 产品概念书 (A05)
+      description: S05 输出中的产品边界与优先级框架，用于判断需求是否在产品范围内
+      placeholder: 请提供 concept/product-concept.md 的 URL
+    validations:
+      required: true
+
+  - type: dropdown
+    id: requirement_type
+    attributes:
+      label: 需求类型
+      description: 按需求性质进行初步分类
+      options:
+        - 新功能需求
+        - 功能优化
+        - 缺陷修复
+        - 非功能性需求
+        - 合规/安全需求
+        - 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 紧急程度
+      description: 需求方声称的紧急程度
+      options:
+        - 紧急（影响签单/上线）
+        - 高（本季度交付）
+        - 中（下季度规划）
+        - 低（远期考虑）
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **需求评审记录 (A25)**：包含需求摘要、分类与优先级评估、接受/拒绝/延期结论、分流指令与下游工单指派

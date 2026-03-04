@@ -1,0 +1,92 @@
+name: "[演进] 技术风险评估 (Technical Risk Assessment)"
+description: 汇总各设计层级识别的风险，按 Risk Matrix 评估，制定缓解措施与应急响应预案
+title: "[技术风险] <产品名称> - <版本/阶段>"
+labels: ["domain:design", "activity:risk"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 技术风险评估
+
+        汇总架构设计、技术选型、非功能性设计各层级识别的技术风险，
+        按风险矩阵（可能性 × 影响度）评级，制定缓解措施与应急响应预案，
+        产出风险应对策略文档。
+
+  # 2. 上游输入
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0501)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: capacity_plan
+    attributes:
+      label: 容量规划方案 (A0503)
+      placeholder: 请提供 architecture/capacity.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: ha_plan
+    attributes:
+      label: 高可用容错方案 (A0504)
+      placeholder: 请提供 architecture/high-availability.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: security_plan
+    attributes:
+      label: 安全防护方案 (A0505)
+      placeholder: 请提供 architecture/security.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: tech_selection
+    attributes:
+      label: 技术选型文档 (A0603)
+      placeholder: 请提供 technology/selections/ 下文件的 URL
+    validations:
+      required: false
+
+  # 3. 风险评估范围
+  - type: dropdown
+    id: risk_scope
+    attributes:
+      label: 评估范围
+      options:
+        - 当前版本（里程碑级别）
+        - 当前架构基线（产品级别）
+        - 年度技术演进规划
+    validations:
+      required: true
+
+  - type: textarea
+    id: known_risks
+    attributes:
+      label: 已识别风险清单（草稿）
+      description: 列举各来源输入中已发现的风险事项
+      placeholder: |
+        | 风险 | 来源 | 可能性（H/M/L） | 影响度（H/M/L） |
+        |------|------|---|---|
+        | 单点数据库宕机导致服务中断 | HA 设计 | M | H |
+        | 第三方 SDK 许可证变更 | 技术选型 | L | M |
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **风险应对策略**：存入 `evolution/risk.md`
+        - [ ] **风险矩阵**：所有风险按可能性 × 影响度分级
+        - [ ] **缓解措施**：各高/中风险的预防与缓解行动
+        - [ ] **应急响应预案**：高风险事项的触发条件与响应流程

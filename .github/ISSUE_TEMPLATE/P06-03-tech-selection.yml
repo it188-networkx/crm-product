@@ -1,0 +1,92 @@
+name: "[技术] 技术选型决策 (Technology Selection)"
+description: 对比候选方案并加权评分，确定最终选型结论，形成技术选型文档
+title: "[技术选型] <技术主题>"
+labels: ["domain:design", "activity:research"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 技术选型决策
+
+        汇总技术调研材料、PoC 验证结果与方案比较矩阵，对候选方案进行加权评分，
+        确定最终选型结论，产出技术选型文档作为架构设计的输入基准。
+
+  # 2. 上游输入
+  - type: input
+    id: product_definition
+    attributes:
+      label: 产品定义文档 (A0203)
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: architecture_doc
+    attributes:
+      label: 架构设计文档 (A0502)
+      placeholder: 请提供 architecture/architecture.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: tech_research
+    attributes:
+      label: 技术调研材料 (A0601)
+      placeholder: 请提供 technology/research/<topic>/ 目录 URL
+    validations:
+      required: true
+
+  - type: input
+    id: candidate_proposals
+    attributes:
+      label: 候选技术方案 (A0602)
+      placeholder: 请提供 technology/solutions/<proposal>.md 的 URL
+    validations:
+      required: true
+
+  # 3. 决策信息
+  - type: input
+    id: selection_topic
+    attributes:
+      label: 选型主题
+      placeholder: 例如：时序数据库技术选型
+    validations:
+      required: true
+
+  - type: textarea
+    id: selection_conclusion
+    attributes:
+      label: 选型结论（草稿）
+      description: 描述初步选型倾向与核心理由
+      placeholder: |
+        推荐选型：TDengine
+        核心理由：
+        - 写入性能满足 10,000 TPS 峰值要求
+        - 原生支持 K8s 部署
+        - Apache 2.0 开源协议无商业风险
+    validations:
+      required: true
+
+  - type: textarea
+    id: adoption_risks
+    attributes:
+      label: 引入风险与缓解措施
+      description: 说明选用该技术的已知风险与应对策略
+      placeholder: |
+        风险 1：社区中文文档质量参差不齐
+        缓解：指定专人维护内部 Wiki 翻译摘要
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **技术选型文档**：存入 `technology/selections/<topic>.md`
+        - [ ] **加权评分结果**：最终评分矩阵与结论说明
+        - [ ] **架构文档更新**：在 architecture.md 中引用选型结论
+        - [ ] **ADR 触发**：如需记录决策，创建对应的 P05-02 工单

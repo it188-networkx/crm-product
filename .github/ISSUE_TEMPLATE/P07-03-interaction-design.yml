@@ -1,0 +1,76 @@
+name: "[前端] 交互框架设计 (Interaction Framework Design)"
+description: 确定全局交互结构与页面编排模式，完成组件协同与状态流设计
+title: "[交互框架] <产品名称> / <平台>"
+labels: ["domain:design", "activity:design"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 交互框架设计
+
+        基于前端架构方案与界面视觉规范，确定全局交互结构（导航、布局、入口组织），
+        编排各页面组件协同逻辑与数据状态流，产出页面框架文档。
+
+  # 2. 上游输入
+  - type: input
+    id: frontend_arch
+    attributes:
+      label: 前端架构方案 (A0701)
+      placeholder: 请提供 ui/<platform>/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: ui_specs
+    attributes:
+      label: 界面视觉规范 (A0702)
+      placeholder: 请提供 ui/<platform>/ui-specs.md 的 URL
+    validations:
+      required: false
+
+  - type: input
+    id: feature_definition
+    attributes:
+      label: 需求特性定义 (A0304)
+      description: 关联的 Feature 需求文档，提供交互需求上下文
+      placeholder: 请提供 requirements/<theme>/<epic>/<feature>/README.md 的 URL
+    validations:
+      required: false
+
+  # 3. 交互结构
+  - type: textarea
+    id: navigation_design
+    attributes:
+      label: 导航与布局设计
+      description: 描述全局导航模式、布局结构与入口组织
+      placeholder: |
+        导航模式：左侧折叠菜单 + 顶部工具栏
+        布局：固定顶栏 + 侧边导航 + 内容区
+        主要入口：工作台、工单、知识库、报告、设置
+    validations:
+      required: true
+
+  - type: textarea
+    id: page_state_flow
+    attributes:
+      label: 页面状态流设计
+      description: 描述跨页面状态传递与数据同步策略
+      placeholder: |
+        全局状态：当前用户信息、权限集合
+        会话状态：当前选中的租户/组织
+        页面本地状态：表格分页、过滤条件
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **页面框架文档**：存入 `ui/<platform>/pages.md`
+        - [ ] **页面清单**：所有页面路径、名称与对应 Feature
+        - [ ] **布局规范**：全局布局模板与变体说明
+        - [ ] **状态流图**：关键跨页面状态传播路径

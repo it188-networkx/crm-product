@@ -1,0 +1,75 @@
+name: "[前端] 交互组件设计 (Component Abstraction Design)"
+description: 组件分层、能力抽象、接口约束与复用边界设计，并迭代回写页面框架
+title: "[组件设计] <产品名称> / <平台>"
+labels: ["domain:design", "activity:design"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 交互组件设计
+
+        基于页面框架与界面规范，对 UI 组件进行分层设计，抽象复用能力边界，
+        定义组件接口约束（Props/Events/Slots），产出组件清单文档，并迭代回写页面框架。
+
+  # 2. 上游输入
+  - type: input
+    id: frontend_arch
+    attributes:
+      label: 前端架构方案 (A0701)
+      placeholder: 请提供 ui/<platform>/architecture.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: page_framework
+    attributes:
+      label: 页面框架 (A0703)
+      placeholder: 请提供 ui/<platform>/pages.md 的 URL
+    validations:
+      required: true
+
+  - type: input
+    id: ui_specs
+    attributes:
+      label: 界面视觉规范 (A0702)
+      placeholder: 请提供 ui/<platform>/ui-specs.md 的 URL
+    validations:
+      required: false
+
+  # 3. 组件设计范围
+  - type: textarea
+    id: component_layers
+    attributes:
+      label: 组件分层说明
+      description: 描述组件层级划分策略
+      placeholder: |
+        原子组件（Atom）：Button、Input、Badge、Tag
+        分子组件（Molecule）：SearchBar、DateRangePicker、StatusBadge
+        有机体组件（Organism）：WorkOrderCard、UserAvatar、DataTable
+        模板组件（Template）：ListPageLayout、DetailPageLayout
+    validations:
+      required: true
+
+  - type: textarea
+    id: reuse_boundary
+    attributes:
+      label: 复用边界约定
+      description: 说明哪些组件跨模块复用，哪些组件限定在特定业务域
+      placeholder: |
+        跨模块复用：Atom、Molecule 层组件
+        业务域限定：包含业务规则的 Organism 组件，不跨模块引用
+    validations:
+      required: false
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **组件清单**：存入 `ui/<platform>/components.md`
+        - [ ] **组件分层图**：各层组件的归属与依赖关系
+        - [ ] **关键组件接口定义**：核心组件的 Props / Events / Slots 规范
+        - [ ] **页面框架更新**：将组件边界信息回写至 pages.md

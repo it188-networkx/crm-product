@@ -1,0 +1,70 @@
+name: "[技术] 技术方案比选 (Technology Comparison)"
+description: 基于调研材料提炼候选方案，建立评估维度并完成对比矩阵
+title: "[技术比选] <技术主题>"
+labels: ["domain:design", "activity:research"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 技术方案比选
+
+        基于技术原型调研结果，提炼可行候选方案，建立多维度评估框架，
+        输出结构化的技术方案比较矩阵，为最终选型决策提供依据。
+
+  # 2. 上游输入
+  - type: input
+    id: tech_research
+    attributes:
+      label: 技术调研材料 (A0601)
+      placeholder: 请提供 technology/research/<topic>/ 目录 URL
+    validations:
+      required: true
+
+  # 3. 比选内容
+  - type: input
+    id: comparison_topic
+    attributes:
+      label: 比选主题
+      placeholder: 例如：时序数据库技术方案比选
+    validations:
+      required: true
+
+  - type: textarea
+    id: evaluation_dimensions
+    attributes:
+      label: 评估维度
+      description: 定义本次比选的评估维度及权重
+      placeholder: |
+        | 维度 | 权重 |
+        |------|------|
+        | 读写性能 | 30% |
+        | 运维复杂度 | 25% |
+        | 社区成熟度 | 20% |
+        | 许可证合规 | 15% |
+        | 部署灵活性 | 10% |
+    validations:
+      required: true
+
+  - type: textarea
+    id: candidate_proposals
+    attributes:
+      label: 候选方案说明
+      description: 简要描述各候选方案的核心特征
+      placeholder: |
+        方案 A（TDengine）：
+        方案 B（InfluxDB）：
+        方案 C（TimescaleDB）：
+    validations:
+      required: true
+
+  # 4. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **候选技术方案文档**：存入 `technology/solutions/<proposal>.md`
+        - [ ] **评估对比矩阵**：各方案按维度加权评分结果
+        - [ ] **风险说明**：各方案引入的主要技术风险与缓解措施

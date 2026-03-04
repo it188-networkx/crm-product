@@ -1,0 +1,118 @@
+name: "[增长] PMF 验证 (PMF Analysis)"
+description: 综合定量指标与定性信号，系统性验证产品是否达成 Product-Market Fit
+title: "[PMF验证] <产品名称> - <验证周期>"
+labels: ["domain:product", "activity:analysis"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### PMF 验证
+
+        综合定量指标（留存/NPS/付费转化）与定性信号（用户粘性/口碑传播），
+        系统性验证产品是否达成 Product-Market Fit，指导战略决策。
+
+  - type: input
+    id: verification_period
+    attributes:
+      label: 验证周期
+      placeholder: 例如：2026-Q1, 2026-H1
+    validations:
+      required: true
+
+  - type: input
+    id: target_segment
+    attributes:
+      label: 目标细分市场
+      placeholder: 例如：中大型制造企业现场服务
+    validations:
+      required: true
+
+  - type: textarea
+    id: pmf_criteria
+    attributes:
+      label: PMF 判断标准
+      description: 用于判定 PMF 达成的量化与定性标准
+      placeholder: |
+        例如：
+        - Sean Ellis 测试"非常失望"比例 ≥ 40%
+        - 月留存率 ≥ 60%
+        - NPS ≥ 30
+    validations:
+      required: true
+
+  - type: textarea
+    id: nps_csat
+    attributes:
+      label: NPS/CSAT 调查结果 (D27)
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: retention_data
+    attributes:
+      label: 留存与付费数据导出 (D28)
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: sean_ellis_test
+    attributes:
+      label: Sean Ellis 测试问卷结果 (D29)
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: data_analysis_report
+    attributes:
+      label: 数据分析报告 (A23)
+      description: S22 输出的量化验证基础
+      placeholder: 请提供数据分析报告的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: pdd
+    attributes:
+      label: 产品定义文档 (A07)
+      description: S07 输出中的产品愿景与目标定位
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: user_persona
+    attributes:
+      label: 用户画像 (A03)
+      description: S03 输出（定性验证基础）
+      placeholder: 请提供 discovery/users/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: market_report
+    attributes:
+      label: 市场调研报告 (A01)
+      description: S01 输出（细分市场划分依据）
+      placeholder: 请提供 discovery/market/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: competitive_report
+    attributes:
+      label: 竞品分析报告 (A02)
+      description: S02 输出（相对市场地位判断）
+      placeholder: 请提供 discovery/competitors/ 目录下相关文档的 URL
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **PMF 验证报告 (A24)**：包含 PMF 概述（定义/判断标准）、定量验证（Sean Ellis/NPS/留存曲线/自然增长占比）、定性验证（粘性信号/口碑证据）、细分市场分析、PMF 状态判定、战略建议

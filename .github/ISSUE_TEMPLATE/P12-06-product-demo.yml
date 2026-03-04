@@ -1,0 +1,64 @@
+name: "[商业] 产品演示 (Product Demo)"
+description: 面向客户执行产品功能演示，展示核心能力与解决方案价值，沉淀演示记录与客户反馈
+title: "[产品演示] <客户名称> - <演示主题>"
+labels: ["domain:product", "activity:enablement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品演示
+
+        面向客户执行产品功能演示，展示核心能力与解决方案价值，
+        沉淀演示记录与客户反馈，为后续售前跟进提供依据。
+
+  - type: textarea
+    id: demo_request
+    attributes:
+      label: 演示实施请求 (D39)
+      description: 销售/售前发起的产品演示执行请求
+      placeholder: |
+        - 请求方：（销售/售前）
+        - 请求人：
+        - 客户名称：
+        - 演示主题：
+        - 演示时间：
+        - 演示形式：（现场/远程）
+        - 参与人员：
+        - 附件（客户背景/需求说明）：请将文件拖拽至此处上传
+    validations:
+      required: true
+
+  - type: textarea
+    id: pdd
+    attributes:
+      label: 产品定义文档 (A07)
+      description: S07 输出中的产品能力边界与价值主张
+      placeholder: 请提供 concept/product-definition.md 的 URL
+    validations:
+      required: true
+
+  - type: textarea
+    id: sales_material
+    attributes:
+      label: 销售材料 (A22)
+      description: S21 输出中的演示脚本与话术
+      placeholder: 请提供 commerce/sales/enablement-<version>.md 的 URL
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution_plan
+    attributes:
+      label: 售前方案 (A30)
+      description: S29 输出中的客户场景分析
+      placeholder: 请提供 commerce/solutions/<customer>-<topic>.md 的 URL
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品演示记录 (A39)**：包含演示背景、演示场景与功能要点、客户反馈与问题记录、后续跟进事项

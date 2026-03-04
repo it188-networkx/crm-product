@@ -1,0 +1,70 @@
+name: "[构思] 产品构思编制 (Product Concept)"
+description: 从市场机会、客户反馈或战略指示中采集产品构思信息，综合分析机会点与可行性，产出结构化的产品概念书
+title: "[产品构思] <产品名称>"
+labels: ["domain:product", "activity:design"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品构思编制
+
+        从市场机会、客户反馈或战略指示中采集产品构思信息，综合分析机会点与可行性，
+        回答"Why Now"和"Why Us"，产出结构化的产品概念书。
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景描述
+      description: 市场机会、客户反馈或战略指示等触发构思的背景
+    validations:
+      required: true
+
+  - type: textarea
+    id: target_users
+    attributes:
+      label: 目标用户
+      description: 产品面向的核心用户群体及其特征
+    validations:
+      required: true
+
+  - type: textarea
+    id: core_pain_points
+    attributes:
+      label: 核心痛点
+      description: 目标用户面临的关键问题与未被满足的需求
+    validations:
+      required: true
+
+  - type: textarea
+    id: competitive_positioning
+    attributes:
+      label: 竞争定位
+      description: 产品在市场中的差异化定位与竞争优势
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_strategy
+    attributes:
+      label: 企业经营战略 (D11)
+      description: 与该产品构思相关的企业战略文档
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: team_capability
+    attributes:
+      label: 团队能力评估 (D12)
+      description: 团队在该方向的技术与业务能力评估
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **产品概念书 (A05)**：包含背景与契机、问题陈述、解决方案构想、目标用户、核心价值、初步范围、风险与未知
