@@ -123,7 +123,7 @@ graph LR
 
 | ID | Name | Description | Source |
 | :--- | :--- | :--- | :--- |
-| D31 | 变更请求 | 外部变更请求输入 | `references/external-requests/<topic>.md` |
+| D31 | 变更请求 | 外部变更请求输入 | `references/external-requirements/<topic>.md` |
 
 ## 上游输入
 
@@ -150,46 +150,10 @@ graph LR
 | A0306 | 特性设计文档 | 特性级单一实现文档，聚合数据模型、UX交互与接口契约 | `<theme>/<epic>/<feature>/design.md` | `{product-base}/template/design/features/feature-master.md` |
 | A0307 | 功能特性原型 | 可演示功能特性原型，验证核心交互流程与操作路径 | `<theme>/<epic>/<feature>/prototype/` | `{product-base}/prototypes/common/skeleton.html` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按照S03XX和A03XX，进行合理排序，并在做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S0301 | S08 | 功能架构规划 |
-| S0302 | S09 | 功能主题规划 |
-| S0303 | S10 | 功能史诗规划 |
-| S0304 | S11 | 功能特性规划 |
-| S0305 | S26 | 变更影响评估 |
-| S0306 | S15/S16 | 功能特性设计 |
-| S0307 | - | 原型生成 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A0301 | A08 | 产品需求大纲 |
-| A0302 | A09 | 需求主题定义 |
-| A0303 | A10 | 需求史诗定义 |
-| A0304 | A11 | 需求特性定义 |
-| A0305 | A27 | 需求变更记录 |
-| A0306 | A16/A17 | 特性设计文档 |
-| A0307 | - | 功能特性原型 |
-
-## 备注
-
-- 文档路径中的 `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，
-  通常作为独立子目录位于当前 workspace 根目录下。
-- 原 A0306（技术方案）与 A0307（UX交互设计）合并为 A0306（特性设计文档），统一沉淀到 `<feature>/design.md`。
-- 原 `<feature>/tech-design.md` 与 `<feature>/ux-<flow>.md` 作为历史制品进入存量迁移范围：新建 Feature 不再创建，存量 Feature 按需回填到 `design.md` 后归档。
-- 当前新增的 A0307 表示“功能特性原型”制品（目录级产物），与历史 A0307（UX交互设计）不是同一语义。
-- S0307 以 A0304 与 A0306 为直接输入，输出落在 `<feature>/prototype/` 目录下。
-- S0307 当前临时复用 `{product-base}/process/sop-ux-design.md`，后续需重构为原型生成专用 SOP。
-- `ui/<platform>/architecture.md`、`pages.md`、`components.md`、`ui-specs.md` 作为 S0306 的前置输入，确保实现文档与前端基线一致。
-- 已确认 `{product-base}/prototypes/common/skeleton.html` 可用。
-- AI 编码必需的用户任务流程、表单校验、异常与空状态应写入 A0304，必要实现细节补充到 A0306。
-- 页面跳转关系以 `<feature>/prototype/` 原型导航结构为准，避免在 Feature 下重复维护独立 UX 流程文档。
-- 颜色字体间距、组件视觉规范、响应式断点与平台差异应在 `ui/<platform>/` 文档一次性维护，不在单个 Feature 重复产出。
-- 用户心智模型分析与可用性原则说明属于设计评审材料，非 AI 编码必需输入，可按需补充。
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

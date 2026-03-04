@@ -87,31 +87,11 @@ graph TD
 | A0703 | 页面框架 | 页面结构、信息架构、页面层级与路由编排（可由 S0704 迭代更新） | `<platform>/pages.md` | `{product-base}/template/ui/page-list.md` |
 | A0704 | 组件清单 | 组件分类、职责边界、状态与复用策略 | `<platform>/components.md` | `{product-base}/template/ui/component-list.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按 `S0702` 和 `A0702` 进行统一排序。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S0701 | S123 | 前端架构设计 |
-| S0703 | S124 | 交互框架设计 |
-| S0704 | S124 | 交互组件设计 |
-| S0702 | S17 | 界面视觉规范 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A0701 | A122 | 前端架构方案 |
-| A0703 | A123 | 页面框架 |
-| A0704 | A123 | 组件清单 |
-| A0702 | A18 | 界面视觉规范 |
-
-## 备注
-
-- 文档路径中的 `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，
-  通常作为独立子目录位于当前 workspace 根目录下。
-- 文档路径中的 `{coding-base}` 指 [it188-networkx/coding-base](https://github.com/it188-networkx/coding-base) 仓库，
-  通常作为独立子目录位于当前 workspace 根目录下。
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- `{coding-base}` 指 [it188-networkx/coding-base](https://github.com/it188-networkx/coding-base) 仓库，在当前 workspace 中对应子目录 `coding-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

@@ -122,28 +122,10 @@ TODO：这里有不少是需要SOP化的，要结合ops-playbook来看。
 | A1206 | 产品培训材料 | 面向客户与销售的培训课件与讲义，产品认知建立的主要载体 | `training/trn-<topic>.md` | `{product-base}/template/enablement/training-material.md` |
 | A1207 | 产品演示记录 | 演示过程与客户反馈的完整记录，演示脚本优化的主要依据 | `demos/dem-<topic>.md` | `{product-base}/template/enablement/demo-record.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按照S12XX和A12XX，进行合理排序，并做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S1202 | S20 | 案例编制 |
-| S1203 | S21 | 销售赋能 |
-| S1204 | S29 | 方案咨询 |
-| S1205 | S31 | 产品配置 |
-| S1206 | S38 | 产品培训 |
-| S1207 | 新增 | 产品演示 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A1202 | A21 | 案例文档 |
-| A1203 | A22 | 销售材料 |
-| A1204 | A30 | 售前方案 |
-| A1205 | A32 | 产品配置方案 |
-| A1206 | A39 | 产品培训材料 |
-| A1207 | 新增 | 产品演示记录 |
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

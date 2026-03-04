@@ -50,7 +50,7 @@ references/
 │   └── <topic>.md
 ├── sean-ellis/                 # D29 Sean Ellis 问卷
 │   └── <topic>.md
-├── external-requests/          # D30 外部需求
+├── external-requirements/          # D30 外部需求
 │   └── <topic>.md
 ├── external-feature-requests/  # D31 外部功能需求
 │   └── <topic>.md
@@ -98,7 +98,7 @@ references/
 | D27 | NPS/CSAT 调查 | 满意度与推荐度调查数据 | `nps-csat/` |
 | D28 | 留存/付费数据 | 用户留存率与付费转化数据 | `retention/` |
 | D29 | Sean Ellis 问卷 | PMF 核心问卷调查结果 | `sean-ellis/` |
-| D30 | 外部需求 | 来自外部渠道的需求输入 | `external-requests/` |
+| D30 | 外部需求 | 来自外部渠道的需求输入 | `external-requirements/` |
 | D31 | 外部功能需求 | 来自销售/客户渠道的功能需求汇总 | `external-feature-requests/` |
 | D32 | 外部缺陷来源 | 来自客户/监控的缺陷反馈原始数据 | `defect-sources/` |
 | D33 | 方案咨询要求 | 客户提出的售前方案咨询需求 | `solution-requests/` |
@@ -107,3 +107,8 @@ references/
 | D102 | PoC 验证结果 | 概念验证的测试结论与 Benchmark 报告 | `poc-results/` |
 | D103 | 官方文档与社区资料 | 官方文档、版本公告与社区实践材料 | `official-docs/` |
 | D105 | 技术研讨纪要 | 技术评审与讨论会议记录 | `tech-review-minutes/` |
+
+## 工作规则
+
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- 本目录仅归档外部原始数据与参考资料，不产出需经 SOP 流程的受控制品。

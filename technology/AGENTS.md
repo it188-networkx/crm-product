@@ -104,26 +104,10 @@ graph LR
 | A0602 | 候选技术方案 | 基于调研形成的备选方案清单与评估维度 | `solutions/<proposal>.md` | — |
 | A0603 | 技术选型文档 | 技术路线的最终决策文档，含候选方案对比矩阵与加权评分结论 | `selections/<topic>.md` | `{design-base}/template/design/tech-selection.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按照S06XX和A06XX，进行合理排序，并做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S0601 | S103 | 技术原型调研 |
-| S0602 | S104 | 技术方案比选 |
-| S0603 | S105 | 技术选型 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A0601 | A105 | 技术调研材料 |
-| A0602 | — | 候选技术方案 |
-| A0603 | A103 | 技术选型文档 |
-
-## 备注
-
-- 文档路径中的 `{design-base}` 指 [it188-networkx/design-base](https://github.com/it188-networkx/design-base) 仓库，通常作为独立子目录位于当前 workspace 根目录下。
+- `{design-base}` 指 [it188-networkx/design-base](https://github.com/it188-networkx/design-base) 仓库，在当前 workspace 中对应子目录 `design-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

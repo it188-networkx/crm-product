@@ -37,6 +37,7 @@ graph LR
     D07["D07 NPS 数据"]:::dat
     D08["D08 客户反馈汇总"]:::dat
     D09["D09 竞标失分记录"]:::dat
+    D30["D30 外部需求"]:::dat
 
     S0101["S0101 市场调研"]:::sop
     A0101["A0101 市场调研报告"]:::art
@@ -63,6 +64,7 @@ graph LR
     D05 --> S0103
     D08 --> S0103
     D07 --> S0103
+    D30 --> S0103
     A0104 --> S0103
     S0103 --> A0103
 
@@ -126,7 +128,7 @@ graph LR
 | D08 | 客户反馈汇总 | 多渠道客户反馈聚合 | `references/customer-feedback/` |
 | D09 | 竞标失分记录 | 竞标过程中的失分项记录 | `references/bid-losses/` |
 | D10 | 现场观察笔记 | 用户现场观察与记录 | `references/field-observations/` |
-| D30 | 外部需求 | 来自外部渠道的需求输入 | `references/external-requests/` |
+| D30 | 外部需求 | 来自外部渠道的需求输入 | `references/external-requirements/` |
 
 ## 上游输入
 
@@ -145,33 +147,10 @@ graph LR
 | A0105 | 审定需求文档 | 经需求评审确认的规范化需求条目，需求分析的正式输入基线 | `requirements/rev-<topic>.md` | `{product-base}/template/discovery/requirement-review.md` |
 | A0106 | 需求分析报告 | 结构化需求清单与商业价值评估，需求发现阶段最终产出 | `requirements/req-<topic>.md` | `{product-base}/template/discovery/requirement-analysis.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按照S01XX和A01XX，进行合理排序，并在做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S0101 | S01 | 市场调研 |
-| S0102 | S02 | 竞品分析 |
-| S0103 | S03 | 用户研究 |
-| S0104 | S25 | 客户访谈 |
-| S0105 | S24 | 需求评审 |
-| S0106 | S04 | 需求分析 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A0101 | A01 | 市场调研报告 |
-| A0102 | A02 | 竞争分析报告 |
-| A0103 | A03 | 用户画像文档 |
-| A0104 | A26 | 客户访谈纪要 |
-| A0105 | A25 | 审定需求文档 |
-| A0106 | A04 | 需求分析报告 |
-
-## 备注
-
-- 文档路径中的 `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，
-  通常作为独立子目录位于当前 workspace 根目录下。
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

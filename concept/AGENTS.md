@@ -1,3 +1,7 @@
+## 产品类型
+
+- variant = tool
+
 ## 目录结构
 
 产品级文档，记录从概念到定义的演进。
@@ -54,8 +58,8 @@ graph TD
 
 | ID | Name | Description | Process |
 | :--- | :--- | :--- | :--- |
-| S0201 | 产品构思 | 结合企业战略与团队能力，确立产品核心方向与初步假设 | `{product-base}/process/sop-product-concept.md` |
-| S0202 | 商业论证 | 评估市场机会与商业可行性，形成产品立项投资决策依据 | `{product-base}/process/sop-business-requirement.md` |
+| S0201 | 产品构思 | 结合企业战略与团队能力，确立产品核心方向与初步假设 | `{product-base}/process/sop-product-concept-{variant}.md` |
+| S0202 | 商业论证 | 评估替代方案成本与 ROI，为内部立项提供决策依据 | `{product-base}/process/sop-business-requirement-{variant}.md` |
 | S0203 | 产品定义 | 锁定产品定位、边界与核心功能范围，建立研发立项基准 | `{product-base}/process/sop-product-definition.md` |
 
 ## 外部输入
@@ -79,31 +83,15 @@ graph TD
 
 | ID | Name | Description | File | Template |
 | :--- | :--- | :--- | :--- | :--- |
-| A0201 | 产品概念书 | 概念阶段首份产品文件，记录核心方向与战略假设 | `product-concept.md` | `{product-base}/template/concept/product-concept.md` |
-| A0202 | 商业需求文档 | 论证商业可行性与市场机会，为立项投资决策提供依据 | `business-requirement.md` | `{product-base}/template/concept/business-requirement.md` |
+| A0201 | 产品概念书 | 概念阶段首份产品文件，记录核心方向与战略假设 | `product-concept.md` | `{product-base}/template/concept/product-concept-{variant}.md` |
+| A0202 | 商业需求文档 | 论证替代方案对比与 ROI，为内部立项决策提供依据 | `business-requirement.md` | `{product-base}/template/concept/business-requirement-{variant}.md` |
 | A0203 | 产品定义文档 | 明确产品定位、边界与核心功能范围，作为需求与设计的输入基准 | `product-definition.md` | `{product-base}/template/concept/product-definition.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出重新编号，分别按照S02XX和A02XX，进行合理排序，并在做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S0201 | S05 | 产品构思 |
-| S0202 | S06 | 商业论证 |
-| S0203 | S07 | 产品定义 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A0201 | A05 | 产品概念书 |
-| A0202 | A06 | 商业需求文档 |
-| A0203 | A07 | 产品定义文档 |
-
-## 备注
-
-- 文档路径中的 `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，
-  通常作为独立子目录位于当前 workspace 根目录下。
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- `{variant}` 取本文件顶部 `variant = tool` 声明的值；如需切换须同步更新该声明。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。

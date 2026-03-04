@@ -139,42 +139,11 @@ graph LR
 | A1303 | 风险应对策略 | 产品级风险管理基线，覆盖风险清单、评级矩阵与监控响应预案 | `evolution/risk.md` | `{design-base}/template/design/risk.md` |
 | A1304 | 架构演进方案 | 架构演进蓝图，定义分阶段技术迁移路径、量化触发条件与技术债务治理策略 | `evolution/evolution.md` | `{design-base}/template/design/evolution.md` |
 
-## 新老编号对比
+## 工作规则
 
-本阶段的SOP和制品产出统一使用S13XX和A13XX编号，进行合理排序，并做好新老编号对照表。
-
-### SOP
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| S1301 | S22 | 数据分析 |
-| S1302 | S23 | 市场匹配验证 |
-| S1303 | S130 | 技术风险评估 |
-| S1304 | S131 | 架构演进规划 |
-
-### 制品
-
-| 新编号 | 旧编号 | 名称 |
-| :--- | :--- | :--- |
-| A1301 | A23 | 运营分析报告 |
-| A1302 | A24 | 市场匹配报告 |
-| A1303 | A130 | 风险应对策略 |
-| A1304 | A131 | 架构演进方案 |
-
-### 上游输入引用更新
-
-| 旧引用 | 新引用 | 来源目录 |
-| :--- | :--- | :--- |
-| A01 | A0101 | discovery/ |
-| A02 | A0102 | discovery/ |
-| A03 | A0103 | discovery/ |
-| A07 | A0203 | concept/ |
-| A15 | A0403 | roadmap/ |
-| A102 | A0501 | architecture/ |
-| A103 | A0603 | technology/ |
-| A104 | A0502 | architecture/ |
-| A105 | A0601 | technology/ |
-| A117 | A0503 | architecture/ |
-| A119 | A0504 | architecture/ |
-| A120 | A0505 | architecture/ |
-| E01 | A0203 | concept/ |
+- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
+- `{design-base}` 指 [it188-networkx/design-base](https://github.com/it188-networkx/design-base) 仓库，在当前 workspace 中对应子目录 `design-base/`。
+- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
+    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
+    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
+    3. 两份文件中的指令若有冲突，以 SOP 文件为准。
