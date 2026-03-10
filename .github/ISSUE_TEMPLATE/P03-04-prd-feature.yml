@@ -1,5 +1,5 @@
 name: "[规划] 功能特性规划 (Functional Feature)"
-description: 围绕 Epic 下定义的 Feature，规划最小可交付单元的详细定义，包含用户故事、业务规则与验收标准
+description: 定义用户故事、业务规则、业务对象与验收标准，为下游设计提供需求基线
 title: "[特性规划] <Epic>/<Feature名称>"
 labels: ["domain:product", "activity:requirement"]
 assignees: []
@@ -31,8 +31,8 @@ body:
   - type: textarea
     id: user_story
     attributes:
-      label: 用户故事
-      description: 以"作为...我希望...以便..."格式描述
+      label: 用户故事草稿
+      description: 以"作为...我希望...以便..."格式描述，至少 1 条
       placeholder: |
         作为 [角色]，
         我希望 [功能]，
@@ -44,7 +44,7 @@ body:
     id: acceptance_criteria
     attributes:
       label: AC 草稿
-      description: 初步的验收标准（Happy Path + Edge Cases + 异常路径）
+      description: 初步的验收标准，至少覆盖 1 个 Happy Path 场景
       placeholder: |
         AC-01: Given... When... Then...
         AC-02: Given... When... Then...
@@ -61,7 +61,7 @@ body:
         - P2 - 可以（Could Have）
         - P3 - 不做（Won't Have）
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: wireframe
@@ -91,38 +91,11 @@ body:
       required: false
 
   - type: textarea
-    id: epic_doc
+    id: competitive_screenshots
     attributes:
-      label: 产品史诗定义 (A10)
-      description: S10 输出的产品史诗定义
-      placeholder: 请提供 Epic 文档的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: requirement_report
-    attributes:
-      label: 需求报告 (A04)
-      description: S04 输出中的需求分析与价值评估
-      placeholder: 请提供 discovery/requirements/ 目录下相关文档的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: user_persona
-    attributes:
-      label: 用户画像 (A03)
-      description: S03 输出中的用户旅程与痛点
-      placeholder: 请提供 discovery/users/ 目录下相关文档的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: change_records
-    attributes:
-      label: 需求变更记录 (A27)
-      description: S26 输出中影响本 Feature 的变更结论
-      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
+      label: 竞品功能截图
+      description: 竞品中类似功能的截图或对标分析
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
     validations:
       required: false
 
@@ -131,4 +104,4 @@ body:
       value: |
         ### 输出物要求
 
-        - [ ] **需求特性定义 (A11)**：包含特性概述、用户故事、业务流程（Mermaid）、业务规则（BR-xx）、数据要求、异常处理（E-xx）、验收标准（AC-xx）
+        - [ ] **需求特性定义 (A0304)**：包含特性概述、用户故事、业务流程（Mermaid）、业务规则（BR-xx）、数据要求、异常处理（E-xx）、验收标准（AC-xx）

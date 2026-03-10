@@ -1,5 +1,10 @@
 ## 产品类型
 
+<!-- variant 在初始化产品库时确定，确定后不应随意变更 -->
+<!-- 可选值（选其一填写到下方声明中）：
+  - tool   # 生产工具类（公司内部效率工具产品）
+  - saas   # SaaS 交付类（公司对外提供的标准化软件服务）
+-->
 - variant = tool
 
 ## 目录结构
@@ -90,7 +95,7 @@ graph TD
 ## 工作规则
 
 - `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
-- `{variant}` 取本文件顶部 `variant = tool` 声明的值；如需切换须同步更新该声明。
+- `{variant}` 取本文件顶部 `## 产品类型` 中声明的值；如需切换须同步更新该声明及所有引用路径。
 - 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
     1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
     2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。

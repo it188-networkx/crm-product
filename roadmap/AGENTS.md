@@ -63,7 +63,7 @@ graph TD
 | ID | Name | Description | Process |
 | :--- | :--- | :--- | :--- |
 | S0401 | 路线图规划 | 确定版本发布优先级与交付窗口，形成可承诺的产品路线图 | `{product-base}/process/sop-roadmap-plan.md` |
-| S0402 | 里程碑设计 | 锁定版本关键交付节点，制定里程碑验收标准与风险管控策略 | `{product-base}/process/sop-roadmap-design.md` |
+| S0402 | 里程碑设计 | 锁定版本关键交付节点，制定里程碑验收标准与风险管控策略 | `{product-base}/process/sop-milestone-design.md` |
 | S0403 | 迭代复盘 | 评审版本交付成果与流程效能，识别改进项并输入下轮规划 | `{product-base}/process/sop-retrospective.md` |
 
 ## 外部输入
@@ -91,6 +91,26 @@ graph TD
 | A0401 | 路线图 | 产品版本序列与交付节奏全貌，各版本规划的决策主干 | `README.md` | `{product-base}/template/roadmap/rm-master.md` |
 | A0402 | 里程碑计划 | 版本级交付承诺基准文档，锁定关键节点与验收准入，为周冲刺规划提供输入 | `ms-<version>.md` | `{product-base}/template/roadmap/rm-milestone.md` |
 | A0403 | 迭代复盘报告 | 版本迭代成果与效能复盘存档，驱动路线图修订与团队改进 | `retro-<version>.md` | `{product-base}/template/roadmap/rm-retrospective.md` |
+
+## 新老编号对比
+
+本阶段的SOP和制品产出重新编号，分别按照S04XX和A04XX，进行合理排序，并做好新老编号对照表。
+
+### SOP
+
+| 新编号 | 旧编号 | 名称 |
+| :--- | :--- | :--- |
+| S0401 | S12 | 路线图规划 |
+| S0402 | S13 | 里程碑设计 |
+| S0403 | S14 | 迭代复盘 |
+
+### 制品
+
+| 新编号 | 旧编号 | 名称 |
+| :--- | :--- | :--- |
+| A0401 | A13 | 路线图 |
+| A0402 | A14 | 里程碑计划 |
+| A0403 | A15 | 迭代复盘报告 |
 
 ## 工作规则
 

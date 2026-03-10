@@ -1,5 +1,5 @@
 name: "[规划] 路线图规划 (Roadmap Planning)"
-description: 将产品需求大纲中的 Theme/Epic 编排到时间轴上，制定战略路线图与版本切分策略
+description: 基于需求大纲编排 Theme 时间线，生成或更新路线图
 title: "[路线规划] <产品名称> - <规划周期>"
 labels: ["domain:product", "activity:planning"]
 assignees: []
@@ -9,14 +9,13 @@ body:
       value: |
         ### 路线图规划
 
-        将产品需求大纲中的 Theme/Epic 编排到时间轴上，
-        制定战略路线图与版本切分策略。
+        基于需求大纲编排 Theme 时间线，生成或更新路线图。
 
   - type: textarea
-    id: version_goal
+    id: product_goal
     attributes:
-      label: 版本目标
-      description: 本次路线图规划的核心版本目标
+      label: 产品目标
+      description: 本次路线图规划的核心产品目标（含规划时间范围与核心交付预期）
     validations:
       required: true
 
@@ -24,27 +23,17 @@ body:
     id: schedule_constraints
     attributes:
       label: 排期约束
-      description: 市场窗口期、客户承诺等排期约束条件
+      description: 时间窗口、硬性截止日期（发布日期、合同承诺、市场窗口截止等）
     validations:
       required: true
 
   - type: textarea
-    id: theme_list_a08
+    id: strategic_context
     attributes:
-      label: 产品需求大纲 Theme 清单 (A08)
-      description: S08 输出的 Theme 清单与优先级矩阵
-      placeholder: 请提供 planning/requirements.md 的 URL
+      label: 战略调整背景
+      description: 本次规划涉及的战略调整背景（如有）
     validations:
-      required: true
-
-  - type: textarea
-    id: pdd_milestones_a07
-    attributes:
-      label: 产品定义文档 里程碑定义 (A07)
-      description: S07 输出中的里程碑与关键节点
-      placeholder: 请提供 concept/product-definition.md 的 URL
-    validations:
-      required: true
+      required: false
 
   - type: textarea
     id: resource_capacity_d14
@@ -64,18 +53,9 @@ body:
     validations:
       required: false
 
-  - type: textarea
-    id: market_window_analysis
-    attributes:
-      label: 市场窗口分析
-      description: 市场窗口期与竞争态势分析
-      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
-    validations:
-      required: false
-
   - type: markdown
     attributes:
       value: |
         ### 输出物要求
 
-        - [ ] **路线图总览 (A13)**：包含战略摘要、宏观路线图（甘特图/季度视图）、详细规划表、版本切分策略、外部依赖与控制点
+        - [ ] **路线图 (A0401)**：包含战略摘要、宏观路线图（季度总览表）、季度规划（渐进细化）、风险与依赖

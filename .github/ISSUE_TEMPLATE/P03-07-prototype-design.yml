@@ -1,5 +1,5 @@
-name: "[设计] UX 交互设计 (Feature UX Design)"
-description: 基于需求特性定义与技术方案，将用户故事与业务规则转化为可交互的体验蓝图
+name: "[设计] 原型生成 (Feature UX Design)"
+description: 定义任务流、界面元素与状态机流转，为下游界面视觉规范提供交互逻辑基线
 title: "[交互设计] <Feature名称>"
 labels: ["domain:product", "activity:design"]
 assignees: []
@@ -7,35 +7,39 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### UX 交互设计
+        ### 原型生成
 
-        基于需求特性定义与技术方案，将用户故事与业务规则转化为可交互的体验蓝图。
+        基于需求特性定义与技术方案，将用户故事与业务规则转化为可交互的体验蓝图，
+        定义任务流、界面元素、状态机流转与异常场景处理。
 
   - type: input
     id: feature_name
     attributes:
       label: Feature 名称
+      description: 需与需求特性定义中的特性名称一致
       placeholder: 例如：工单自动分配引擎
     validations:
       required: true
 
-  - type: textarea
-    id: feature_requirement_a11
+  - type: input
+    id: feature_path
     attributes:
-      label: 需求特性定义 (A11)
-      description: S11 输出中的用户故事、业务规则与验收标准
-      placeholder: 请提供 planning/<theme>/<epic>/<feature>.md 的 URL
+      label: 所属 Feature 路径
+      description: theme/epic/feature 格式，用于定位需求特性定义与技术方案
+      placeholder: 例如：ticket-management/ticket-creation/auto-assign
     validations:
       required: true
 
   - type: textarea
-    id: tech_design_a16
+    id: interaction_scope
     attributes:
-      label: 技术方案 (A16)
-      description: S15 输出中的数据形状与技术约束
-      placeholder: 请提供 design/<feature>/tech-design.md 的 URL
+      label: 交互范围/场景
+      description: 需要设计交互的场景名称列表，至少覆盖 1 个核心业务流
+      placeholder: |
+        - 场景 1：...
+        - 场景 2：...
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: wireframe
@@ -46,9 +50,27 @@ body:
     validations:
       required: false
 
+  - type: textarea
+    id: user_journey
+    attributes:
+      label: 用户旅程图
+      description: 用户操作路径图示或描述
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: business_rules_supplement
+    attributes:
+      label: 业务规则补充文档
+      description: 需求特性定义之外的补充业务规则
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
   - type: markdown
     attributes:
       value: |
         ### 输出物要求
 
-        - [ ] **UX 交互设计 (A17)**：包含任务流（Mermaid Flowchart）、界面元素定义（字段级含校验规则）、状态机流转、异常场景处理
+        - [ ] **交互设计 (A0307)**：包含任务流（Mermaid Flowchart）、界面元素定义（字段级含校验规则）、状态机流转、异常场景处理

@@ -1,5 +1,5 @@
 name: "[规划] 功能史诗规划 (Functional Epic)"
-description: 围绕 Theme 下定义的 Epic，规划 Epic 文档，定义业务能力闭环与 Feature 拆分
+description: 按能力闭环细化 Epic 定义与 Feature 拆分索引
 title: "[史诗规划] <Theme>/<Epic名称>"
 labels: ["domain:product", "activity:requirement"]
 assignees: []
@@ -16,29 +16,58 @@ body:
     id: epic_name
     attributes:
       label: Epic 名称
+      description: 体现业务能力闭环，避免过泛或过细
       placeholder: 例如：工单创建与分配
     validations:
       required: true
 
+  - type: input
+    id: epic_dir
+    attributes:
+      label: Epic 目录名
+      description: kebab-case 格式，不含空格与中文；留空由 Agent 从 Epic 名称推导
+      placeholder: 例如：ticket-creation
+    validations:
+      required: false
+
   - type: textarea
     id: business_target
     attributes:
-      label: 业务目标
-      description: 该 Epic 要实现的核心业务目标
+      label: 业务目标描述
+      description: 该 Epic 要实现的核心业务目标，需包含 As-Is 现状描述
     validations:
       required: true
 
   - type: textarea
     id: kpi
     attributes:
-      label: KPI
-      description: 衡量 Epic 成功的关键指标
+      label: 关键 KPI
+      description: 衡量 Epic 成功的关键指标（承接 Theme 级成功指标）
       placeholder: |
         例如：
         - 工单创建耗时降低 50%
         - 自动分配准确率 ≥ 90%
     validations:
-      required: true
+      required: false
+
+  - type: textarea
+    id: feature_draft
+    attributes:
+      label: Feature 初稿
+      description: 已识别的 Feature 列表及优先级
+      placeholder: |
+        - Feature 名称 1（P0）
+        - Feature 名称 2（P1）
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints_dependencies
+    attributes:
+      label: 约束与依赖
+      description: 技术约束、外部依赖、跨团队协作要求等
+    validations:
+      required: false
 
   - type: textarea
     id: flowchart
@@ -67,36 +96,9 @@ body:
     validations:
       required: false
 
-  - type: textarea
-    id: theme_doc
-    attributes:
-      label: 产品主题定义 (A09)
-      description: S09 输出的产品主题定义
-      placeholder: 请提供 Theme 文档的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: requirement_report
-    attributes:
-      label: 需求报告 (A04)
-      description: S04 输出中与该 Epic 相关的分析
-      placeholder: 请提供需求报告的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: change_records
-    attributes:
-      label: 需求变更记录 (A27)
-      description: S26 输出中影响本 Epic 的变更结论
-      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
-    validations:
-      required: false
-
   - type: markdown
     attributes:
       value: |
         ### 输出物要求
 
-        - [ ] **产品史诗定义 (A10)**：包含概述（As-Is/To-Be/KPI）、用户场景、功能列表、Feature 拆分索引与优先级、依赖与风险矩阵、技术约束
+        - [ ] **产品史诗定义 (A0303)**：包含概述（As-Is/To-Be/KPI）、用户场景、功能列表、Feature 拆分索引与优先级、依赖与风险矩阵、技术约束

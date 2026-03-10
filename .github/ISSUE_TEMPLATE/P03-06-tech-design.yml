@@ -1,5 +1,5 @@
-name: "[设计] 技术方案设计 (Feature Tech Design)"
-description: 基于 需求特性定义 与系统架构约束，编制草案级技术纲要，定义数据模型、API 设计方向与后端逻辑策略
+name: "[设计] 功能特性设计 (Feature Tech Design)"
+description: 编制草案级技术纲要，定义数据模型概念、API 设计方向与后端逻辑策略
 title: "[技术设计] <Feature名称>"
 labels: ["domain:product", "activity:design"]
 assignees: []
@@ -7,9 +7,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        ### 技术方案设计
+        ### 功能特性设计
 
-        基于 需求特性定义 与系统架构约束，编制草案级技术纲要，定义数据模型概念、
+        基于需求特性定义与系统架构约束，编制草案级技术纲要，定义数据模型概念、
         API 设计方向与后端逻辑策略，为 UX/UI 设计提供数据形状理解、
         为 Coding Agent 提供快速实现方向。
 
@@ -17,34 +17,57 @@ body:
     id: feature_name
     attributes:
       label: Feature 名称
+      description: 需与需求特性定义文件名一致
       placeholder: 例如：工单自动分配引擎
     validations:
       required: true
 
-  - type: textarea
-    id: feature_prd
+  - type: input
+    id: feature_path
     attributes:
-      label: 需求特性定义 (A11)
-      description: S11 输出中的业务规则与数据定义
-      placeholder: 请提供 需求特性定义 的 URL
+      label: 所属 Feature 路径
+      description: theme/epic/feature 格式，用于定位需求特性定义
+      placeholder: 例如：ticket-management/ticket-creation/auto-assign
     validations:
       required: true
 
   - type: textarea
-    id: system_architecture
+    id: tech_focus
     attributes:
-      label: 系统架构文档 (E01)
-      description: 产品设计仓库中的技术约束与模块边界
-      placeholder: 请提供系统架构文档的 URL
+      label: 技术设计重点
+      description: 需要重点关注的技术领域
+      placeholder: |
+        例如：
+        - 数据模型
+        - API 设计
+        - 后端逻辑
     validations:
-      required: true
+      required: false
 
   - type: textarea
-    id: design_context
+    id: data_dictionary
     attributes:
-      label: 设计背景文档 (E02)
-      description: 非功能性需求指标（性能/安全/可扩展性等）
-      placeholder: 请提供设计背景文档的 URL
+      label: 数据字典
+      description: 已有的数据模型定义
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: api_draft
+    attributes:
+      label: API 规范草案
+      description: 已有的 API 端点或 OpenAPI 片段
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+    validations:
+      required: false
+
+  - type: textarea
+    id: arch_doc_fragment
+    attributes:
+      label: 架构设计文档片段
+      description: 与该 Feature 相关的架构设计摘要
+      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
     validations:
       required: false
 
@@ -53,4 +76,4 @@ body:
       value: |
         ### 输出物要求
 
-        - [ ] **技术方案 (A16)**：包含概述与迭代规划、数据模型草案（概念 ER）、API 设计纲要（关键端点与请求响应概念）、后端逻辑方向（CRON/Event/一致性策略选择）
+        - [ ] **技术方案 (A0306)**：包含概述与迭代规划、数据模型草案（概念 ER）、API 设计纲要（关键端点与请求响应概念）、后端逻辑方向（CRON/Event/一致性策略选择）

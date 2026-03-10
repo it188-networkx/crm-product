@@ -1,5 +1,5 @@
 name: "[规划] 里程碑设计 (Milestone Design)"
-description: 围绕路线图中的具体版本，设计里程碑计划，定义版本目标、交付范围、关键时间点与准入准出标准
+description: 基于路线图版本定义，生成或更新里程碑计划
 title: "[里程设计] <版本号> - <交付目标>"
 labels: ["domain:product", "activity:planning"]
 assignees: []
@@ -9,8 +9,8 @@ body:
       value: |
         ### 里程碑设计
 
-        围绕路线图中定义的具体版本，设计里程碑计划，定义版本目标、
-        交付范围、关键时间点与准入准出标准。
+        基于路线图版本定义，生成或更新里程碑计划，
+        定义版本目标、交付范围、关键时间点与准入准出标准。
 
   - type: input
     id: version
@@ -24,7 +24,7 @@ body:
     id: delivery_target
     attributes:
       label: 交付目标
-      description: 本版本的核心交付目标与预期成果
+      description: 本版本的核心交付目标（含版本主题与核心价值）
     validations:
       required: true
 
@@ -32,16 +32,7 @@ body:
     id: risks
     attributes:
       label: 风险项
-      description: 已识别的技术/资源/市场风险
-    validations:
-      required: false
-
-  - type: textarea
-    id: feature_checklist
-    attributes:
-      label: Feature 完成度清单
-      description: 各 Feature 当前完成状态
-      placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
+      description: 已识别的技术/资源/市场风险（每条需描述风险场景和可能影响）
     validations:
       required: false
 
@@ -55,28 +46,10 @@ body:
       required: false
 
   - type: textarea
-    id: roadmap
+    id: test_plan_summary
     attributes:
-      label: 路线图总览 (A13)
-      description: S12 输出中的版本定义
-      placeholder: 请提供路线图的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: prd_docs
-    attributes:
-      label: PRD Feature/产品史诗定义 (A10/A11)
-      description: S10/S11 输出中的交付状态
-      placeholder: 请提供相关 PRD 文档的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: delivery_status
-    attributes:
-      label: 交付状态 (D16)
-      description: 当前交付进度与状态
+      label: 测试计划概要
+      description: QA 提供的测试计划概要
       placeholder: 请提供资料的 URL 或将文件拖拽至此处上传
     validations:
       required: false
@@ -86,4 +59,4 @@ body:
       value: |
         ### 输出物要求
 
-        - [ ] **里程碑计划 (A14)**：包含里程碑概览（API Freeze/Code Freeze/QA Sign-off/UAT/Go Live）、交付范围、上线标准、资源需求、风险与缓解、回滚方案
+        - [ ] **里程碑计划 (A0402)**：包含概览、交付范围、上线标准、资源需求、风险与缓解、回滚方案

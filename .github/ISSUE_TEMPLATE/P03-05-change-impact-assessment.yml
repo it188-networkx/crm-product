@@ -1,5 +1,5 @@
 name: "[规划] 变更影响评估 (Change Impact Assessment)"
-description: 对需求变更/取消请求进行影响评估，量化范围、成本、排期与风险影响
+description: 量化变更对范围、成本、排期与风险的影响，形成变更结论与排期调整建议
 title: "[变更评估] <变更主题>"
 labels: ["domain:product", "activity:review"]
 assignees: []
@@ -16,7 +16,7 @@ body:
     id: change_request
     attributes:
       label: 变更请求 (D31)
-      description: 干系人提出的需求变更或取消请求，包含变更原因与期望结果
+      description: 干系人提出的需求变更或取消请求，需明确变更内容（新增/修改/取消）和变更原因
       placeholder: |
         - 请求人：
         - 变更类型：（新增/修改/取消/延期）
@@ -30,16 +30,16 @@ body:
   - type: textarea
     id: requirement_report
     attributes:
-      label: 需求报告 (A04)
-      description: S04 输出中受影响的需求分析文档
-      placeholder: 请提供 discovery/requirements/req-<topic>.md 的 URL
+      label: 需求分析报告 (A0106)
+      description: 受影响的需求分析文档，引用须指向具体文档
+      placeholder: 请提供 discovery/requirements/ 目录下相关文档的 URL
     validations:
       required: true
 
   - type: textarea
     id: affected_scope
     attributes:
-      label: 影响范围
+      label: 初步影响范围
       description: 预判受影响的 Theme/Epic/Feature 列表
       placeholder: |
         - 受影响 Theme：
@@ -54,4 +54,4 @@ body:
       value: |
         ### 输出物要求
 
-        - [ ] **需求变更记录 (A27)**：包含变更摘要、影响范围分析、成本与排期影响、风险评估、变更结论（接受/拒绝/延期）
+        - [ ] **需求变更记录 (A0305)**：包含变更摘要、影响范围分析、成本与排期影响、风险评估、变更结论（接受/拒绝/延期）

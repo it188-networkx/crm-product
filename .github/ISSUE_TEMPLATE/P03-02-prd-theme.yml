@@ -1,5 +1,5 @@
 name: "[规划] 功能主题规划 (Functional Theme)"
-description: 围绕 产品需求大纲 中定义的 Theme，规划功能主题文档，定义端到端用户旅程与 Epic 拆分索引
+description: 按价值流组织业务主题与 Epic 拆分索引
 title: "[主题规划] <Theme名称> - <价值主张>"
 labels: ["domain:product", "activity:requirement"]
 assignees: []
@@ -9,32 +9,73 @@ body:
       value: |
         ### 功能主题规划
 
-        围绕 产品需求大纲 中定义的 Theme，规划功能主题文档，
+        围绕产品需求大纲中定义的 Theme，规划功能主题文档，
         定义端到端用户旅程与 Epic 拆分索引。
 
   - type: input
     id: theme_name
     attributes:
       label: Theme 名称
+      description: 表达价值流或业务子域，避免过泛（如"优化""重构"）
       placeholder: 例如：工单管理、客户门户
     validations:
       required: true
 
+  - type: input
+    id: theme_dir
+    attributes:
+      label: Theme 目录名
+      description: kebab-case 格式，不含空格与中文；留空由 Agent 从 Theme 名称推导
+      placeholder: 例如：ticket-management
+    validations:
+      required: false
+
   - type: textarea
     id: value_proposition
     attributes:
-      label: 价值主张
-      description: 该 Theme 为目标用户带来的核心价值
+      label: 价值主张/目标
+      description: 该 Theme 为目标用户带来的核心价值，至少包含解决对象 + 场景 + 改善点中的两项
     validations:
       required: true
 
   - type: textarea
     id: target_user_group
     attributes:
-      label: 目标用户群
+      label: 目标用户与关键角色
       description: 该 Theme 服务的主要用户角色
     validations:
-      required: true
+      required: false
+
+  - type: textarea
+    id: success_metrics
+    attributes:
+      label: 成功指标（Theme KPI）
+      description: 衡量 Theme 成功的关键指标
+      placeholder: |
+        例如：
+        - 工单平均处理时长降低 30%
+        - 客户满意度 ≥ 4.5/5
+    validations:
+      required: false
+
+  - type: textarea
+    id: epic_draft
+    attributes:
+      label: Epic 初稿
+      description: 已识别的 Epic 列表及优先级
+      placeholder: |
+        - Epic 名称 1（P0）
+        - Epic 名称 2（P1）
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints_dependencies
+    attributes:
+      label: 约束与依赖
+      description: 技术约束、外部依赖、跨团队协作要求等
+    validations:
+      required: false
 
   - type: textarea
     id: user_journey
@@ -54,36 +95,9 @@ body:
     validations:
       required: false
 
-  - type: textarea
-    id: prd_master
-    attributes:
-      label: 产品需求大纲 (A08)
-      description: S08 输出中的 Theme 定义
-      placeholder: 请提供 产品需求大纲 的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: requirement_report
-    attributes:
-      label: 需求报告 (A04)
-      description: S04 输出中与该 Theme 相关的分析
-      placeholder: 请提供需求报告的 URL
-    validations:
-      required: true
-
-  - type: textarea
-    id: change_records
-    attributes:
-      label: 需求变更记录 (A27)
-      description: S26 输出中影响本 Theme 的变更结论
-      placeholder: 请提供 planning/changes/ 目录下相关文档的 URL
-    validations:
-      required: false
-
   - type: markdown
     attributes:
       value: |
         ### 输出物要求
 
-        - [ ] **产品主题定义 (A09)**：包含业务定义与价值主张、目标用户与关键角色、核心用户旅程（As-Is/To-Be）、Epic 拆分索引与优先级、跨 Epic 依赖关系、成功指标（Theme 级 KPI）
+        - [ ] **需求主题定义 (A0302)**：包含业务定义与价值主张、目标用户与关键角色、核心用户旅程（As-Is/To-Be）、Epic 拆分索引与优先级、跨 Epic 依赖关系、成功指标（Theme 级 KPI）
