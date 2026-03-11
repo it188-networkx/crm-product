@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：[crm-product#1](https://github.com/it188-networkx/crm-product/issues/1)
-- 更新时间：2026-03-11 16:00
+- 更新时间：2026-03-11 17:00
 
 ## 待澄清问题 (Open Questions)
 
@@ -29,7 +29,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 101201 | S0301 功能架构规划：编制 CRM 产品需求大纲（A0301） | [#2](https://github.com/it188-networkx/crm-product/issues/2) | 03-11 | 03-11 | 0.5 天 | 已完成 |
 | 101202 | S0302 功能主题规划：T-01 营销过程闭环（A0302） | [#4](https://github.com/it188-networkx/crm-product/issues/4) | 03-11 | 03-11 | 0.5 天 | 已完成 |
-| 101203 | S0302 功能主题规划：T-02 AI营销管理（A0302） | 待开设 | 03-11 | - | 0.5 天 | 未开始 |
+| 101203 | S0302 功能主题规划：T-02 AI营销管理（A0302） | [#6](https://github.com/it188-networkx/crm-product/issues/6) | 03-11 | - | 0.5 天 | 已执行 |
 | 101204 | S0302 功能主题规划：T-03 决策驾驶舱（A0302） | 待开设 | 03-13 | - | 0.5 天 | 未开始 |
 | 101205 | S0302 功能主题规划：T-04 营销知识库（A0302） | 待开设 | 03-14 | - | 0.5 天 | 未开始 |
 
@@ -136,11 +136,13 @@ SOP：`{product-base}/process/sop-prd-theme.md`（S0302 功能主题规划）
 
 **任务概要**
 
-- 目标：按 S0302 功能主题规划 SOP，基于 A0301 产品需求大纲中 T-02「AI营销管理」定义，产出 A0302 需求主题定义（`requirements/ai-augmentation/README.md`），包含业务背景、核心目标、价值承诺、端到端用户旅程、Epic 拆分索引与验收标准，为后续 S0303 功能史诗规划提供输入
-- 关联工单：待开设
+- 目标：按 S0302 功能主题规划 SOP，基于 A0301 产品需求大纲中 T-02「AI营销管理」定义，产出 A0302 需求主题定义文档（`requirements/ai-augmentation/README.md`），包含业务背景、核心目标、价值承诺、端到端用户旅程、Epic 拆分索引与验收标准，为后续 S0303 功能史诗规划提供输入
+- 关联工单：[crm-product#6](https://github.com/it188-networkx/crm-product/issues/6)
+- 关联 PR：[crm-product#7](https://github.com/it188-networkx/crm-product/pull/7)
 - 预计完成：03-11
+- 实际完成：
 - 工作量估算：0.5 天
-- 状态：未开始
+- 状态：已执行
 
 ---
 
