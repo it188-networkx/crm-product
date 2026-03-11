@@ -27,7 +27,7 @@ body:
     id: prototype_design
     attributes:
       label: 原型设计 (A0307)
-      description: UX 交互原型中的任务流与界面元素定义（P03-07 输出）
+      description: UX 交互原型中的任务流与界面元素定义
       placeholder: 请提供原型设计文档或 Figma URL
     validations:
       required: false

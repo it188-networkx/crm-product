@@ -1,6 +1,6 @@
 name: "[管理] 产品设计冲刺 (Product Design Sprint)"
 description: 以 W301 产品设计工作流为框架，规划、执行与总结本 repo 的周冲刺产品设计工作
-title: "[产品设计] <迭代起始日期，例如：20260309>"
+title: "[产品设计] <迭代起始日期，例如：20260309> - <责任人，例如：layx-it188>"
 labels: ["domain:management", "activity:process"]
 assignees: []
 body:
@@ -34,8 +34,13 @@ body:
     id: supplementary_context
     attributes:
       label: 补充上下文
-      description: 上游制品路径、已有设计/需求文档引用、紧急/特殊事项等
-      placeholder: "提供任务相关的文档路径或说明，无则留空"
+      description: 上游制品（本 Issue 依赖的输入/参考文档）、交付目标、紧急/特殊事项等
+      placeholder: |
+        上游制品格式：[编号]名称：[显示路径](相对链接)
+        本库文件用 ../blob/main/<path>，跨库文件用 ../../<repo>/blob/main/<path>
+        示例：
+        - [A2001]周冲刺计划：[ops-playbook/sprints/20260309/sprint-plan.md](../../ops-playbook/blob/main/sprints/20260309/sprint-plan.md)
+        - [A0203]产品定义文档：[concept/product-definition.md](../blob/main/concept/product-definition.md)
     validations:
       required: false
 
