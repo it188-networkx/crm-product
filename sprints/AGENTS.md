@@ -1,11 +1,11 @@
 ## 目录结构
 
-冲刺执行空间，承载 S2005 冲刺任务规划产出的个人冲刺任务清单（A2002）。
+冲刺执行空间，承载 S2005 产品设计冲刺产出的个人任务清单（A2002）。
 
 ```text
 sprints/
 └── <YYYYMMDD>/                      # 周冲刺目录，以冲刺开始日期命名
-    └── <user>-tasks.md              #   A2002 个人冲刺任务清单
+    └── <user>-tasks.md              #   A2002 个人任务清单
 ```
 
 > - 冲刺目录 `<YYYYMMDD>` 以当周周一日期命名，例如 `20260303`。
@@ -13,9 +13,9 @@ sprints/
 
 ## SOP 规范
 
-| ID | Name | Description | Process |
-| :--- | :--- | :--- | :--- |
-| S2005 | 冲刺任务规划 | 锁定各责任人本周执行任务，建立个人交付基线 | `{ops-playbook}/process/agile-dev/sop-sprint-task-plan-product.md` |
+| ID | Name | Description | Process | Issue Template |
+| :--- | :--- | :--- | :--- | :--- |
+| S2005 | 产品设计冲刺 | 以 W301 产品设计工作流为框架，规划、执行与总结本 repo 的周冲刺产品设计工作 | `{ops-playbook}/process/agile-dev/sop-sprint-task-plan-product.md` | [产品设计冲刺](../../.github/ISSUE_TEMPLATE/M20-05-sprint-task-plan.yml) |
 
 ## 上游输入
 
@@ -27,7 +27,7 @@ sprints/
 
 | ID | Name | File | Template |
 | :--- | :--- | :--- | :--- |
-| A2002 | 周冲刺任务 | `<YYYYMMDD>/<user>-tasks.md` | `{ops-playbook}/template/sprint-tasks.md` |
+| A2002 | 个人任务清单 | `<YYYYMMDD>/<user>-tasks.md` | `{ops-playbook}/template/sprint-tasks.md` |
 
 ## 工作规则
 

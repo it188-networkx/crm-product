@@ -1,0 +1,59 @@
+name: "[管理] 产品设计冲刺 (Product Design Sprint)"
+description: 以 W301 产品设计工作流为框架，规划、执行与总结本 repo 的周冲刺产品设计工作
+title: "[产品设计] <迭代起始日期，例如：20260309>"
+labels: ["domain:management", "activity:process"]
+assignees: []
+body:
+  # 1. 任务说明
+  - type: markdown
+    attributes:
+      value: |
+        ### 产品设计冲刺
+
+        责任人（即本 Issue 创建者）基于周冲刺计划（A2001）和产品设计工作流（W301），
+        提取分配给本人在当前 repo 的相关设计交付目标，识别适用的 SOP 链路，
+        以 SOP 步骤边界拆解任务并生成个人任务清单（A2002）；
+        迭代期间基于 A2002 分批创建子任务工单并推进产品设计工作；
+        迭代结束前汇总交付成果与待办事项，为下一迭代提供衔接输入。
+
+        工作流参考：`{ops-playbook}/sops/workflow/product-design.md`（W301）
+        冲刺任务模板：`{ops-playbook}/template/sprint-tasks.md`
+        周冲刺计划路径约定：`{ops-playbook}/sprints/<YYYYMMDD>/sprint-plan.md`
+
+  # 2. 信息录入
+  - type: input
+    id: sprint_start_date
+    attributes:
+      label: 迭代起始日期
+      description: 填写迭代周一日期（YYYYMMDD 格式），系统据此定位 A2001 路径和冲刺目录
+      placeholder: "例如：20260309"
+    validations:
+      required: true
+
+  - type: textarea
+    id: supplementary_context
+    attributes:
+      label: 补充上下文
+      description: 上游制品路径、已有设计/需求文档引用、紧急/特殊事项等
+      placeholder: "提供任务相关的文档路径或说明，无则留空"
+    validations:
+      required: false
+
+  # 3. 输出验收
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        以下各项在本 Issue 生命周期内依次完成，完成后在 comment 中回复交付链接并勾选：
+
+        **规划阶段**
+        - [ ] **个人任务清单 (A2002)**：文件存在于 `sprints/<YYYYMMDD>/<user>-tasks.md`，覆盖 A2001 全部相关交付目标，每项任务含四要素且对齐 W301 SOP 链路
+        - [ ] **A2001 回写**：已将本 Issue 编号与任务状态回写至 A2001 相关工单区块
+
+        **实施阶段**
+        - [ ] **子工单创建与关联**：按 A2002 任务清单为每项任务创建对应的产品设计子工单，并关联至本 Issue
+        - [ ] **产品设计制品交付**：各子工单对应的产品设计制品已按 W301 制品产出规范归档至 repo 目录
+
+        **总结阶段**
+        - [ ] **任务状态更新**：A2002 中所有任务状态已更新（已完成/延期/阻塞），延期任务标注原因与衔接计划
