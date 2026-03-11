@@ -15,7 +15,7 @@ sprints/
 
 | ID | Name | Description | Process |
 | :--- | :--- | :--- | :--- |
-| S2005 | 冲刺任务规划 | 锁定各责任人本周执行任务，建立个人交付基线 | `{ops-playbook}/process/agile-dev/sop-sprint-task-plan.md` |
+| S2005 | 冲刺任务规划 | 锁定各责任人本周执行任务，建立个人交付基线 | `{ops-playbook}/process/agile-dev/sop-sprint-task-plan-product.md` |
 
 ## 上游输入
 

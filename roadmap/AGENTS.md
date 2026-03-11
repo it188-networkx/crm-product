@@ -4,13 +4,6 @@
 
 ```text
 roadmap/
-├── external/                   # 外部数据
-│   ├── resource-capacity.md    #   资源容量
-│   ├── customer-commitments.md #   客户承诺
-│   ├── delivery-status/        #   交付状态 (实例级)
-│   │   └── <topic>.md
-│   └── team-feedback/          #   团队反馈 (实例级)
-│       └── <topic>.md
 ├── README.md                   # 路线图
 ├── ms-<version>.md             # 里程碑计划
 └── retro-<version>.md          # 迭代复盘报告
@@ -70,10 +63,10 @@ graph TD
 
 | ID | Name | Description | Source |
 | :--- | :--- | :--- | :--- |
-| D14 | 资源容量 | 团队资源与产能数据 | `external/resource-capacity.md` |
-| D15 | 客户承诺 | 已签约客户交付承诺 | `external/customer-commitments.md` |
-| D16 | 交付状态 | 当前迭代交付进度数据 | `external/delivery-status/` |
-| D17 | 团队反馈 | 团队成员迭代反馈 | `external/team-feedback/` |
+| D14 | 资源容量 | 团队资源与产能数据 | `references/resource-capacity.md` |
+| D15 | 客户承诺 | 已签约客户交付承诺 | `references/customer-commitments.md` |
+| D16 | 交付状态 | 当前迭代交付进度数据 | `references/delivery-status/` |
+| D17 | 团队反馈 | 团队成员迭代反馈 | `references/team-feedback/` |
 
 ## 上游输入
 
@@ -111,11 +104,3 @@ graph TD
 | A0401 | A13 | 路线图 |
 | A0402 | A14 | 里程碑计划 |
 | A0403 | A15 | 迭代复盘报告 |
-
-## 工作规则
-
-- `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
-- 建立或修改任意制品前，必须按以下顺序读取文件，缺一不可：
-    1. 读取 **SOP 文件**：从 SOP规范 表格找到对应行的 Process 路径，用 read_file 读取全文，严格遵照其中的每一个步骤和指令执行。
-    2. 读取 **制品模版文件**：从制品产出表格找到对应行的 Template 路径，用 read_file 读取全文，严格遵照模版中的结构、章节要求和注释指令生成内容。
-    3. 两份文件中的指令若有冲突，以 SOP 文件为准。
