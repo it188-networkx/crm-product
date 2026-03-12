@@ -78,7 +78,7 @@ jobs:
                 let readmeContent = fs.readFileSync(readmePath, 'utf-8');
 
                 // 提取冲刺主 Issue 编号
-                const parentMatch = readmeContent.match(/工单编号：\[.*?#(\d+)\]/);
+                const parentMatch = readmeContent.match(/工单编号：.*?#(\d+)/);
                 const parentIssueNumber = parentMatch ? parseInt(parentMatch[1], 10) : null;
 
                 // 解析任务表（7 列格式），查找「可执行」且无关联工单的行
@@ -88,7 +88,7 @@ jobs:
 
                 for (let i = 0; i < lines.length; i++) {
                   const m = lines[i].match(
-                    /^\|\s*\[(\d+)\]\(\.\//t\d+\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*可执行\s*\|\s*([^|]*?)\s*\|$/
+                    /^\|\s*\[(\d+)\]\(\.\/t\d+\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*可执行\s*\|\s*([^|]*?)\s*\|$/
                   );
                   if (!m) continue;
                   // groups: 1=taskId 2=desc 3=artPath 4=issueCol 5=prCol 6=dateCol
