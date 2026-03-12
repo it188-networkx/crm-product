@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：crm-product#1
-- 更新时间：2026-03-14（S0304 全量 P0 Epic 补充完成）
+- 更新时间：2026-03-14（S0304 全量 Epic 补充完成）
 
 ## 待澄清问题 (Open Questions)
 
@@ -60,10 +60,16 @@
 | [101409](./t101409.md) | S0304 功能特性规划：T-02/E-02 AI 跟进辅助（A0304） | `requirements/ai-augmentation/followup-copilot/<feature>/README.md` ×3 | #63 | - | 已派发 | - |
 | [101410](./t101410.md) | S0304 功能特性规划：T-03/E-01 销售漏斗全链路视图（A0304） | `requirements/executive-dashboard/funnel-analytics/<feature>/README.md` ×3 | #65 | - | 已派发 | - |
 | [101411](./t101411.md) | S0304 功能特性规划：T-03/E-02 渠道 ROI 对比分析（A0304） | `requirements/executive-dashboard/channel-roi/<feature>/README.md` ×3 | #66 | - | 已派发 | - |
+| [101412](./t101412.md) | S0304 功能特性规划：T-02/E-03 竞品预警与监控（A0304） | `requirements/ai-augmentation/competitive-alerts/competitive-alert-push/README.md` ×1 | - | - | 待派发 | - |
+| [101413](./t101413.md) | S0304 功能特性规划：T-03/E-03 商机健康度预警（A0304） | `requirements/executive-dashboard/opportunity-health/<feature>/README.md` ×5 | - | - | 待派发 | - |
+| [101414](./t101414.md) | S0304 功能特性规划：T-03/E-04 Go/No-Go 验收看板（A0304） | `requirements/executive-dashboard/go-nogo-dashboard/<feature>/README.md` ×4 | - | - | 待派发 | - |
+| [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | - | - | 待派发 | - |
+| [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | - | - | 待派发 | - |
+| [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | - | - | 待派发 | - |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
-> S0304 功能特性规划全部 11 个 P0 Epic 任务已规划（101401 ~ 101411）：T-01 E-01~E-07（7 个）、T-02 E-01~E-02（2 个）、T-03 E-01~E-02（2 个）。T-04 知识库为 Phase 2 延后，不在本冲刺范围。
+> S0304 功能特性规划全部 17 个 Epic 任务已规划（101401 ~ 101417）：T-01 E-01~E-07（7 个）、T-02 E-01~E-03（3 个）、T-03 E-01~E-04（4 个）、T-04 E-01~E-03（3 个）。T-04 知识库交付阶段为 Phase 2，但产品设计（需求特性定义）在本冲刺范围内完成。
 
 ## 自检清单 (Self-Check)
 
@@ -81,3 +87,4 @@
 - [x] 第三批 S0303 史诗拆分任务已补充规划（101301 ~ 101317，全部 4 个 Theme 共 17 个 Epic）
 - [x] 第四批 S0304 功能特性规划任务已补充规划（101401 ~ 101404，T-01 核心管线 E-01/E-02/E-03/E-04）
 - [x] 第五批 S0304 功能特性规划任务已补充规划（101405 ~ 101411，T-01 E-05~E-07、T-02 E-01~E-02、T-03 E-01~E-02）
+- [x] 第六批 S0304 补充规划任务已添加（101412 ~ 101417，T-02 E-03、T-03 E-03~E-04、T-04 E-01~E-03），覆盖全部 17 个 Epic
