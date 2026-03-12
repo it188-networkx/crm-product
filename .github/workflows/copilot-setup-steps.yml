@@ -3,21 +3,19 @@
 # GitHub 在每次 Copilot Coding Agent 开始处理 issue/PR 前自动运行此文件。
 # 本 workflow 用于：
 #   1. 将当前仓库主分支 checkout 到 runner 环境
-#   2. 使用 fine-grained PAT 将外部仓库克隆到工作区根目录（与当前仓库平级）
+#   2. 使用 PAT 将外部仓库克隆到工作区根目录（与当前仓库平级）
 #
-# 前置条件：
-#   在本仓库 Settings → Environments → "copilot" 环境中添加以下 Secret：
-#     COPILOT_GIT_PAT  —— fine-grained PAT，需具备以下仓库的 Contents:Read 权限：
-#                         - it188-networkx/ops-playbook（Sprint、任务、SOP 参考资料）
-#                         - it188-networkx/product-base（产品设计流程、Agent、模板）
-#                         - it188-networkx/design-base（设计系统、规范、参考资料）
-#                         如需访问更多仓库，在 PAT 中追加授权并在下方添加 clone 步骤即可。
+# ⚠️  前置条件（必须在 GitHub 仓库设置中完成）：
+#   Settings → Environments → "copilot" → Secrets → 添加：
+#     GH_PAT  —— fine-grained PAT（或 classic PAT），需具备以下仓库的 Contents:Read 权限：
+#               - it188-networkx/ops-playbook
+#
+#   注意：Copilot Coding Agent 只能访问 "copilot" environment 中的 secrets，
+#         仓库级（repository-level）secrets 对 agent 不可见。
 #
 # 目录布局（Copilot 运行时可见）：
 #   $GITHUB_WORKSPACE/                  ← 当前仓库根目录
 #   $GITHUB_WORKSPACE/ops-playbook/     ← it188-networkx/ops-playbook 完整内容
-#   $GITHUB_WORKSPACE/product-base/     ← it188-networkx/product-base 完整内容
-#   $GITHUB_WORKSPACE/design-base/      ← it188-networkx/design-base 完整内容
 
 name: "Copilot Setup Steps"
 
@@ -27,10 +25,10 @@ on:
 jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
-    # 使用 copilot 环境以访问 COPILOT_GIT_PAT secret
+    # ⚠️  必须保留此行，Copilot agent 只能读取 copilot environment 中的 secrets
     environment: copilot
     permissions:
-      contents: read # checkout 当前仓库
+      contents: read
 
     steps:
       - name: Checkout current repository
@@ -38,28 +36,21 @@ jobs:
 
       - name: Clone context repositories
         env:
-          COPILOT_GIT_PAT: ${{ secrets.COPILOT_GIT_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           # --- ops-playbook: Sprint 计划、SOP、任务目录等参考资料 ---
           echo "Cloning it188-networkx/ops-playbook ..."
           git clone --depth=1 \
-            "https://oauth2:${COPILOT_GIT_PAT}@github.com/it188-networkx/ops-playbook.git" \
+            "https://oauth2:${GH_PAT}@github.com/it188-networkx/ops-playbook.git" \
             ops-playbook
           echo "ops-playbook cloned: $(find ops-playbook -type f | wc -l) files"
 
-          # --- product-base: 产品设计流程、Agent、模板 ---
+          # --- product-base: 产品基础知识库 ---
           echo "Cloning it188-networkx/product-base ..."
           git clone --depth=1 \
-            "https://oauth2:${COPILOT_GIT_PAT}@github.com/it188-networkx/product-base.git" \
+            "https://oauth2:${GH_PAT}@github.com/it188-networkx/product-base.git" \
             product-base
           echo "product-base cloned: $(find product-base -type f | wc -l) files"
-
-          # --- design-base: 设计系统、规范、参考资料 ---
-          echo "Cloning it188-networkx/design-base ..."
-          git clone --depth=1 \
-            "https://oauth2:${COPILOT_GIT_PAT}@github.com/it188-networkx/design-base.git" \
-            design-base
-          echo "design-base cloned: $(find design-base -type f | wc -l) files"
 
           # --- 如需访问更多仓库，在此处追加 clone 步骤 ---
           # git clone --depth=1 \
@@ -75,5 +66,4 @@ jobs:
           echo "=== Copilot context layout ==="
           echo "Current repo  : $GITHUB_WORKSPACE"
           echo "ops-playbook/ : sprint plans, SOPs, task catalogs"
-          echo "product-base/ : product design process, agents, templates"
-          echo "design-base/  : design system, standards, references"
+          echo "product-base/ : product base knowledge"

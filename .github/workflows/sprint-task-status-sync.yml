@@ -1,0 +1,290 @@
+name: Sprint Task Status Sync
+
+# 冲刺任务状态自动同步（待修订 → 已完成 / 可执行）
+# 当 PR 关闭时（合并 → 已完成 / 未合并 → 可执行），
+# 自动更新 A2007 个人任务清单状态并管理关联 Issue 生命周期。
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  sync-status:
+    runs-on: ubuntu-latest
+    # 仅处理带 pipeline:sprint label 且 base 为 main 的 PR
+    if: |
+      github.event.pull_request.base.ref == 'main' &&
+      contains(toJSON(github.event.pull_request.labels.*.name), 'pipeline:sprint')
+    permissions:
+      contents: write
+      pull-requests: read
+      issues: write
+
+    steps:
+      - name: Checkout sprints directory
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          sparse-checkout: sprints
+          sparse-checkout-cone-mode: true
+
+      - name: Sync task status
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execSync } = require('child_process');
+
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const prNumber = pr.number;
+            const prBody = pr.body || '';
+
+            // ── 步骤 1: 判定新状态 ──────────────────────────────
+            let newStatus = null;
+            let trigger = '';
+
+            if (context.eventName === 'pull_request' && pr.merged) {
+              newStatus = '已完成';
+              trigger = 'merged';
+            } else if (context.eventName === 'pull_request' && !pr.merged) {
+              newStatus = '可执行';
+              trigger = 'closed';
+            }
+
+            if (!newStatus) {
+              core.info('No status change needed, skipping.');
+              return;
+            }
+
+            core.info(`PR #${prNumber}: trigger=${trigger}, newStatus=${newStatus}`);
+
+            // ── 步骤 2: 提取任务元数据 ──────────────────────────
+            let sprint = null;
+            let user = null;
+            let taskId = null;
+            let issueNumber = null;
+
+            // 策略 A: 从 PR body 中的元数据注释提取
+            const metaMatch = prBody.match(
+              /<!--\s*sprint-task:\s*sprint=(\d{8})\s+user=(\S+)\s+task=(\d+)\s+issue=#(\d+)\s*-->/
+            );
+
+            if (metaMatch) {
+              sprint = metaMatch[1];
+              user = metaMatch[2];
+              taskId = metaMatch[3];
+              issueNumber = parseInt(metaMatch[4], 10);
+              core.info(`Metadata from comment: sprint=${sprint} user=${user} task=${taskId} issue=#${issueNumber}`);
+            } else {
+              // 策略 B: 从 PR body 中 #NNN 引用反查 A2007
+              core.info('No metadata comment found, falling back to issue reference search.');
+
+              const issueRefs = [...new Set(
+                (prBody.match(/#(\d+)/g) || []).map(r => r.replace('#', ''))
+              )];
+
+              if (issueRefs.length === 0) {
+                core.warning('No issue references found in PR body. Cannot determine task. Skipping.');
+                return;
+              }
+
+              core.info(`Found issue refs: ${issueRefs.join(', ')}`);
+
+              // 扫描所有 sprints/*/README.md 查找匹配的 issue 引用
+              const sprintsDir = path.join(process.env.GITHUB_WORKSPACE, 'sprints');
+              if (!fs.existsSync(sprintsDir)) {
+                core.warning('sprints/ directory not found. Skipping.');
+                return;
+              }
+
+              const sprintDirs = fs.readdirSync(sprintsDir).filter(d =>
+                /^\d{8}$/.test(d) && fs.statSync(path.join(sprintsDir, d)).isDirectory()
+              );
+
+              let found = false;
+              for (const sd of sprintDirs) {
+                const sdPath = path.join(sprintsDir, sd);
+                const taskDirs = fs.readdirSync(sdPath).filter(d =>
+                  d.endsWith('-tasks') && fs.statSync(path.join(sdPath, d)).isDirectory()
+                );
+
+                for (const td of taskDirs) {
+                  const readmePath = path.join(sdPath, td, 'README.md');
+                  if (!fs.existsSync(readmePath)) continue;
+
+                  const content = fs.readFileSync(readmePath, 'utf-8');
+
+                  for (const ref of issueRefs) {
+                    // 匹配任务行中包含该 issue 编号的行
+                    // 格式: | [101301](./t101301.md) | ... | [#14](...) | 已执行 | - | [#15](...) |
+                    const lineRegex = new RegExp(
+                      `^\\|\\s*\\[(\\d+)\\].*?#${ref}[)\\]]`, 'm'
+                    );
+                    const lineMatch = content.match(lineRegex);
+                    if (lineMatch) {
+                      sprint = sd;
+                      user = td.replace(/-tasks$/, '');
+                      taskId = lineMatch[1];
+                      issueNumber = parseInt(ref, 10);
+                      found = true;
+                      core.info(`Found via fallback: sprint=${sprint} user=${user} task=${taskId} issue=#${issueNumber}`);
+                      break;
+                    }
+                  }
+                  if (found) break;
+                }
+                if (found) break;
+              }
+
+              if (!found) {
+                core.warning('Could not locate task in any A2007 README.md. Skipping.');
+                return;
+              }
+            }
+
+            // ── 步骤 3: 幂等检查 + 更新 A2007 文件 ─────────────
+            const tasksDir = path.join(
+              process.env.GITHUB_WORKSPACE,
+              'sprints', sprint, `${user}-tasks`
+            );
+            const readmePath = path.join(tasksDir, 'README.md');
+            const taskFilePath = path.join(tasksDir, `t${taskId}.md`);
+
+            if (!fs.existsSync(readmePath)) {
+              core.warning(`A2007 README not found: ${readmePath}. Skipping.`);
+              return;
+            }
+
+            // 计算完成日期 (MM-DD)
+            const now = new Date();
+            const completionDate = `${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+            let readmeContent = fs.readFileSync(readmePath, 'utf-8');
+
+            // 幂等检查：如果当前状态已是目标状态，跳过
+            const taskLineRegex = new RegExp(
+              `^(\\|\\s*\\[${taskId}\\].+?)\\|\\s*([^|]+?)\\s*\\|\\s*([^|]+?)\\s*\\|\\s*([^|]+?)\\s*$`,
+              'm'
+            );
+            const currentMatch = readmeContent.match(taskLineRegex);
+            if (currentMatch) {
+              const currentStatus = currentMatch[2].trim();
+              if (currentStatus === newStatus) {
+                core.info(`Task ${taskId} already has status "${newStatus}". Skipping.`);
+                return;
+              }
+            }
+
+            // 更新 README.md 任务表
+            // 表格行格式: | [101301](./t101301.md) | desc | [#14](...) | 状态 | 日期 | [#15](...) |
+            const tableLineRegex = new RegExp(
+              `^(\\|\\s*\\[${taskId}\\]\\([^)]+\\)\\s*\\|[^|]+\\|[^|]+\\|)\\s*[^|]+\\s*(\\|)\\s*[^|]+\\s*(\\|[^|]+\\|)\\s*$`,
+              'gm'
+            );
+
+            const dateValue = newStatus === '已完成' ? ` ${completionDate} ` : ' - ';
+            readmeContent = readmeContent.replace(
+              tableLineRegex,
+              (match, p1, p2, p3) => {
+                const prCol = newStatus === '可执行' ? '| - |' : p3;
+                return `${p1} ${newStatus} ${p2}${dateValue}${prCol}`;
+              }
+            );
+
+            fs.writeFileSync(readmePath, readmeContent, 'utf-8');
+            core.info(`Updated README.md: task ${taskId} → ${newStatus}`);
+
+            // 更新 t{taskId}.md（如果存在）
+            if (fs.existsSync(taskFilePath)) {
+              let taskContent = fs.readFileSync(taskFilePath, 'utf-8');
+
+              // 更新状态字段
+              taskContent = taskContent.replace(
+                /^(- 状态：).*$/m,
+                `$1${newStatus}`
+              );
+
+              // 更新实际完成字段
+              if (newStatus === '已完成') {
+                taskContent = taskContent.replace(
+                  /^(- 实际完成：).*$/m,
+                  `$1${completionDate}`
+                );
+              }
+
+              // 可执行：清除关联 PR（便于重新派发）
+              if (newStatus === '可执行') {
+                taskContent = taskContent.replace(
+                  /^(- 关联 PR：).*$/m,
+                  '$1-'
+                );
+              }
+
+              fs.writeFileSync(taskFilePath, taskContent, 'utf-8');
+              core.info(`Updated t${taskId}.md: status → ${newStatus}`);
+            } else {
+              core.info(`Task detail file t${taskId}.md not found, skipping detail update.`);
+            }
+
+            // ── 步骤 4: Git commit + push ───────────────────────
+            const commitMsg = `chore(sprint): update A2007 status · t${taskId} → ${newStatus}\n\nTriggered by PR #${prNumber} (${trigger}).`;
+
+            execSync('git config user.name "github-actions[bot]"', { cwd: process.env.GITHUB_WORKSPACE });
+            execSync('git config user.email "github-actions[bot]@users.noreply.github.com"', { cwd: process.env.GITHUB_WORKSPACE });
+            execSync('git add sprints/', { cwd: process.env.GITHUB_WORKSPACE });
+
+            // 检查是否有实际变更
+            const diffResult = execSync('git diff --cached --name-only', {
+              cwd: process.env.GITHUB_WORKSPACE,
+              encoding: 'utf-8',
+            }).trim();
+
+            if (!diffResult) {
+              core.info('No file changes detected after update. Skipping commit.');
+            } else {
+              core.info(`Files changed:\n${diffResult}`);
+              execSync(`git commit -m "${commitMsg.replace(/"/g, '\\"')}"`, {
+                cwd: process.env.GITHUB_WORKSPACE,
+              });
+
+              // 拉取最新 main 后推送（避免冲突）
+              execSync('git pull --rebase origin main', { cwd: process.env.GITHUB_WORKSPACE });
+              execSync('git push origin main', { cwd: process.env.GITHUB_WORKSPACE });
+              core.info('Pushed status update to main.');
+            }
+
+            // ── 步骤 5: 管理 Issue ──────────────────────────────
+            if (!issueNumber) {
+              core.info('No issue number found, skipping issue management.');
+              return;
+            }
+
+            try {
+              if (newStatus === '已完成') {
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  state: 'closed',
+                  state_reason: 'completed',
+                });
+                core.info(`Closed issue #${issueNumber} as completed.`);
+              } else if (newStatus === '可执行') {
+                const commentBody = `PR #${prNumber} 已关闭（未合并），任务 t${taskId} 回退为「可执行」，等待重新派发。`;
+
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: issueNumber,
+                  body: commentBody,
+                });
+                core.info(`Added comment to issue #${issueNumber}.`);
+              }
+            } catch (issueErr) {
+              core.warning(`Issue management failed: ${issueErr.message}`);
+            }
+
+            core.info(`Done: PR #${prNumber} → task t${taskId} → ${newStatus}`);

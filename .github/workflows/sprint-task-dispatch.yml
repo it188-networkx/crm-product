@@ -1,0 +1,279 @@
+name: Sprint Task Dispatch
+
+# 冲刺任务自动派发（可执行 → 已派发）
+# 当 A2007 个人任务清单推送到 main 时，自动为「可执行」状态且尚未关联工单
+# 的任务创建 Issue，assign 给 Copilot Agent，状态更新为「已派发」。
+# Copilot Agent 接手后会自行创建 PR，无需 workflow 代劳。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "sprints/**/README.md"
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dispatch executable tasks
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_PAT }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const { execSync } = require('child_process');
+
+            const AGENT_ASSIGNEE = 'copilot-swe-agent[bot]';
+            const { owner, repo } = context.repo;
+            const workspace = process.env.GITHUB_WORKSPACE;
+            const sprintsDir = path.join(workspace, 'sprints');
+
+            if (!fs.existsSync(sprintsDir)) {
+              core.info('sprints/ directory not found. Skipping.');
+              return;
+            }
+
+            // ── 确保所需标签存在 ─────────────────
+            const requiredLabels = [
+              { name: 'pipeline:sprint', color: '0E8A16', description: '冲刺任务自动派发标签' },
+              { name: 'copilot-agent', color: '0075ca', description: 'Copilot Agent 任务' },
+            ];
+            for (const label of requiredLabels) {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name: label.name });
+              } catch {
+                await github.rest.issues.createLabel({
+                  owner, repo, name: label.name,
+                  color: label.color, description: label.description,
+                });
+                core.info(`Created label: ${label.name}`);
+              }
+            }
+
+            // ── 扫描所有冲刺目录中的可执行任务 ─────────────────
+            const sprintDirs = fs.readdirSync(sprintsDir)
+              .filter(d => /^\d{8}$/.test(d) && fs.statSync(path.join(sprintsDir, d)).isDirectory());
+
+            let totalDispatched = 0;
+            const filesToWrite = new Map();
+
+            for (const sprint of sprintDirs) {
+              const sprintPath = path.join(sprintsDir, sprint);
+              const taskDirs = fs.readdirSync(sprintPath)
+                .filter(d => d.endsWith('-tasks') && fs.statSync(path.join(sprintPath, d)).isDirectory());
+
+              for (const taskDir of taskDirs) {
+                const user = taskDir.replace(/-tasks$/, '');
+                const readmePath = path.join(sprintPath, taskDir, 'README.md');
+                if (!fs.existsSync(readmePath)) continue;
+
+                let readmeContent = fs.readFileSync(readmePath, 'utf-8');
+
+                // 提取冲刺主 Issue 编号
+                const parentMatch = readmeContent.match(/工单编号：\[.*?#(\d+)\]/);
+                const parentIssueNumber = parentMatch ? parseInt(parentMatch[1], 10) : null;
+
+                // 解析任务表（7 列格式），查找「可执行」且无关联工单的行
+                // | 任务编号 | 任务描述 | 制品路径 | 关联工单 | 关联 PR | 状态 | 完成日期 |
+                const lines = readmeContent.split('\n');
+                const dispatchable = [];
+
+                for (let i = 0; i < lines.length; i++) {
+                  const m = lines[i].match(
+                    /^\|\s*\[(\d+)\]\(\.\//t\d+\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*可执行\s*\|\s*([^|]*?)\s*\|$/
+                  );
+                  if (!m) continue;
+                  // groups: 1=taskId 2=desc 3=artPath 4=issueCol 5=prCol 6=dateCol
+                  const [, taskId, desc, , issueCol] = m;
+                  const hasIssue = issueCol.trim() && issueCol.trim() !== '-';
+                  if (hasIssue) continue;
+                  dispatchable.push({ taskId, desc: desc.trim(), lineIndex: i });
+                }
+
+                if (dispatchable.length === 0) {
+                  core.info(`[${sprint}/${taskDir}] 无可派发任务`);
+                  continue;
+                }
+
+                core.info(`[${sprint}/${taskDir}] 发现 ${dispatchable.length} 个可派发任务`);
+
+                for (const task of dispatchable) {
+                  try {
+                    // ── 读取任务详情 ──
+                    const detailPath = path.join(sprintPath, taskDir, `t${task.taskId}.md`);
+                    let detail = '';
+                    if (fs.existsSync(detailPath)) {
+                      detail = fs.readFileSync(detailPath, 'utf-8');
+                    }
+
+                    const goalMatch = detail.match(/^- 目标：(.+)$/m);
+                    const goal = goalMatch ? goalMatch[1].trim() : task.desc;
+
+                    const sopMatch = detail.match(/^SOP：(.+)$/m);
+                    const sopPath = sopMatch ? sopMatch[1].trim() : '';
+
+                    const tmplMatch = detail.match(/^工单模版：(.+)$/m);
+                    const tmplPath = tmplMatch ? tmplMatch[1].trim() : '';
+
+                    const artMatch = detail.match(/^- 制品：(.+)$/m);
+                    const artPath = artMatch ? artMatch[1].trim() : '';
+
+                    const artTmplMatch = detail.match(/^- 模板：(.+)$/m);
+                    const artTmplPath = artTmplMatch ? artTmplMatch[1].trim() : '';
+
+                    const ctxMatch = detail.match(
+                      /\*\*上下文\*\*\n\n([\s\S]*?)(?=\n\*\*处理规程\*\*|\n---)/
+                    );
+                    const ctxSection = ctxMatch ? ctxMatch[1].trim() : '';
+
+                    let issueNumber = null;
+                    let issueRestId = null;
+
+                    // ── 创建 Issue（幂等）──
+                    const issueTitle = `[${task.taskId}] ${task.desc}`;
+
+                    // 幂等：搜索已有 issue，区分 open / closed
+                    let existingOpen = null;
+                    try {
+                      const searchQ = `repo:${owner}/${repo} is:issue "[${task.taskId}]" "${task.desc}" in:title`;
+                      const searchResp = await github.rest.search.issuesAndPullRequests({
+                        q: searchQ, per_page: 20,
+                      });
+                      const matches = searchResp.data.items.filter(
+                        i => i.title === issueTitle && !i.pull_request
+                      );
+                      existingOpen = matches.find(i => i.state === 'open') || null;
+                      if (!existingOpen && matches.length > 0) {
+                        core.info(`  任务 ${task.taskId}: 存在 ${matches.length} 个已关闭 issue，将新建`);
+                      }
+                    } catch (e) {
+                      core.warning(`  搜索已有 issue 失败: ${e.message}，将直接新建`);
+                    }
+
+                    let body = `## 任务信息\n\n`;
+                    body += `- 任务编号：${task.taskId}\n`;
+                    body += `- 冲刺：${sprint}\n`;
+                    body += `- 责任人：${user}\n`;
+                    if (parentIssueNumber) body += `- 冲刺主 Issue：#${parentIssueNumber}\n`;
+                    body += `\n## 任务目标\n\n${goal}\n`;
+                    if (ctxSection) body += `\n## 上下文\n\n${ctxSection}\n`;
+                    if (sopPath) {
+                      body += `\n## 处理规程\n\n`;
+                      body += `- SOP：${sopPath}\n`;
+                      if (tmplPath) body += `- 工单模版：${tmplPath}\n`;
+                    }
+                    if (artPath) {
+                      body += `\n## 预期制品\n\n`;
+                      body += `- 制品：${artPath}\n`;
+                      if (artTmplPath) body += `- 模板：${artTmplPath}\n`;
+                    }
+
+                    if (existingOpen) {
+                      issueNumber = existingOpen.number;
+                      issueRestId = existingOpen.id;
+                      await github.rest.issues.update({
+                        owner, repo, issue_number: issueNumber,
+                        body,
+                      });
+                      core.info(`  复用 Issue #${issueNumber}: ${task.taskId}（open，已更新 body）`);
+                    } else {
+                      const issueRes = await github.rest.issues.create({
+                        owner, repo,
+                        title: issueTitle,
+                        body,
+                        assignees: [AGENT_ASSIGNEE],
+                        labels: ['pipeline:sprint', 'copilot-agent'],
+                      });
+                      issueNumber = issueRes.data.number;
+                      issueRestId = issueRes.data.id;
+                      core.info(`  创建 Issue #${issueNumber}: ${task.taskId}（agent assigned）`);
+                    }
+
+                    // 尝试挂接 sub-issue
+                    if (parentIssueNumber && issueRestId) {
+                      try {
+                        await github.request(
+                          'POST /repos/{owner}/{repo}/issues/{issue_number}/sub_issues',
+                          { owner, repo, issue_number: parentIssueNumber,
+                            sub_issue_id: issueRestId }
+                        );
+                      } catch (e) {
+                        core.warning(`  Sub-issue 挂接失败: ${e.message}`);
+                      }
+                    }
+
+                    // ── 回写 A2007 ──
+                    const issueLink = `#${issueNumber}`;
+
+                    // 更新 README.md 表行
+                    // cols: ['', 任务编号, 任务描述, 制品路径, 关联工单, 关联PR, 状态, 完成日期, '']
+                    const cols = lines[task.lineIndex].split('|');
+                    if (cols.length >= 9) {
+                      cols[4] = ` ${issueLink} `;
+                      cols[6] = ' 已派发 ';
+                      lines[task.lineIndex] = cols.join('|');
+                    }
+
+                    // 更新 t{id}.md
+                    if (fs.existsSync(detailPath)) {
+                      let content = fs.readFileSync(detailPath, 'utf-8');
+                      const issueUrl = `https://github.com/${owner}/${repo}/issues/${issueNumber}`;
+                      content = content.replace(
+                        /^(- 关联工单：).*$/m,
+                        `$1[#${issueNumber}](${issueUrl})`
+                      );
+                      content = content.replace(/^(- 状态：).*$/m, '$1已派发');
+                      filesToWrite.set(detailPath, content);
+                    }
+
+                    totalDispatched++;
+                    core.info(`  任务 ${task.taskId} 派发完成: Issue #${issueNumber}`);
+                  } catch (err) {
+                    core.warning(`  派发失败 [${task.taskId}]: ${err.message}`);
+                  }
+                }
+
+                // 写入更新后的 README.md
+                filesToWrite.set(readmePath, lines.join('\n'));
+              }
+            }
+
+            if (totalDispatched === 0) {
+              core.info('无任务需要派发');
+              return;
+            }
+
+            // ── 写入文件 ──
+            for (const [fp, content] of filesToWrite) {
+              fs.writeFileSync(fp, content, 'utf-8');
+            }
+
+            // ── Git commit + push ──
+            core.info(`共派发 ${totalDispatched} 个任务，提交中...`);
+            execSync('git config user.name "github-actions[bot]"', { cwd: workspace });
+            execSync('git config user.email "github-actions[bot]@users.noreply.github.com"', { cwd: workspace });
+            execSync('git add sprints/', { cwd: workspace });
+
+            const diff = execSync('git diff --cached --name-only', {
+              cwd: workspace, encoding: 'utf-8',
+            }).trim();
+
+            if (!diff) {
+              core.info('无文件变更，跳过提交');
+              return;
+            }
+
+            execSync(
+              `git commit -m "chore(sprint): dispatch ${totalDispatched} task(s) · 可执行 → 已派发"`,
+              { cwd: workspace }
+            );
+            execSync('git push origin main', { cwd: workspace });
+            core.info('已推送 A2007 更新');
