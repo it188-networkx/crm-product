@@ -17,6 +17,7 @@ graph TD
     classDef sop fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A5F,rx:8,ry:8
     classDef art fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
     classDef dat fill:#F0FDF4,stroke:#16A34A,stroke-width:1.5px,color:#14532D
+    classDef ext fill:#F3F4F6,stroke:#6B7280,stroke-width:1.5px,color:#374151
 
     A0203["A0203 产品定义文档"]:::art
     A0301["A0301 产品需求大纲"]:::art
@@ -33,6 +34,8 @@ graph TD
     A0402["A0402 里程碑计划"]:::art
     S0403["S0403 迭代复盘"]:::sop
     A0403["A0403 迭代复盘报告"]:::art
+    S0404["S0404 产品冲刺规划"]:::sop
+    A2001["A2001 周冲刺计划"]:::ext
 
     A0301 --> S0401
     A0203 --> S0401
@@ -49,6 +52,8 @@ graph TD
     A0402 --> S0403
     D17 --> S0403
     S0403 --> A0403
+    A0402 --> S0404
+    S0404 --> A2001
 ```
 
 ## SOP规范
@@ -58,6 +63,7 @@ graph TD
 | S0401 | 路线图规划 | 确定版本发布优先级与交付窗口，形成可承诺的产品路线图 | `{product-base}/process/sop-roadmap-plan.md` |
 | S0402 | 里程碑设计 | 锁定版本关键交付节点，制定里程碑验收标准与风险管控策略 | `{product-base}/process/sop-milestone-design.md` |
 | S0403 | 迭代复盘 | 评审版本交付成果与流程效能，识别改进项并输入下轮规划 | `{product-base}/process/sop-retrospective.md` |
+| S0404 | 产品冲刺规划 | 基于里程碑计划圈定本周产品侧迭代范围，产出周冲刺计划产品部分草稿，汇入 ops-playbook 冲刺流程 | `{product-base}/process/sop-sprint-plan.md` |
 
 ## 外部输入
 
@@ -85,6 +91,8 @@ graph TD
 | A0402 | 里程碑计划 | 版本级交付承诺基准文档，锁定关键节点与验收准入，为周冲刺规划提供输入 | `ms-<version>.md` | `{product-base}/template/roadmap/rm-milestone.md` |
 | A0403 | 迭代复盘报告 | 版本迭代成果与效能复盘存档，驱动路线图修订与团队改进 | `retro-<version>.md` | `{product-base}/template/roadmap/rm-retrospective.md` |
 
+> S0404 以 A0402 为主输入，在 [ops-playbook/sprints](https://github.com/it188-networkx/ops-playbook/tree/main/sprints) 冲刺规划流程中产出 A2001 周冲刺计划，详见 `{ops-playbook}/sprints/AGENTS.md`。
+
 ## 新老编号对比
 
 本阶段的SOP和制品产出重新编号，分别按照S04XX和A04XX，进行合理排序，并做好新老编号对照表。
@@ -96,6 +104,7 @@ graph TD
 | S0401 | S12 | 路线图规划 |
 | S0402 | S13 | 里程碑设计 |
 | S0403 | S14 | 迭代复盘 |
+| S0404 | S2002 | 产品冲刺规划 |
 
 ### 制品
 
