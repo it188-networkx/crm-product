@@ -49,10 +49,10 @@
 | [101315](./t101315.md) | S0303 功能史诗规划：T-04/E-01 知识资产结构化录入与审核（A0303） | `requirements/knowledge-base/knowledge-curation/README.md` | #44 | #45 | 已完成 | 03-13 |
 | [101316](./t101316.md) | S0303 功能史诗规划：T-04/E-02 知识检索与场景推送（A0303） | `requirements/knowledge-base/knowledge-retrieval/README.md` | #46 | #47 | 已完成 | 03-13 |
 | [101317](./t101317.md) | S0303 功能史诗规划：T-04/E-03 AI 知识向量化引用（A0303） | `requirements/knowledge-base/ai-vectorization/README.md` | #48 | #49 | 已完成 | 03-13 |
-| [101401](./t101401.md) | S0304 功能特性规划：T-01/E-01 线索治理与分配（A0304） | `requirements/structured-sales-cycle/lead-governance/<feature>/README.md` ×4 | - | - | 可执行 | - |
+| [101401](./t101401.md) | S0304 功能特性规划：T-01/E-01 线索治理与分配（A0304） | `requirements/structured-sales-cycle/lead-governance/<feature>/README.md` ×4 | #50 | - | 已派发 | - |
 | [101402](./t101402.md) | S0304 功能特性规划：T-01/E-02 培育与跟进沉淀（A0304） | `requirements/structured-sales-cycle/nurture-followup/<feature>/README.md` ×3 | - | - | 已分配 | - |
 | [101403](./t101403.md) | S0304 功能特性规划：T-01/E-03 商机推进与阶段门控（A0304） | `requirements/structured-sales-cycle/opportunity-pipeline/<feature>/README.md` ×3 | - | - | 已分配 | - |
-| [101404](./t101404.md) | S0304 功能特性规划：T-01/E-04 成交复盘与策略回流（A0304） | `requirements/structured-sales-cycle/winloss-retrospective/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101404](./t101404.md) | S0304 功能特性规划：T-01/E-04 成交复盘与策略回流（A0304） | `requirements/structured-sales-cycle/winloss-retrospective/<feature>/README.md` ×3 | #51 | - | 已派发 | - |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
