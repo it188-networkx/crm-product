@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：crm-product#1
-- 更新时间：2026-03-13（S0304 补充规划）
+- 更新时间：2026-03-14（S0304 全量 P0 Epic 补充完成）
 
 ## 待澄清问题 (Open Questions)
 
@@ -50,13 +50,20 @@
 | [101316](./t101316.md) | S0303 功能史诗规划：T-04/E-02 知识检索与场景推送（A0303） | `requirements/knowledge-base/knowledge-retrieval/README.md` | #46 | #47 | 已完成 | 03-13 |
 | [101317](./t101317.md) | S0303 功能史诗规划：T-04/E-03 AI 知识向量化引用（A0303） | `requirements/knowledge-base/ai-vectorization/README.md` | #48 | #49 | 已完成 | 03-13 |
 | [101401](./t101401.md) | S0304 功能特性规划：T-01/E-01 线索治理与分配（A0304） | `requirements/structured-sales-cycle/lead-governance/<feature>/README.md` ×4 | #50 | - | 已派发 | - |
-| [101402](./t101402.md) | S0304 功能特性规划：T-01/E-02 培育与跟进沉淀（A0304） | `requirements/structured-sales-cycle/nurture-followup/<feature>/README.md` ×3 | - | - | 已分配 | - |
-| [101403](./t101403.md) | S0304 功能特性规划：T-01/E-03 商机推进与阶段门控（A0304） | `requirements/structured-sales-cycle/opportunity-pipeline/<feature>/README.md` ×3 | - | - | 已分配 | - |
+| [101402](./t101402.md) | S0304 功能特性规划：T-01/E-02 培育与跟进沉淀（A0304） | `requirements/structured-sales-cycle/nurture-followup/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101403](./t101403.md) | S0304 功能特性规划：T-01/E-03 商机推进与阶段门控（A0304） | `requirements/structured-sales-cycle/opportunity-pipeline/<feature>/README.md` ×3 | - | - | 可执行 | - |
 | [101404](./t101404.md) | S0304 功能特性规划：T-01/E-04 成交复盘与策略回流（A0304） | `requirements/structured-sales-cycle/winloss-retrospective/<feature>/README.md` ×3 | #51 | - | 已派发 | - |
+| [101405](./t101405.md) | S0304 功能特性规划：T-01/E-05 营销自动化规则管理（A0304） | `requirements/structured-sales-cycle/marketing-automation/<feature>/README.md` ×2 | - | - | 可执行 | - |
+| [101406](./t101406.md) | S0304 功能特性规划：T-01/E-06 客户标签体系管理（A0304） | `requirements/structured-sales-cycle/tag-management/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101407](./t101407.md) | S0304 功能特性规划：T-01/E-07 数据接入与同步（A0304） | `requirements/structured-sales-cycle/data-integration/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101408](./t101408.md) | S0304 功能特性规划：T-02/E-01 AI 线索智能研判（A0304） | `requirements/ai-augmentation/lead-intelligence/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101409](./t101409.md) | S0304 功能特性规划：T-02/E-02 AI 跟进辅助（A0304） | `requirements/ai-augmentation/followup-copilot/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101410](./t101410.md) | S0304 功能特性规划：T-03/E-01 销售漏斗全链路视图（A0304） | `requirements/executive-dashboard/funnel-analytics/<feature>/README.md` ×3 | - | - | 可执行 | - |
+| [101411](./t101411.md) | S0304 功能特性规划：T-03/E-02 渠道 ROI 对比分析（A0304） | `requirements/executive-dashboard/channel-roi/<feature>/README.md` ×3 | - | - | 可执行 | - |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
-> S0304 功能特性规划 4 个任务已规划（101401 ~ 101404），覆盖 T-01 核心销售管线：线索 → 培育 → 商机 → 复盘。剩余 7 个 P0 Epic（T-01/E-05~E-07、T-02/E-01~E-02、T-03/E-01~E-02）及 T-04（Phase 2 延后）待后续批次补充。
+> S0304 功能特性规划全部 11 个 P0 Epic 任务已规划（101401 ~ 101411）：T-01 E-01~E-07（7 个）、T-02 E-01~E-02（2 个）、T-03 E-01~E-02（2 个）。T-04 知识库为 Phase 2 延后，不在本冲刺范围。
 
 ## 自检清单 (Self-Check)
 
@@ -73,3 +80,4 @@
 - [x] 后续阶段任务已在 101201 完成后动态添加（101202 / 101203 / 101204 / 101205）
 - [x] 第三批 S0303 史诗拆分任务已补充规划（101301 ~ 101317，全部 4 个 Theme 共 17 个 Epic）
 - [x] 第四批 S0304 功能特性规划任务已补充规划（101401 ~ 101404，T-01 核心管线 E-01/E-02/E-03/E-04）
+- [x] 第五批 S0304 功能特性规划任务已补充规划（101405 ~ 101411，T-01 E-05~E-07、T-02 E-01~E-02、T-03 E-01~E-02）
