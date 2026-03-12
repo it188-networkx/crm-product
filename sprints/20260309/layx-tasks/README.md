@@ -40,7 +40,7 @@
 | [101306](./t101306.md) | S0303 功能史诗规划：T-01/E-06 客户标签体系管理（A0303） | [#20](https://github.com/it188-networkx/crm-product/issues/20) | 已执行 | 03-12 | [#26](https://github.com/it188-networkx/crm-product/pull/26) |
 | [101307](./t101307.md) | S0303 功能史诗规划：T-01/E-07 数据接入与同步（A0303） | [#21](https://github.com/it188-networkx/crm-product/issues/21) | 已执行 | 03-12 | [#27](https://github.com/it188-networkx/crm-product/pull/27) |
 | [101308](./t101308.md) | S0303 功能史诗规划：T-02/E-01 AI 线索智能研判（A0303） | - | 已规划 | - | - |
-| [101309](./t101309.md) | S0303 功能史诗规划：T-02/E-02 AI 跟进辅助（A0303） | - | 已规划 | - | - |
+| [101309](./t101309.md) | S0303 功能史诗规划：T-02/E-02 AI 跟进辅助（A0303） | [#30](https://github.com/it188-networkx/crm-product/issues/30) | 已执行 | - | [#31](https://github.com/it188-networkx/crm-product/pull/31) |
 | [101310](./t101310.md) | S0303 功能史诗规划：T-02/E-03 竞品预警与监控（A0303） | - | 已规划 | - | - |
 | [101311](./t101311.md) | S0303 功能史诗规划：T-03/E-01 销售漏斗全链路视图（A0303） | - | 已规划 | - | - |
 | [101312](./t101312.md) | S0303 功能史诗规划：T-03/E-02 渠道 ROI 对比分析（A0303） | - | 已规划 | - | - |
