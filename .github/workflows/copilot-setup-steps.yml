@@ -16,6 +16,8 @@
 # 目录布局（Copilot 运行时可见）：
 #   $GITHUB_WORKSPACE/                  ← 当前仓库根目录
 #   $GITHUB_WORKSPACE/ops-playbook/     ← it188-networkx/ops-playbook 完整内容
+#   $GITHUB_WORKSPACE/product-base/     ← it188-networkx/product-base 完整内容
+#   $GITHUB_WORKSPACE/design-base/      ← it188-networkx/design-base 完整内容
 
 name: "Copilot Setup Steps"
 
@@ -52,10 +54,12 @@ jobs:
             product-base
           echo "product-base cloned: $(find product-base -type f | wc -l) files"
 
-          # --- 如需访问更多仓库，在此处追加 clone 步骤 ---
-          # git clone --depth=1 \
-          #   "https://oauth2:${COPILOT_GIT_PAT}@github.com/it188-networkx/<other-repo>.git" \
-          #   <other-repo>
+          # --- design-base: 设计基础知识库 ---
+          echo "Cloning it188-networkx/design-base ..."
+          git clone --depth=1 \
+            "https://oauth2:${GH_PAT}@github.com/it188-networkx/design-base.git" \
+            design-base
+          echo "design-base cloned: $(find design-base -type f | wc -l) files"
 
           echo ""
           echo "=== Context repositories available at workspace root ==="
@@ -67,3 +71,4 @@ jobs:
           echo "Current repo  : $GITHUB_WORKSPACE"
           echo "ops-playbook/ : sprint plans, SOPs, task catalogs"
           echo "product-base/ : product base knowledge"
+          echo "design-base/  : design base knowledge"
