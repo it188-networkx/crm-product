@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：[crm-product#1](https://github.com/it188-networkx/crm-product/issues/1)
-- 更新时间：2026-03-12 17:00
+- 更新时间：2026-03-12 20:00
 
 ## 待澄清问题 (Open Questions)
 
@@ -32,26 +32,26 @@
 | [101203](./t101203.md) | S0302 功能主题规划：T-02 AI营销管理（A0302） | [#6](https://github.com/it188-networkx/crm-product/issues/6) | 已完成 | 03-11 | [#7](https://github.com/it188-networkx/crm-product/pull/7) |
 | [101204](./t101204.md) | S0302 功能主题规划：T-03 决策驾驶舱（A0302） | [#8](https://github.com/it188-networkx/crm-product/issues/8) | 已完成 | 03-11 | [#9](https://github.com/it188-networkx/crm-product/pull/9) |
 | [101205](./t101205.md) | S0302 功能主题规划：T-04 营销知识库（A0302） | [#10](https://github.com/it188-networkx/crm-product/issues/10) | 已完成 | 03-11 | [#11](https://github.com/it188-networkx/crm-product/pull/11) |
-| [101301](./t101301.md) | S0303 功能史诗规划：T-01/E-01 线索治理与分配（A0303） | - | 已规划 | - | - |
-| [101302](./t101302.md) | S0303 功能史诗规划：T-01/E-02 培育与跟进沉淀（A0303） | - | 已规划 | - | - |
-| [101303](./t101303.md) | S0303 功能史诗规划：T-01/E-03 商机推进与阶段门控（A0303） | - | 已规划 | - | - |
-| [101304](./t101304.md) | S0303 功能史诗规划：T-01/E-04 成交复盘与策略回流（A0303） | - | 已规划 | - | - |
-| [101305](./t101305.md) | S0303 功能史诗规划：T-01/E-05 营销自动化规则管理（A0303） | - | 已规划 | - | - |
-| [101306](./t101306.md) | S0303 功能史诗规划：T-01/E-06 客户标签体系管理（A0303） | - | 已规划 | - | - |
-| [101307](./t101307.md) | S0303 功能史诗规划：T-01/E-07 数据接入与同步（A0303） | - | 已规划 | - | - |
+| [101301](./t101301.md) | S0303 功能史诗规划：T-01/E-01 线索治理与分配（A0303） | [#14](https://github.com/it188-networkx/crm-product/issues/14) | 已执行 | - | [#15](https://github.com/it188-networkx/crm-product/pull/15) |
+| [101302](./t101302.md) | S0303 功能史诗规划：T-01/E-02 培育与跟进沉淀（A0303） | [#16](https://github.com/it188-networkx/crm-product/issues/16) | 已执行 | - | [#22](https://github.com/it188-networkx/crm-product/pull/22) |
+| [101303](./t101303.md) | S0303 功能史诗规划：T-01/E-03 商机推进与阶段门控（A0303） | [#17](https://github.com/it188-networkx/crm-product/issues/17) | 已执行 | - | [#23](https://github.com/it188-networkx/crm-product/pull/23) |
+| [101304](./t101304.md) | S0303 功能史诗规划：T-01/E-04 成交复盘与策略回流（A0303） | [#18](https://github.com/it188-networkx/crm-product/issues/18) | 已执行 | - | [#24](https://github.com/it188-networkx/crm-product/pull/24) |
+| [101305](./t101305.md) | S0303 功能史诗规划：T-01/E-05 营销自动化规则管理（A0303） | [#19](https://github.com/it188-networkx/crm-product/issues/19) | 已执行 | - | [#25](https://github.com/it188-networkx/crm-product/pull/25) |
+| [101306](./t101306.md) | S0303 功能史诗规划：T-01/E-06 客户标签体系管理（A0303） | [#20](https://github.com/it188-networkx/crm-product/issues/20) | 已执行 | - | [#26](https://github.com/it188-networkx/crm-product/pull/26) |
+| [101307](./t101307.md) | S0303 功能史诗规划：T-01/E-07 数据接入与同步（A0303） | [#21](https://github.com/it188-networkx/crm-product/issues/21) | 已执行 | - | [#27](https://github.com/it188-networkx/crm-product/pull/27) |
 | [101308](./t101308.md) | S0303 功能史诇规划：T-02/E-01 AI 线索智能研判（A0303） | [#28](https://github.com/it188-networkx/crm-product/issues/28) | 已完成 | 03-12 | [#29](https://github.com/it188-networkx/crm-product/pull/29) |
 | [101309](./t101309.md) | S0303 功能史诇规划：T-02/E-02 AI 跟进辅助（A0303） | [#30](https://github.com/it188-networkx/crm-product/issues/30) | 已完成 | 03-12 | [#34](https://github.com/it188-networkx/crm-product/pull/34) |
 | [101310](./t101310.md) | S0303 功能史诇规划：T-02/E-03 竞e品预警与监控（A0303） | [#32](https://github.com/it188-networkx/crm-product/issues/32) | 已完成 | 03-12 | [#35](https://github.com/it188-networkx/crm-product/pull/35) |
 | [101311](./t101311.md) | S0303 功能史诇规划：T-03/E-01 销售漏斗全链路视图（A0303） | [#36](https://github.com/it188-networkx/crm-product/issues/36) | 已执行 | - | [#37](https://github.com/it188-networkx/crm-product/pull/37) |
 | [101312](./t101312.md) | S0303 功能史诇规划：T-03/E-02 渠道 ROI 对比分析（A0303） | [#38](https://github.com/it188-networkx/crm-product/issues/38) | 已执行 | - | [#39](https://github.com/it188-networkx/crm-product/pull/39) |
-| [101313](./t101313.md) | S0303 功能史诗规划：T-03/E-03 商机健康度预警（A0303） | - | 已规划 | - | - |
+| [101313](./t101313.md) | S0303 功能史诗规划：T-03/E-03 商机健康度预警（A0303） | [#40](https://github.com/it188-networkx/crm-product/issues/40) | 已执行 | - | [#41](https://github.com/it188-networkx/crm-product/pull/41) |
 | [101314](./t101314.md) | S0303 功能史诇规划：T-03/E-04 Go/No-Go 验收看板（A0303） | [#42](https://github.com/it188-networkx/crm-product/issues/42) | 已执行 | - | [#43](https://github.com/it188-networkx/crm-product/pull/43) |
-| [101315](./t101315.md) | S0303 功能史诗规划：T-04/E-01 知识资产结构化录入与审核（A0303） | - | 已规划 | - | - |
+| [101315](./t101315.md) | S0303 功能史诗规划：T-04/E-01 知识资产结构化录入与审核（A0303） | [#44](https://github.com/it188-networkx/crm-product/issues/44) | 已执行 | - | [#45](https://github.com/it188-networkx/crm-product/pull/45) |
 | [101316](./t101316.md) | S0303 功能史诇规划：T-04/E-02 知识检索与场景推送（A0303） | [#46](https://github.com/it188-networkx/crm-product/issues/46) | 已执行 | - | [#47](https://github.com/it188-networkx/crm-product/pull/47) |
-| [101317](./t101317.md) | S0303 功能史诗规划：T-04/E-03 AI 知识向量化引用（A0303） | - | 已规划 | - | - |
+| [101317](./t101317.md) | S0303 功能史诗规划：T-04/E-03 AI 知识向量化引用（A0303） | [#48](https://github.com/it188-networkx/crm-product/issues/48) | 已执行 | - | [#49](https://github.com/it188-networkx/crm-product/pull/49) |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
-> 下一步按展开策略进入阶段 3 - 史诗拆分，依次执行 S0303 功能史诗规划，建议优先级：T-01（P0）→ T-02（P0）→ T-03（P0）→ T-04（P1）。
+> S0303 史诗拆分阶段：全部 17 个 Epic（101301 ~ 101317）均已提交 PR 进入审查（已执行），无遗留待规划项目。
 
 ## 自检清单 (Self-Check)
 
