@@ -49,23 +49,23 @@
 | [101315](./t101315.md) | S0303 功能史诗规划：T-04/E-01 知识资产结构化录入与审核（A0303） | `requirements/knowledge-base/knowledge-curation/README.md` | #44 | #45 | 已完成 | 03-13 |
 | [101316](./t101316.md) | S0303 功能史诗规划：T-04/E-02 知识检索与场景推送（A0303） | `requirements/knowledge-base/knowledge-retrieval/README.md` | #46 | #47 | 已完成 | 03-13 |
 | [101317](./t101317.md) | S0303 功能史诗规划：T-04/E-03 AI 知识向量化引用（A0303） | `requirements/knowledge-base/ai-vectorization/README.md` | #48 | #49 | 已完成 | 03-13 |
-| [101401](./t101401.md) | S0304 功能特性规划：T-01/E-01 线索治理与分配（A0304） | `requirements/structured-sales-cycle/lead-governance/<feature>/README.md` ×4 | #50 | #52 | 已派发 | - |
-| [101402](./t101402.md) | S0304 功能特性规划：T-01/E-02 培育与跟进沉淀（A0304） | `requirements/structured-sales-cycle/nurture-followup/<feature>/README.md` ×3 | #54 | #58 | 已派发 | - |
-| [101403](./t101403.md) | S0304 功能特性规划：T-01/E-03 商机推进与阶段门控（A0304） | `requirements/structured-sales-cycle/opportunity-pipeline/<feature>/README.md` ×3 | #55 | #60 | 已派发 | - |
-| [101404](./t101404.md) | S0304 功能特性规划：T-01/E-04 成交复盘与策略回流（A0304） | `requirements/structured-sales-cycle/winloss-retrospective/<feature>/README.md` ×3 | #51 | #53 | 已派发 | - |
-| [101405](./t101405.md) | S0304 功能特性规划：T-01/E-05 营销自动化规则管理（A0304） | `requirements/structured-sales-cycle/marketing-automation/<feature>/README.md` ×2 | #56 | #62 | 已派发 | - |
-| [101406](./t101406.md) | S0304 功能特性规划：T-01/E-06 客户标签体系管理（A0304） | `requirements/structured-sales-cycle/tag-management/<feature>/README.md` ×3 | #57 | #64 | 已派发 | - |
-| [101407](./t101407.md) | S0304 功能特性规划：T-01/E-07 数据接入与同步（A0304） | `requirements/structured-sales-cycle/data-integration/<feature>/README.md` ×3 | #59 | #68 | 已派发 | - |
-| [101408](./t101408.md) | S0304 功能特性规划：T-02/E-01 AI 线索智能研判（A0304） | `requirements/ai-augmentation/lead-intelligence/<feature>/README.md` ×3 | #61 | #67 | 已派发 | - |
-| [101409](./t101409.md) | S0304 功能特性规划：T-02/E-02 AI 跟进辅助（A0304） | `requirements/ai-augmentation/followup-copilot/<feature>/README.md` ×3 | #63 | #69 | 已派发 | - |
-| [101410](./t101410.md) | S0304 功能特性规划：T-03/E-01 销售漏斗全链路视图（A0304） | `requirements/executive-dashboard/funnel-analytics/<feature>/README.md` ×3 | #65 | #70 | 已派发 | - |
-| [101411](./t101411.md) | S0304 功能特性规划：T-03/E-02 渠道 ROI 对比分析（A0304） | `requirements/executive-dashboard/channel-roi/<feature>/README.md` ×3 | #66 | #71 | 已派发 | - |
-| [101412](./t101412.md) | S0304 功能特性规划：T-02/E-03 竞品预警与监控（A0304） | `requirements/ai-augmentation/competitive-alerts/competitive-alert-push/README.md` ×1 | #72 | - | 已派发 | - |
-| [101413](./t101413.md) | S0304 功能特性规划：T-03/E-03 商机健康度预警（A0304） | `requirements/executive-dashboard/opportunity-health/<feature>/README.md` ×5 | #73 | - | 已派发 | - |
-| [101414](./t101414.md) | S0304 功能特性规划：T-03/E-04 Go/No-Go 验收看板（A0304） | `requirements/executive-dashboard/go-nogo-dashboard/<feature>/README.md` ×4 | #74 | - | 已派发 | - |
-| [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | - | 已派发 | - |
-| [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | - | 已派发 | - |
-| [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | - | 已派发 | - |
+| [101401](./t101401.md) | S0304 功能特性规划：T-01/E-01 线索治理与分配（A0304） | `requirements/structured-sales-cycle/lead-governance/<feature>/README.md` ×4 | #50 | #52 | 已完成 | 03-12 |
+| [101402](./t101402.md) | S0304 功能特性规划：T-01/E-02 培育与跟进沉淀（A0304） | `requirements/structured-sales-cycle/nurture-followup/<feature>/README.md` ×3 | #54 | #58 | 已完成 | 03-12 |
+| [101403](./t101403.md) | S0304 功能特性规划：T-01/E-03 商机推进与阶段门控（A0304） | `requirements/structured-sales-cycle/opportunity-pipeline/<feature>/README.md` ×3 | #55 | #60 | 已完成 | 03-12 |
+| [101404](./t101404.md) | S0304 功能特性规划：T-01/E-04 成交复盘与策略回流（A0304） | `requirements/structured-sales-cycle/winloss-retrospective/<feature>/README.md` ×3 | #51 | #53 | 已完成 | 03-12 |
+| [101405](./t101405.md) | S0304 功能特性规划：T-01/E-05 营销自动化规则管理（A0304） | `requirements/structured-sales-cycle/marketing-automation/<feature>/README.md` ×2 | #56 | #62 | 已完成 | 03-12 |
+| [101406](./t101406.md) | S0304 功能特性规划：T-01/E-06 客户标签体系管理（A0304） | `requirements/structured-sales-cycle/tag-management/<feature>/README.md` ×3 | #57 | #64 | 已完成 | 03-12 |
+| [101407](./t101407.md) | S0304 功能特性规划：T-01/E-07 数据接入与同步（A0304） | `requirements/structured-sales-cycle/data-integration/<feature>/README.md` ×3 | #59 | #68 | 已完成 | 03-12 |
+| [101408](./t101408.md) | S0304 功能特性规划：T-02/E-01 AI 线索智能研判（A0304） | `requirements/ai-augmentation/lead-intelligence/<feature>/README.md` ×3 | #61 | #67 | 已完成 | 03-12 |
+| [101409](./t101409.md) | S0304 功能特性规划：T-02/E-02 AI 跟进辅助（A0304） | `requirements/ai-augmentation/followup-copilot/<feature>/README.md` ×3 | #63 | #69 | 已完成 | 03-12 |
+| [101410](./t101410.md) | S0304 功能特性规划：T-03/E-01 销售漏斗全链路视图（A0304） | `requirements/executive-dashboard/funnel-analytics/<feature>/README.md` ×3 | #65 | #70 | 已完成 | 03-12 |
+| [101411](./t101411.md) | S0304 功能特性规划：T-03/E-02 渠道 ROI 对比分析（A0304） | `requirements/executive-dashboard/channel-roi/<feature>/README.md` ×3 | #66 | #71 | 已完成 | 03-12 |
+| [101412](./t101412.md) | S0304 功能特性规划：T-02/E-03 竞品预警与监控（A0304） | `requirements/ai-augmentation/competitive-alerts/competitive-alert-push/README.md` ×1 | #72 | #76 | 已派发 | - |
+| [101413](./t101413.md) | S0304 功能特性规划：T-03/E-03 商机健康度预警（A0304） | `requirements/executive-dashboard/opportunity-health/<feature>/README.md` ×5 | #73 | #78 | 已派发 | - |
+| [101414](./t101414.md) | S0304 功能特性规划：T-03/E-04 Go/No-Go 验收看板（A0304） | `requirements/executive-dashboard/go-nogo-dashboard/<feature>/README.md` ×4 | #74 | #79 | 已派发 | - |
+| [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | #81 | 已派发 | - |
+| [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已派发 | - |
+| [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已派发 | - |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
