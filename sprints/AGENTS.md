@@ -23,7 +23,7 @@ graph LR
     classDef wf fill:#D1FAE5,stroke:#059669,stroke-width:1.5px,color:#064E3B
 
     A2001["A2001 周冲刺计划"]:::ref
-    S2011["S2011 冲刺初始化"]:::sop
+    S2011["S2011 冲刺启动"]:::sop
     A2007["A2007 个人任务清单"]:::art
     S2012["S2012 冲刺规划"]:::sop
     S2013["S2013 冲刺执行"]:::sop
@@ -37,7 +37,7 @@ graph LR
 
 | ID | Name | Description | Process | Issue Template |
 | :--- | :--- | :--- | :--- | :--- |
-| S2011 | 冲刺初始化 | 创建冲刺目录，从模板 scaffold A2007，从 A2001 提取冲刺目标写入 A2007，创建冲刺主 Issue | `{product-base}/process/sop-sprint-init.md` | [产品设计冲刺](../../.github/ISSUE_TEMPLATE/20-05-sprint-task-plan.yml) |
+| S2011 | 冲刺启动 | 创建冲刺目录，从模板 scaffold A2007，从 A2001 提取冲刺目标写入 A2007，创建冲刺主 Issue | `{product-base}/process/sop-sprint-init.md` | [产品设计冲刺](../../.github/ISSUE_TEMPLATE/20-05-sprint-task-plan.yml) |
 | S2012 | 冲刺规划 | 基于 A2001（init）或 A2007 状态总览表（supplement），拆解任务并标记「已规划」或「可执行」，更新 A2007 | `{product-base}/process/sop-sprint-plan.md` | — |
 | S2013 | 冲刺执行 | 审查 A2007 中「已规划」任务的依赖就绪情况，升级为「可执行」或标记「阻塞中」 | `{product-base}/process/sop-sprint-exec.md` | — |
 
