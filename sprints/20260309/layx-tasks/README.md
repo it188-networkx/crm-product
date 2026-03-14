@@ -66,12 +66,12 @@
 | [101409](./t101409.md) | S0304 功能特性规划：T-02/E-02 AI 跟进辅助（A0304） | `requirements/ai-augmentation/followup-copilot/<feature>/README.md` ×3 | #63 | #69 | 已完成 | 03-12 |
 | [101410](./t101410.md) | S0304 功能特性规划：T-03/E-01 销售漏斗全链路视图（A0304） | `requirements/executive-dashboard/funnel-analytics/<feature>/README.md` ×3 | #65 | #70 | 已完成 | 03-12 |
 | [101411](./t101411.md) | S0304 功能特性规划：T-03/E-02 渠道 ROI 对比分析（A0304） | `requirements/executive-dashboard/channel-roi/<feature>/README.md` ×3 | #66 | #71 | 已完成 | 03-12 |
-| [101412](./t101412.md) | S0304 功能特性规划：T-02/E-03 竞品预警与监控（A0304） | `requirements/ai-augmentation/competitive-alerts/competitive-alert-push/README.md` ×1 | #72 | #76 | 已派发 | - |
-| [101413](./t101413.md) | S0304 功能特性规划：T-03/E-03 商机健康度预警（A0304） | `requirements/executive-dashboard/opportunity-health/<feature>/README.md` ×5 | #73 | #78 | 已派发 | - |
-| [101414](./t101414.md) | S0304 功能特性规划：T-03/E-04 Go/No-Go 验收看板（A0304） | `requirements/executive-dashboard/go-nogo-dashboard/<feature>/README.md` ×4 | #74 | #79 | 已派发 | - |
-| [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | #81 | 已派发 | - |
-| [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已派发 | - |
-| [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已派发 | - |
+| [101412](./t101412.md) | S0304 功能特性规划：T-02/E-03 竞品预警与监控（A0304） | `requirements/ai-augmentation/competitive-alerts/competitive-alert-push/README.md` ×1 | #72 | #76 | 已完成 | 03-12 |
+| [101413](./t101413.md) | S0304 功能特性规划：T-03/E-03 商机健康度预警（A0304） | `requirements/executive-dashboard/opportunity-health/<feature>/README.md` ×5 | #73 | #78 | 已完成 | 03-12 |
+| [101414](./t101414.md) | S0304 功能特性规划：T-03/E-04 Go/No-Go 验收看板（A0304） | `requirements/executive-dashboard/go-nogo-dashboard/<feature>/README.md` ×4 | #74 | #79 | 已完成 | 03-12 |
+| [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | #81 | 已完成 | 03-12 |
+| [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已完成 | 03-12 |
+| [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已完成 | 03-12 |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
