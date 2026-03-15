@@ -91,7 +91,7 @@
 | [101515](./t101515.md) | S0309 功能史诗审核：T-04/E-01 知识资产结构化录入与审核（A0309） | `requirements/knowledge-repository/knowledge-ingestion/review.md` | #117 | #123 | 已完成 | 03-15 |
 | [101516](./t101516.md) | S0309 功能史诗审核：T-04/E-02 知识检索与场景推送（A0309） | `requirements/knowledge-repository/knowledge-retrieval/review.md` | #119 | #124 | 已完成 | 03-15 |
 | [101517](./t101517.md) | S0309 功能史诗审核：T-04/E-03 AI 知识向量化引用（A0309） | `requirements/knowledge-repository/knowledge-vectorization/review.md` | #121 | #125 | 已完成 | 03-15 |
-| [101601](./t101601.md) | S0308 功能主题审核：T-01 营销过程闭环（A0308） | `requirements/structured-sales-cycle/review.md` | | | 可执行 | |
+| [101601](./t101601.md) | S0308 功能主题审核：T-01 营销过程闭环（A0308） | `requirements/structured-sales-cycle/review.md` | | | 已完成 | 03-15 |
 | [101602](./t101602.md) | S0308 功能主题审核：T-02 AI营销管理（A0308） | `requirements/ai-augmentation/review.md` | | | 可执行 | |
 | [101603](./t101603.md) | S0308 功能主题审核：T-03 决策驾驶舱（A0308） | `requirements/executive-dashboard/review.md` | | | 可执行 | |
 | [101604](./t101604.md) | S0308 功能主题审核：T-04 营销知识库（A0308） | `requirements/knowledge-repository/review.md` | | | 可执行 | |
