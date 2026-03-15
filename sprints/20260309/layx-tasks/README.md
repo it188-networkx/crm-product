@@ -74,23 +74,23 @@
 | [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | #81 | 已完成 | 03-12 |
 | [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已完成 | 03-12 |
 | [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已完成 | 03-12 |
-| [101501](./t101501.md) | S0309 功能史诗审核：T-01/E-01 线索治理与分配（A0309） | `requirements/structured-sales-cycle/lead-governance/review.md` | #92 | #93 | 待修订 | |
-| [101502](./t101502.md) | S0309 功能史诗审核：T-01/E-02 培育与跟进沉淀（A0309） | `requirements/structured-sales-cycle/nurture-followup/review.md` | #94 | #99 | 待修订 | |
-| [101503](./t101503.md) | S0309 功能史诗审核：T-01/E-03 商机推进与阶段门控（A0309） | `requirements/structured-sales-cycle/opportunity-pipeline/review.md` | #95 | #97 | 待修订 | |
-| [101504](./t101504.md) | S0309 功能史诗审核：T-01/E-04 成交复盘与策略回流（A0309） | `requirements/structured-sales-cycle/winloss-retrospective/review.md` | #96 | #98 | 待修订 | |
-| [101505](./t101505.md) | S0309 功能史诗审核：T-01/E-05 营销自动化规则管理（A0309） | `requirements/structured-sales-cycle/marketing-automation/review.md` | #100 | #104 | 待修订 | |
-| [101506](./t101506.md) | S0309 功能史诗审核：T-01/E-06 客户标签体系管理（A0309） | `requirements/structured-sales-cycle/tag-management/review.md` | #101 | #106 | 待修订 | |
-| [101507](./t101507.md) | S0309 功能史诗审核：T-01/E-07 数据接入与同步（A0309） | `requirements/structured-sales-cycle/data-integration/review.md` | #102 | #108 | 待修订 | |
-| [101508](./t101508.md) | S0309 功能史诗审核：T-02/E-01 AI 线索智能研判（A0309） | `requirements/ai-augmentation/lead-intelligence/review.md` | #103 | #109 | 待修订 | |
-| [101509](./t101509.md) | S0309 功能史诗审核：T-02/E-02 AI 跟进辅助（A0309） | `requirements/ai-augmentation/followup-copilot/review.md` | #105 | #112 | 待修订 | |
-| [101510](./t101510.md) | S0309 功能史诗审核：T-02/E-03 竞品预警与监控（A0309） | `requirements/ai-augmentation/competitive-alerts/review.md` | #107 | #114 | 待修订 | |
-| [101511](./t101511.md) | S0309 功能史诗审核：T-03/E-01 销售漏斗全链路视图（A0309） | `requirements/executive-dashboard/funnel-analytics/review.md` | #110 | #116 | 待修订 | |
-| [101512](./t101512.md) | S0309 功能史诗审核：T-03/E-02 渠道 ROI 对比分析（A0309） | `requirements/executive-dashboard/channel-roi/review.md` | #111 | #118 | 待修订 | |
-| [101513](./t101513.md) | S0309 功能史诗审核：T-03/E-03 商机健康度预警（A0309） | `requirements/executive-dashboard/opportunity-health/review.md` | #113 | #120 | 待修订 | |
-| [101514](./t101514.md) | S0309 功能史诗审核：T-03/E-04 Go/No-Go 验收看板（A0309） | `requirements/executive-dashboard/go-nogo-dashboard/review.md` | #115 | #122 | 待修订 | |
-| [101515](./t101515.md) | S0309 功能史诗审核：T-04/E-01 知识资产结构化录入与审核（A0309） | `requirements/knowledge-repository/knowledge-ingestion/review.md` | #117 | #123 | 待修订 | |
-| [101516](./t101516.md) | S0309 功能史诗审核：T-04/E-02 知识检索与场景推送（A0309） | `requirements/knowledge-repository/knowledge-retrieval/review.md` | #119 | #124 | 待修订 | |
-| [101517](./t101517.md) | S0309 功能史诗审核：T-04/E-03 AI 知识向量化引用（A0309） | `requirements/knowledge-repository/knowledge-vectorization/review.md` | #121 | #125 | 待修订 | |
+| [101501](./t101501.md) | S0309 功能史诗审核：T-01/E-01 线索治理与分配（A0309） | `requirements/structured-sales-cycle/lead-governance/review.md` | #92 | #93 | 已完成 | 03-15 |
+| [101502](./t101502.md) | S0309 功能史诗审核：T-01/E-02 培育与跟进沉淀（A0309） | `requirements/structured-sales-cycle/nurture-followup/review.md` | #94 | #99 | 已完成 | 03-15 |
+| [101503](./t101503.md) | S0309 功能史诗审核：T-01/E-03 商机推进与阶段门控（A0309） | `requirements/structured-sales-cycle/opportunity-pipeline/review.md` | #95 | #97 | 已完成 | 03-15 |
+| [101504](./t101504.md) | S0309 功能史诗审核：T-01/E-04 成交复盘与策略回流（A0309） | `requirements/structured-sales-cycle/winloss-retrospective/review.md` | #96 | #98 | 已完成 | 03-15 |
+| [101505](./t101505.md) | S0309 功能史诗审核：T-01/E-05 营销自动化规则管理（A0309） | `requirements/structured-sales-cycle/marketing-automation/review.md` | #100 | #104 | 已完成 | 03-15 |
+| [101506](./t101506.md) | S0309 功能史诗审核：T-01/E-06 客户标签体系管理（A0309） | `requirements/structured-sales-cycle/tag-management/review.md` | #101 | #106 | 已完成 | 03-15 |
+| [101507](./t101507.md) | S0309 功能史诗审核：T-01/E-07 数据接入与同步（A0309） | `requirements/structured-sales-cycle/data-integration/review.md` | #102 | #108 | 已完成 | 03-15 |
+| [101508](./t101508.md) | S0309 功能史诗审核：T-02/E-01 AI 线索智能研判（A0309） | `requirements/ai-augmentation/lead-intelligence/review.md` | #103 | #109 | 已完成 | 03-15 |
+| [101509](./t101509.md) | S0309 功能史诗审核：T-02/E-02 AI 跟进辅助（A0309） | `requirements/ai-augmentation/followup-copilot/review.md` | #105 | #112 | 已完成 | 03-15 |
+| [101510](./t101510.md) | S0309 功能史诗审核：T-02/E-03 竞品预警与监控（A0309） | `requirements/ai-augmentation/competitive-alerts/review.md` | #107 | #114 | 已完成 | 03-15 |
+| [101511](./t101511.md) | S0309 功能史诗审核：T-03/E-01 销售漏斗全链路视图（A0309） | `requirements/executive-dashboard/funnel-analytics/review.md` | #110 | #116 | 已完成 | 03-15 |
+| [101512](./t101512.md) | S0309 功能史诗审核：T-03/E-02 渠道 ROI 对比分析（A0309） | `requirements/executive-dashboard/channel-roi/review.md` | #111 | #118 | 已完成 | 03-15 |
+| [101513](./t101513.md) | S0309 功能史诗审核：T-03/E-03 商机健康度预警（A0309） | `requirements/executive-dashboard/opportunity-health/review.md` | #113 | #120 | 已完成 | 03-15 |
+| [101514](./t101514.md) | S0309 功能史诗审核：T-03/E-04 Go/No-Go 验收看板（A0309） | `requirements/executive-dashboard/go-nogo-dashboard/review.md` | #115 | #122 | 已完成 | 03-15 |
+| [101515](./t101515.md) | S0309 功能史诗审核：T-04/E-01 知识资产结构化录入与审核（A0309） | `requirements/knowledge-repository/knowledge-ingestion/review.md` | #117 | #123 | 已完成 | 03-15 |
+| [101516](./t101516.md) | S0309 功能史诗审核：T-04/E-02 知识检索与场景推送（A0309） | `requirements/knowledge-repository/knowledge-retrieval/review.md` | #119 | #124 | 已完成 | 03-15 |
+| [101517](./t101517.md) | S0309 功能史诗审核：T-04/E-03 AI 知识向量化引用（A0309） | `requirements/knowledge-repository/knowledge-vectorization/review.md` | #121 | #125 | 已完成 | 03-15 |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
