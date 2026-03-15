@@ -90,7 +90,7 @@ jobs:
 
                 for (let i = 0; i < lines.length; i++) {
                   const m = lines[i].match(
-                    /^\|\s*\[(\d+)\]\(\.\/(t\d+)\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*(可执行|待重派)\s*\|\s*([^|]*?)\s*\|$/
+                    /^\|\s*\[(\d+)\]\(\.\/(?:t\d+)\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*(可执行|待重派)\s*\|\s*([^|]*?)\s*\|$/
                   );
                   if (!m) continue;
                   // groups: 1=taskId 2=desc 3=artPath 4=issueCol 5=prCol 6=status 7=dateCol
