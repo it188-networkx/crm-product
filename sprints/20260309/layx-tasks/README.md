@@ -78,19 +78,19 @@
 | [101502](./t101502.md) | S0309 功能史诗审核：T-01/E-02 培育与跟进沉淀（A0309） | `requirements/structured-sales-cycle/nurture-followup/review.md` | #94 | | 已派发 | |
 | [101503](./t101503.md) | S0309 功能史诗审核：T-01/E-03 商机推进与阶段门控（A0309） | `requirements/structured-sales-cycle/opportunity-pipeline/review.md` | #95 | | 已派发 | |
 | [101504](./t101504.md) | S0309 功能史诗审核：T-01/E-04 成交复盘与策略回流（A0309） | `requirements/structured-sales-cycle/winloss-retrospective/review.md` | #96 | | 已派发 | |
-| [101505](./t101505.md) | S0309 功能史诗审核：T-01/E-05 营销自动化规则管理（A0309） | `requirements/structured-sales-cycle/marketing-automation/review.md` | | | 可执行 | |
-| [101506](./t101506.md) | S0309 功能史诗审核：T-01/E-06 客户标签体系管理（A0309） | `requirements/structured-sales-cycle/tag-management/review.md` | | | 可执行 | |
-| [101507](./t101507.md) | S0309 功能史诗审核：T-01/E-07 数据接入与同步（A0309） | `requirements/structured-sales-cycle/data-integration/review.md` | | | 可执行 | |
-| [101508](./t101508.md) | S0309 功能史诗审核：T-02/E-01 AI 线索智能研判（A0309） | `requirements/ai-augmentation/lead-intelligence/review.md` | | | 可执行 | |
-| [101509](./t101509.md) | S0309 功能史诗审核：T-02/E-02 AI 跟进辅助（A0309） | `requirements/ai-augmentation/followup-copilot/review.md` | | | 可执行 | |
-| [101510](./t101510.md) | S0309 功能史诗审核：T-02/E-03 竞品预警与监控（A0309） | `requirements/ai-augmentation/competitive-alerts/review.md` | | | 可执行 | |
-| [101511](./t101511.md) | S0309 功能史诗审核：T-03/E-01 销售漏斗全链路视图（A0309） | `requirements/executive-dashboard/funnel-analytics/review.md` | | | 可执行 | |
-| [101512](./t101512.md) | S0309 功能史诗审核：T-03/E-02 渠道 ROI 对比分析（A0309） | `requirements/executive-dashboard/channel-roi/review.md` | | | 可执行 | |
-| [101513](./t101513.md) | S0309 功能史诗审核：T-03/E-03 商机健康度预警（A0309） | `requirements/executive-dashboard/opportunity-health/review.md` | | | 可执行 | |
-| [101514](./t101514.md) | S0309 功能史诗审核：T-03/E-04 Go/No-Go 验收看板（A0309） | `requirements/executive-dashboard/go-nogo-dashboard/review.md` | | | 可执行 | |
-| [101515](./t101515.md) | S0309 功能史诗审核：T-04/E-01 知识资产结构化录入与审核（A0309） | `requirements/knowledge-repository/knowledge-ingestion/review.md` | | | 可执行 | |
-| [101516](./t101516.md) | S0309 功能史诗审核：T-04/E-02 知识检索与场景推送（A0309） | `requirements/knowledge-repository/knowledge-retrieval/review.md` | | | 可执行 | |
-| [101517](./t101517.md) | S0309 功能史诗审核：T-04/E-03 AI 知识向量化引用（A0309） | `requirements/knowledge-repository/knowledge-vectorization/review.md` | | | 可执行 | |
+| [101505](./t101505.md) | S0309 功能史诗审核：T-01/E-05 营销自动化规则管理（A0309） | `requirements/structured-sales-cycle/marketing-automation/review.md` | #100 | | 已派发 | |
+| [101506](./t101506.md) | S0309 功能史诗审核：T-01/E-06 客户标签体系管理（A0309） | `requirements/structured-sales-cycle/tag-management/review.md` | #101 | | 已派发 | |
+| [101507](./t101507.md) | S0309 功能史诗审核：T-01/E-07 数据接入与同步（A0309） | `requirements/structured-sales-cycle/data-integration/review.md` | #102 | | 已派发 | |
+| [101508](./t101508.md) | S0309 功能史诗审核：T-02/E-01 AI 线索智能研判（A0309） | `requirements/ai-augmentation/lead-intelligence/review.md` | #103 | | 已派发 | |
+| [101509](./t101509.md) | S0309 功能史诗审核：T-02/E-02 AI 跟进辅助（A0309） | `requirements/ai-augmentation/followup-copilot/review.md` | #105 | | 已派发 | |
+| [101510](./t101510.md) | S0309 功能史诗审核：T-02/E-03 竞品预警与监控（A0309） | `requirements/ai-augmentation/competitive-alerts/review.md` | #107 | | 已派发 | |
+| [101511](./t101511.md) | S0309 功能史诗审核：T-03/E-01 销售漏斗全链路视图（A0309） | `requirements/executive-dashboard/funnel-analytics/review.md` | #110 | | 已派发 | |
+| [101512](./t101512.md) | S0309 功能史诗审核：T-03/E-02 渠道 ROI 对比分析（A0309） | `requirements/executive-dashboard/channel-roi/review.md` | #111 | | 已派发 | |
+| [101513](./t101513.md) | S0309 功能史诗审核：T-03/E-03 商机健康度预警（A0309） | `requirements/executive-dashboard/opportunity-health/review.md` | #113 | | 已派发 | |
+| [101514](./t101514.md) | S0309 功能史诗审核：T-03/E-04 Go/No-Go 验收看板（A0309） | `requirements/executive-dashboard/go-nogo-dashboard/review.md` | #115 | | 已派发 | |
+| [101515](./t101515.md) | S0309 功能史诗审核：T-04/E-01 知识资产结构化录入与审核（A0309） | `requirements/knowledge-repository/knowledge-ingestion/review.md` | #117 | | 已派发 | |
+| [101516](./t101516.md) | S0309 功能史诗审核：T-04/E-02 知识检索与场景推送（A0309） | `requirements/knowledge-repository/knowledge-retrieval/review.md` | #119 | | 已派发 | |
+| [101517](./t101517.md) | S0309 功能史诗审核：T-04/E-03 AI 知识向量化引用（A0309） | `requirements/knowledge-repository/knowledge-vectorization/review.md` | #121 | | 已派发 | |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
