@@ -1,0 +1,77 @@
+name: "[审核] 功能史诗审核 (Epic Review)"
+description: 审查指定需求史诗中全部特性定义的完整性与一致性
+title: "[史诗审核] <Theme>/<Epic名称>"
+labels: ["domain:product", "activity:review"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 功能史诗审核
+
+        产品审核专家基于需求史诗定义与该 Epic 下全部需求特性定义，
+        按审核维度逐项检查完备性、协调性与一致性，
+        产出史诗审核记录，用于阻塞或放行下游功能特性设计与原型生成。
+
+  - type: input
+    id: epic_name
+    attributes:
+      label: Epic 名称
+      description: 需与需求史诗定义文件中的名称一致
+      placeholder: 例如：工单创建与分配
+    validations:
+      required: true
+
+  - type: input
+    id: theme_dir
+    attributes:
+      label: Theme 目录名
+      description: kebab-case 格式，对应 requirements/ 下的 Theme 目录名
+      placeholder: 例如：ticket-management
+    validations:
+      required: true
+
+  - type: input
+    id: epic_dir
+    attributes:
+      label: Epic 目录名
+      description: kebab-case 格式，对应 Theme 目录下的 Epic 目录名
+      placeholder: 例如：ticket-creation
+    validations:
+      required: true
+
+  - type: textarea
+    id: review_scope
+    attributes:
+      label: 审核范围说明
+      description: 如需限定审核范围（如仅审核部分 Feature），在此说明；留空默认审核 Epic 下全部 Feature
+    validations:
+      required: false
+
+  - type: textarea
+    id: review_focus
+    attributes:
+      label: 审核重点关注
+      description: 如有特别关注的维度或已知问题，在此提示审核者
+      placeholder: |
+        例如：
+        - 重点关注 Feature 间的功能重叠
+        - 关注用户故事与验收标准的完整性
+    validations:
+      required: false
+
+  - type: textarea
+    id: change_context
+    attributes:
+      label: 变更上下文
+      description: 如果是因文档变更触发的重新审核，说明变更内容
+      placeholder: 新增了 Feature "批量分配"，需重新评估 Epic 完整性
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **史诗审核记录 (A0309)**：包含审核摘要（审核范围、输入文档清单、审核结论、问题统计）、评审明细（全部 7 个维度 R1-R7 均已审查，每条发现引用具体文件路径与章节）、改进事项（每条严重/一般级别发现均有可执行的 Action）、自检清单

@@ -20,8 +20,10 @@ requirements/
 │   └── <topic>.md              #   需求变更记录
 └── <theme>/                    # Theme 主题目录
     ├── README.md               #   需求主题定义
+    ├── review.md               #   主题审核记录
     └── <epic>/                 #   Epic 目录
         ├── README.md           #     需求史诗定义
+        ├── review.md           #     史诗审核记录
         └── <feature>/          #     Feature 目录
             ├── README.md       #       需求特性定义
             ├── design.md       #       功能特性设计（按 design-variant 选择模版与 SOP）
@@ -82,6 +84,33 @@ graph TD
     S0304 --> A0304
 ```
 
+### 需求审核
+
+```mermaid
+%%{init: {'flowchart': {'padding': 8, 'nodeSpacing': 32, 'rankSpacing': 32}} }%%
+graph LR
+    classDef sop fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A5F,rx:8,ry:8
+    classDef art fill:#FEF3C7,stroke:#D97706,stroke-width:1.5px,color:#78350F
+
+    A0303["A0303 需求史诗定义"]:::art
+    A0304["A0304 需求特性定义"]:::art
+    A0302["A0302 需求主题定义"]:::art
+
+    S0309["S0309 功能史诗审核"]:::sop
+    A0309["A0309 史诗审核记录"]:::art
+    S0308["S0308 功能主题审核"]:::sop
+    A0308["A0308 主题审核记录"]:::art
+
+    A0303 --> S0309
+    A0304 --> S0309
+    S0309 --> A0309
+
+    A0302 --> S0308
+    A0303 --> S0308
+    A0309 --> S0308
+    S0308 --> A0308
+```
+
 ### 产品设计
 
 > S0306 与 A0306 按本文件顶部 `design-variant` 选择对应的 SOP 和模版。
@@ -129,6 +158,8 @@ graph LR
 | S0305 | 变更影响评估 | 评估变更对范围、成本、排期与风险的影响，形成处置结论 | `{product-base}/process/sop-change-impact.md` |
 | S0306 | 功能特性设计 | 按实现方式产出特性实现方案：`bs` 侧重交互、数据、接口与后端逻辑；`lowcode` 侧重对象、页面、工作流与权限配置 | `{product-base}/process/sop-tech-design-{design-variant}.md` |
 | S0307 | 原型生成 | 生成覆盖核心交互流程的可演示功能特性原型 | `{product-base}/process/sop-ux-design.md` |
+| S0308 | 功能主题审核 | 审查指定需求主题中全部史诗定义的完整性与一致性 | `{product-base}/process/sop-prd-theme-review.md` |
+| S0309 | 功能史诗审核 | 审查指定需求史诗中全部特性定义的完整性与一致性 | `{product-base}/process/sop-prd-epic-review.md` |
 
 ## 外部输入
 
@@ -160,6 +191,8 @@ graph LR
 | A0305 | 需求变更记录 | 变更影响与处置结论的追溯存档 | `changes/<topic>.md` | `{product-base}/template/requirements/change-impact.md` |
 | A0306 | 特性设计文档 | 特性级实现设计基线；`bs` 面向前后端研发交付，`lowcode` 面向低代码配置与扩展交付 | `<theme>/<epic>/<feature>/design.md` | `{product-base}/template/requirements/feature-design-{design-variant}.md` |
 | A0307 | 功能特性原型 | 可演示功能特性原型，验证核心交互流程与操作路径 | `<theme>/<epic>/<feature>/prototype/` | `{product-base}/prototypes/common/skeleton.html` |
+| A0308 | 主题审核记录 | 需求主题内全部史诗定义的审核结论与改进事项 | `<theme>/review.md` | `{product-base}/template/requirements/theme-review.md` |
+| A0309 | 史诗审核记录 | 需求史诗内全部特性定义的审核结论与改进事项 | `<theme>/<epic>/review.md` | `{product-base}/template/requirements/epic-review.md` |
 
 ## 新老编号对比
 
@@ -176,6 +209,8 @@ graph LR
 | S0305 | S26 | 变更影响评估 |
 | S0306 | S15/S16 | 功能特性设计 |
 | S0307 | - | 原型生成 |
+| S0308 | - | 功能主题审核 |
+| S0309 | - | 功能史诗审核 |
 
 ### 制品
 
@@ -188,6 +223,8 @@ graph LR
 | A0305 | A27 | 需求变更记录 |
 | A0306 | A16/A17 | 特性设计文档 |
 | A0307 | - | 功能特性原型 |
+| A0308 | - | 主题审核记录 |
+| A0309 | - | 史诗审核记录 |
 
 ## 工作规则
 

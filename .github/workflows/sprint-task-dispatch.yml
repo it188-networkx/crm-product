@@ -1,8 +1,9 @@
 name: Sprint Task Dispatch
 
-# 冲刺任务自动派发（可执行 → 已派发）
-# 当 A2007 个人任务清单推送到 main 时，自动为「可执行」状态且尚未关联工单
-# 的任务创建 Issue，assign 给 Copilot Agent，状态更新为「已派发」。
+# 冲刺任务自动派发（可执行 / 待重派 → 已派发）
+# 当 A2007 个人任务清单推送到 main 时，自动为「可执行」或「待重派」状态的
+# 任务创建 Issue，assign 给 Copilot Agent，状态更新为「已派发」。
+# 「待重派」场景：关闭旧 Issue 后新建，确保 Agent 重新接手。
 # Copilot Agent 接手后会自行创建 PR，无需 workflow 代劳。
 
 on:
@@ -32,6 +33,7 @@ jobs:
             const { execSync } = require('child_process');
 
             const AGENT_ASSIGNEE = 'copilot-swe-agent[bot]';
+            const DEFAULT_AGENT = 'product-designer';
             const { owner, repo } = context.repo;
             const workspace = process.env.GITHUB_WORKSPACE;
             const sprintsDir = path.join(workspace, 'sprints');
@@ -81,21 +83,23 @@ jobs:
                 const parentMatch = readmeContent.match(/工单编号：.*?#(\d+)/);
                 const parentIssueNumber = parentMatch ? parseInt(parentMatch[1], 10) : null;
 
-                // 解析任务表（7 列格式），查找「可执行」且无关联工单的行
+                // 解析任务表（7 列格式），查找「可执行」或「待重派」状态的行
                 // | 任务编号 | 任务描述 | 制品路径 | 关联工单 | 关联 PR | 状态 | 完成日期 |
                 const lines = readmeContent.split('\n');
                 const dispatchable = [];
 
                 for (let i = 0; i < lines.length; i++) {
                   const m = lines[i].match(
-                    /^\|\s*\[(\d+)\]\(\.\/t\d+\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*可执行\s*\|\s*([^|]*?)\s*\|$/
+                    /^\|\s*\[(\d+)\]\(\.\/(t\d+)\.md\)\s*\|\s*(.+?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*([^|]*?)\s*\|\s*(可执行|待重派)\s*\|\s*([^|]*?)\s*\|$/
                   );
                   if (!m) continue;
-                  // groups: 1=taskId 2=desc 3=artPath 4=issueCol 5=prCol 6=dateCol
-                  const [, taskId, desc, , issueCol] = m;
+                  // groups: 1=taskId 2=desc 3=artPath 4=issueCol 5=prCol 6=status 7=dateCol
+                  const [, taskId, desc, , issueCol, , status] = m;
                   const hasIssue = issueCol.trim() && issueCol.trim() !== '-';
-                  if (hasIssue) continue;
-                  dispatchable.push({ taskId, desc: desc.trim(), lineIndex: i });
+                  const isRedispatch = status === '待重派';
+                  // 可执行：必须无关联工单；待重派：忽略工单列（会关闭旧 Issue 后新建）
+                  if (!isRedispatch && hasIssue) continue;
+                  dispatchable.push({ taskId, desc: desc.trim(), lineIndex: i, isRedispatch });
                 }
 
                 if (dispatchable.length === 0) {
@@ -129,6 +133,9 @@ jobs:
                     const artTmplMatch = detail.match(/^- 模板：(.+)$/m);
                     const artTmplPath = artTmplMatch ? artTmplMatch[1].trim() : '';
 
+                    const agentMatch = detail.match(/^- Agent：(.+)$/m);
+                    const agent = agentMatch ? agentMatch[1].trim() : DEFAULT_AGENT;
+
                     const ctxMatch = detail.match(
                       /\*\*上下文\*\*\n\n([\s\S]*?)(?=\n\*\*处理规程\*\*|\n---)/
                     );
@@ -158,7 +165,8 @@ jobs:
                       core.warning(`  搜索已有 issue 失败: ${e.message}，将直接新建`);
                     }
 
-                    let body = `## 任务信息\n\n`;
+                    let body = `Hi @${agent},\n\n`;
+                    body += `## 任务信息\n\n`;
                     body += `- 任务编号：${task.taskId}\n`;
                     body += `- 冲刺：${sprint}\n`;
                     body += `- 责任人：${user}\n`;
@@ -176,6 +184,16 @@ jobs:
                       if (artTmplPath) body += `- 模板：${artTmplPath}\n`;
                     }
 
+                    // 待重派：关闭旧 Issue，确保新建时 agent_assignment 重新生效
+                    if (existingOpen && task.isRedispatch) {
+                      await github.rest.issues.update({
+                        owner, repo, issue_number: existingOpen.number,
+                        state: 'closed', state_reason: 'not_planned',
+                      });
+                      core.info(`  关闭旧 Issue #${existingOpen.number}（待重派）`);
+                      existingOpen = null;
+                    }
+
                     if (existingOpen) {
                       issueNumber = existingOpen.number;
                       issueRestId = existingOpen.id;
@@ -185,16 +203,25 @@ jobs:
                       });
                       core.info(`  复用 Issue #${issueNumber}: ${task.taskId}（open，已更新 body）`);
                     } else {
-                      const issueRes = await github.rest.issues.create({
-                        owner, repo,
-                        title: issueTitle,
-                        body,
-                        assignees: [AGENT_ASSIGNEE],
-                        labels: ['pipeline:sprint', 'copilot-agent'],
-                      });
+                      const issueRes = await github.request(
+                        'POST /repos/{owner}/{repo}/issues',
+                        {
+                          owner, repo,
+                          title: issueTitle,
+                          body,
+                          assignees: [AGENT_ASSIGNEE],
+                          labels: ['pipeline:sprint', 'copilot-agent'],
+                          agent_assignment: {
+                            target_repo: `${owner}/${repo}`,
+                            base_branch: 'main',
+                            custom_instructions: body,
+                            custom_agent: agent,
+                          },
+                        }
+                      );
                       issueNumber = issueRes.data.number;
                       issueRestId = issueRes.data.id;
-                      core.info(`  创建 Issue #${issueNumber}: ${task.taskId}（agent assigned）`);
+                      core.info(`  创建 Issue #${issueNumber}: ${task.taskId}（agent: ${agent}）`);
                     }
 
                     // 尝试挂接 sub-issue
@@ -218,6 +245,10 @@ jobs:
                     const cols = lines[task.lineIndex].split('|');
                     if (cols.length >= 9) {
                       cols[4] = ` ${issueLink} `;
+                      if (task.isRedispatch) {
+                        cols[5] = ' ';   // 清空关联 PR
+                        cols[7] = ' ';   // 清空完成日期
+                      }
                       cols[6] = ' 已派发 ';
                       lines[task.lineIndex] = cols.join('|');
                     }
@@ -231,6 +262,9 @@ jobs:
                         `$1[#${issueNumber}](${issueUrl})`
                       );
                       content = content.replace(/^(- 状态：).*$/m, '$1已派发');
+                      if (task.isRedispatch) {
+                        content = content.replace(/^(- 关联 PR：).*$/m, '$1');
+                      }
                       filesToWrite.set(detailPath, content);
                     }
 

@@ -1,0 +1,68 @@
+name: "[审核] 功能主题审核 (Theme Review)"
+description: 审查指定需求主题中全部史诗定义的完整性与一致性
+title: "[主题审核] <Theme名称>"
+labels: ["domain:product", "activity:review"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 功能主题审核
+
+        产品审核专家基于需求主题定义与该 Theme 下全部需求史诗定义，
+        按审核维度逐项检查完备性、协调性与一致性，
+        产出主题审核记录，用于阻塞或放行下游功能特性设计与原型生成。
+
+  - type: input
+    id: theme_name
+    attributes:
+      label: Theme 名称
+      description: 需与需求主题定义文件中的名称一致
+      placeholder: 例如：工单管理
+    validations:
+      required: true
+
+  - type: input
+    id: theme_dir
+    attributes:
+      label: Theme 目录名
+      description: kebab-case 格式，对应 requirements/ 下的目录名
+      placeholder: 例如：ticket-management
+    validations:
+      required: true
+
+  - type: textarea
+    id: review_scope
+    attributes:
+      label: 审核范围说明
+      description: 如需限定审核范围（如仅审核部分 Epic），在此说明；留空默认审核 Theme 下全部 Epic
+    validations:
+      required: false
+
+  - type: textarea
+    id: review_focus
+    attributes:
+      label: 审核重点关注
+      description: 如有特别关注的维度或已知问题，在此提示审核者
+      placeholder: |
+        例如：
+        - 重点关注跨 Epic 依赖是否闭环
+        - 关注 Epic 优先级排序的合理性
+    validations:
+      required: false
+
+  - type: textarea
+    id: change_context
+    attributes:
+      label: 变更上下文
+      description: 如果是因文档变更触发的重新审核，说明变更内容
+      placeholder: 新增了 Epic "客户反馈管理"，需重新评估 Theme 完整性
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 输出物要求
+
+        - [ ] **主题审核记录 (A0308)**：包含审核摘要（审核范围、输入文档清单、审核结论、问题统计）、评审明细（全部 6 个维度 R1-R6 均已审查，每条发现引用具体文件路径与章节）、改进事项（每条严重/一般级别发现均有可执行的 Action）、自检清单
