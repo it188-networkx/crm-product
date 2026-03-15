@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：crm-product#1
-- 更新时间：2026-03-15（101501 第四次重派）
+- 更新时间：2026-03-15（S0309 第二批任务 101502~101504 规划完成）
 
 ## 冲刺目标 (Sprint Goals)
 
@@ -75,11 +75,14 @@
 | [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已完成 | 03-12 |
 | [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已完成 | 03-12 |
 | [101501](./t101501.md) | S0309 功能史诗审核：T-01/E-01 线索治理与分配（A0309） | `requirements/structured-sales-cycle/lead-governance/review.md` | #92 | | 已派发 | |
+| [101502](./t101502.md) | S0309 功能史诗审核：T-01/E-02 培育与跟进沉淀（A0309） | `requirements/structured-sales-cycle/nurture-followup/review.md` | | | 可执行 | |
+| [101503](./t101503.md) | S0309 功能史诗审核：T-01/E-03 商机推进与阶段门控（A0309） | `requirements/structured-sales-cycle/opportunity-pipeline/review.md` | | | 可执行 | |
+| [101504](./t101504.md) | S0309 功能史诗审核：T-01/E-04 成交复盘与策略回流（A0309） | `requirements/structured-sales-cycle/winloss-retrospective/review.md` | | | 可执行 | |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
 > S0304 功能特性规划全部 17 个 Epic 任务已规划（101401 ~ 101417）：T-01 E-01~E-07（7 个）、T-02 E-01~E-03（3 个）、T-03 E-01~E-04（4 个）、T-04 E-01~E-03（3 个）。T-04 知识库交付阶段为 Phase 2，但产品设计（需求特性定义）在本冲刺范围内完成。
-> S0309 功能史诗审核阶段开始，使用 product-viewer agent 逐 Epic 审核。首批任务 101501（T-01/E-01 线索治理与分配）。
+> S0309 功能史诗审核阶段开始，使用 product-reviewer agent 逐 Epic 审核。首批 101501（T-01/E-01）已派发，第二批 101502~101504（T-01/E-02~E-04）进入派发。
 
 ## 自检清单 (Self-Check)
 
