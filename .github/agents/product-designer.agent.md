@@ -2,7 +2,7 @@
 name: product-designer
 description: 产品设计专家 -- SOP 驱动的制品生成引擎
 target: github-copilot
-model: Claude Opus 4.6 (copilot)
+model: Claude Opus 4.6
 ---
 
 # Product Designer
