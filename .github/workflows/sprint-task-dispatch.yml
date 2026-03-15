@@ -184,8 +184,25 @@ jobs:
                       if (artTmplPath) body += `- 模板：${artTmplPath}\n`;
                     }
 
-                    // 待重派：关闭旧 Issue，确保新建时 agent_assignment 重新生效
+                    // 待重派：关闭旧 Issue 及其关联 PR，确保新建时 agent_assignment 重新生效
                     if (existingOpen && task.isRedispatch) {
+                      // 关闭关联的 open PR
+                      try {
+                        const prs = await github.rest.pulls.list({
+                          owner, repo, state: 'open', per_page: 50,
+                        });
+                        for (const pr of prs.data) {
+                          if (pr.body && pr.body.includes(`#${existingOpen.number}`)) {
+                            await github.rest.pulls.update({
+                              owner, repo, pull_number: pr.number, state: 'closed',
+                            });
+                            core.info(`  关闭旧 PR #${pr.number}（关联 Issue #${existingOpen.number}）`);
+                          }
+                        }
+                      } catch (e) {
+                        core.warning(`  关闭关联 PR 失败: ${e.message}`);
+                      }
+
                       await github.rest.issues.update({
                         owner, repo, issue_number: existingOpen.number,
                         state: 'closed', state_reason: 'not_planned',
