@@ -57,16 +57,8 @@ graph LR
 
 - `{ops-playbook}` 指 [it188-networkx/ops-playbook](https://github.com/it188-networkx/ops-playbook) 仓库，在当前 workspace 中对应子目录 `ops-playbook/`。
 - `{product-base}` 指 [it188-networkx/product-base](https://github.com/it188-networkx/product-base) 仓库，在当前 workspace 中对应子目录 `product-base/`。
-- 任务状态流转：已规划 → 可执行 → 已派发 → 待修订 → 已完成；另有「阻塞中」状态表示存在未解决的外部依赖。
 - 建立或修改任意制品前，先读 SOP 文件全文，再读制品模板全文，冲突时以 SOP 为准。
-- S2011 scaffold A2007 时只填写元信息和冲刺目标，其余章节保持空白模板状态。
-- S2012 输出的规划须经人工确认后，方可提交变更触发 S2013 执行。
-- S2012 init 模式以 A2001 为主输入；supplement 模式以 A2007 状态总览表为主输入。
-- S2013 检查「已规划」任务的依赖关系，确认输入就绪后升级为「可执行」，或标记「阻塞中」。
 - `sprint-task-dispatch.yml` 为「可执行」任务自动创建工单与 PR 并 assign 给 Copilot，状态更新为「已派发」。
-- `sprint-task-status-sync.yml` 自动更新 A2007 状态：PR 合并标记「已完成」，PR 关闭未合并回退至「可执行」。
-- 「阻塞中」与「已规划」不同：已规划是前置阶段未完成（内部依赖），阻塞中是存在未解决的外部依赖导致整个冲刺不可执行。
-- 每批任务数量建议控制在 1-3 条，确保单批次可在一个工作日内完成审核闭环。
 
 ## SOP 注册表
 
