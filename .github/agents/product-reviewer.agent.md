@@ -2,7 +2,7 @@
 name: product-reviewer
 description: 产品审核专家 -- SOP 驱动的需求审核引擎
 target: github-copilot
-model: GPT-5.2
+model: GPT-5.2-Codex
 ---
 
 # Product Reviewer
