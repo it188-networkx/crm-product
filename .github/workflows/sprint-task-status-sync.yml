@@ -5,7 +5,7 @@ name: Sprint Task Status Sync
 # PR 引用列、任务状态与完成日期，并管理关联 Issue 生命周期。
 #
 # 状态转换：
-#   已派发 + copilot_work_finished 事件 + open PR（含 draft）→ 待修订（更新 PR 列）
+#   已派发 + open PR 标题不含 [WIP]  → 待修订（更新 PR 列）
 #   已派发 + PR merged              → 已完成（更新 PR 列 + 日期 + 关闭 Issue）
 #   已派发 + PR closed 未合并       → 可执行（清空 PR 列 + Issue 评论）
 #   待修订 + PR merged              → 已完成（更新日期 + 关闭 Issue）
@@ -81,29 +81,6 @@ jobs:
             // 每个 issue 的 PR 按创建时间降序
             for (const [, prs] of issuePRMap) {
               prs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-            }
-
-            // ── helper: 通过 issue timeline 判断 Copilot 是否已完成工作 ────
-            // Copilot Coding Agent 的 PR 在整个执行期间始终为 draft 状态，
-            // 不能依赖 draft 标志位推断完成情况；需通过 timeline 事件确认。
-            const copilotStatusCache = new Map();
-            async function isCopilotWorkFinished(issueNumber) {
-              if (copilotStatusCache.has(issueNumber)) {
-                return copilotStatusCache.get(issueNumber);
-              }
-              try {
-                const events = await github.paginate(
-                  github.rest.issues.listEventsForTimeline,
-                  { owner, repo, issue_number: issueNumber, per_page: 100 }
-                );
-                const finished = events.some(e => e.event === 'copilot_work_finished');
-                copilotStatusCache.set(issueNumber, finished);
-                return finished;
-              } catch (e) {
-                core.warning(`  Issue #${issueNumber} timeline fetch failed: ${e.message}`);
-                copilotStatusCache.set(issueNumber, false);
-                return false;
-              }
             }
 
             // ── 步骤 2: 扫描 A2007 并更新 ──────────────────────
@@ -188,14 +165,14 @@ jobs:
                     newStatus = '可执行';
                     clearPR = true;
                   } else if (bestPR.state === 'open' && currentStatus === '已派发') {
-                    // ── 查询 issue timeline：copilot_work_finished 出现 → 待修订 ──
-                    // Copilot Coding Agent 完成工作后 PR 仍保持 draft，
-                    // 必须通过 timeline 事件而非 draft 状态推断完成情况。
-                    const copilotDone = await isCopilotWorkFinished(issueNumber);
-                    if (copilotDone) {
+                    // ── PR 标题不含 [WIP] → Copilot 已完成，转待修订 ──
+                    // Copilot Coding Agent 执行中标题带 [WIP] 前缀；
+                    // 完成后去掉 [WIP]，PR 仍为 draft 但可进入审核流程。
+                    const isWip = /\[WIP\]/i.test(bestPR.title || '');
+                    if (!isWip) {
                       newStatus = '待修订';
                     }
-                    // copilot_work_finished 尚未出现 → 仍在执行中，仅更新 PR 列
+                    // 标题含 [WIP] → 仍在执行中，仅更新 PR 列
                   }
 
                   // 幂等：写入 PR 列
