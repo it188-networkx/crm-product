@@ -4,7 +4,7 @@
 - 责任人：赖毅
 - 周冲刺计划：`{ops-playbook}/sprints/20260309/sprint-plan.md`
 - 工单编号：crm-product#1
-- 更新时间：2026-03-15（101501 重派：product-reviewer agent 已同步至 .github-private）
+- 更新时间：2026-03-15（101501 再次重派：测试自动关闭旧 PR 功能）
 
 ## 冲刺目标 (Sprint Goals)
 
@@ -74,7 +74,7 @@
 | [101415](./t101415.md) | S0304 功能特性规划：T-04/E-01 知识资产结构化录入与审核（A0304） | `requirements/knowledge-repository/knowledge-ingestion/<feature>/README.md` ×3 | #75 | #81 | 已完成 | 03-12 |
 | [101416](./t101416.md) | S0304 功能特性规划：T-04/E-02 知识检索与场景推送（A0304） | `requirements/knowledge-repository/knowledge-retrieval/<feature>/README.md` ×3 | #77 | #82 | 已完成 | 03-12 |
 | [101417](./t101417.md) | S0304 功能特性规划：T-04/E-03 AI 知识向量化引用（A0304） | `requirements/knowledge-repository/knowledge-vectorization/vectorization-pipeline/README.md` ×1 | #80 | #83 | 已完成 | 03-12 |
-| [101501](./t101501.md) | S0309 功能史诗审核：T-01/E-01 线索治理与分配（A0309） | `requirements/structured-sales-cycle/lead-governance/review.md` | #86 | #87 | 已派发 | |
+| [101501](./t101501.md) | S0309 功能史诗审核：T-01/E-01 线索治理与分配（A0309） | `requirements/structured-sales-cycle/lead-governance/review.md` | #86 | #87 | 待重派 | |
 
 > S0302 主题定义阶段全部 4 个 Theme（T-01 ~ T-04）均已完成（截至 03-11）。
 > S0303 史诗拆分阶段全部 17 个 Epic（101301 ~ 101317）均已完成（截至 03-13）。
